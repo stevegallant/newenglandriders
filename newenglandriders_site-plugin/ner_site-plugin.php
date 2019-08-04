@@ -11,9 +11,9 @@ function create_routesize_hierarchical_taxonomy() {
   // Add new taxonomy, make it hierarchical
   // First do the translations part for GUI
   $labels = array(
-    'name' => _x('Route Sizes', 'taxonomy general name'),
+    'name' => _x('Route Size', 'taxonomy general name'),
     'singular_name' => _x('Route Size', 'taxonomy singular name'),
-    'search_items' => __('Search Route Sizes'),
+    'search_items' => __('Search Route Size'),
     'all_items' => __('All Route Sizes'),
     'parent_item' => __('Parent Route Size'),
     'parent_item_colon' => __('Parent Route Size:'),
@@ -21,7 +21,7 @@ function create_routesize_hierarchical_taxonomy() {
     'update_item' => __('Update Route Size'),
     'add_new_item' => __('Add New Route Size'),
     'new_item_name' => __('New Route Size Name'),
-    'menu_name' => __('Route Sizes'),
+    'menu_name' => __('Route Size'),
   );
 
   // Register the taxonomy
