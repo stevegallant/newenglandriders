@@ -25,7 +25,8 @@
 		 */
 		do_action( 'travelify_main_container' );
 	?>
-	<?php the_terms( $post->ID, 'routesize', 'Route Size: ', ', ', ' ' ); ?>
+	<?php the_terms( $post->ID, 'routescale', 'Route Scale: ', ', ', ' ' ); ?>
+	<?php the_terms( $post->ID, 'locale', 'Locale: ', ', ', ' ' ); ?>
 </div><!-- #container -->
 
 <?php

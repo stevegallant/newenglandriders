@@ -15,6 +15,7 @@
 ?>
 
 <div id="container">
+	<p> Using custom template taxonomy-routescale.php</p>
 	<?php
 		/**
 		 * travelify_main_container hook
@@ -25,6 +26,7 @@
 		 */
 		do_action( 'travelify_main_container' );
 	?>
+	<p> INserted after main container invoked</p>
 </div><!-- #container -->
 
 <?php

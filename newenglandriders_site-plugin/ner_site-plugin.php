@@ -1,11 +1,37 @@
 <?php
 /*
-Plugin Name: Site Plugin for newenglandriders.org
-Description: Site specific code changes for newenglandriders.org
+Plugin Name: NER Custom Plugin for newenglandriders.org
+Description: Custom site-specific code for newenglandriders.org
+Version: 1.0
 Author: S. Gallant
 */
-// hook into the init action and call create_book_taxonomies when it fires
-add_action('init', 'create_routesize_hierarchical_taxonomy', 0);
+
+// Custom functions to allow Pages to use the default Categories and Tags taxonomies
+function support_category_for_pages() {
+    // Add category support to pages
+    register_taxonomy_for_object_type('category', 'page');
+}
+function support_tag_for_pages() {
+    // Add tag support to pages
+    register_taxonomy_for_object_type('post_tag', 'page');
+}
+
+// hook into init action for above functions
+add_action( 'init', 'support_category_for_pages' );
+add_action( 'init', 'support_tag_for_pages' );
+
+//ensure all Tags and Categories from all post types are included in queries
+function tags_categories_support_query($wp_query) {
+  if ($wp_query->get('tag') || ($wp_query->get('category'))) $wp_query->set('post_type', 'any');
+}
+add_action('pre_get_posts', 'tags_categories_support_query');
+
+
+
+/******** CUSTOM TAXONOMIES *******/
+// hook into the init action and call custom taxonomies when it fires
+add_action('init', 'create_routescale_hierarchical_taxonomy', 0);
+add_action('init', 'create_locale_hierarchical_taxonomy', 0);
 
 // Create a custom taxonomy named 'Route Sizes'
 function create_routescale_hierarchical_taxonomy() {
@@ -22,7 +48,7 @@ function create_routescale_hierarchical_taxonomy() {
     'update_item' => __('Update Route Scale'),
     'add_new_item' => __('Add New Route Scale'),
     'new_item_name' => __('New Route Scale Name'),
-    'menu_name' => __('Route Scale'),
+    'menu_name' => __('NER Route Scale'),
   );
 
   // Register the taxonomy
@@ -51,7 +77,7 @@ function create_locale_hierarchical_taxonomy() {
     'update_item' => __('Update Locale'),
     'add_new_item' => __('Add New Locale'),
     'new_item_name' => __('New Locale Name'),
-    'menu_name' => __('Locale'),
+    'menu_name' => __('NER Locale'),
   );
 
   // Register the taxonomy
