@@ -1,24 +1,24 @@
 <?php
 
-
+// Enqueue styles from parent and child themes
 function theme_enqueue_styles() {
-	$parent_style = 'travelify-style'; 
+	$parent_style = 'travelify-style';
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style( 'child-style',
         get_stylesheet_directory_uri() . '/style.css',
         array( $parent_style ),
         wp_get_theme()->get('Version')
 	);
-		
 }
-
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
+// customize theme header
 function customize_travelify_header(){
-remove_action( 'travelify_header', 'travelify_headerdetails' );
-add_action( 'travelify_header', 'custom_travelify_headerdetails', 99 );
+	remove_action( 'travelify_header', 'travelify_headerdetails' );
+	add_action( 'travelify_header', 'custom_travelify_headerdetails', 99 );
 }
 add_action('init', 'customize_travelify_header');
+
 /**
  * Shows Header Part Content
  *
@@ -60,6 +60,8 @@ function custom_travelify_headerdetails() {
 				}
 			}
 		}
+
+
 	?>
 
 	<div class="container clearfix">
@@ -156,4 +158,15 @@ function custom_travelify_headerdetails() {
 	   	}
 		}
 }
+
+/********* Add additional post formats *******/
+//add theme support for addl post formats
+function additional_post_formats() {
+	add_theme_support('post-formats', array('link', 'gallery', 'video'));
+}
+add_action('after_setup_theme', 'additional_post_formats');
+
+// add post-formats to post_type 'post'
+add_post_type_format('post', 'post-formats');
+
 ?>
