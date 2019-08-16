@@ -166,7 +166,17 @@ function additional_post_formats() {
 }
 add_action('after_setup_theme', 'additional_post_formats');
 
-// add post-formats to post_type 'post'
-add_post_type_format('post', 'post-formats');
+/******** Set title for  post-format 'link' to link directly to URL ***/
+function get_my_url() {
+	if ( ! preg_match( '/href=(["\'])([^\1]*)\1/i', get_the_content(), $matches ) ) {
+		echo 'NOPERS!';
+		return false;
+	}
+	return esc_url_raw( $matches[0] );
+}
+// function get_my_url() {
+//   if (! preg_match('/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', get_the_content(), $matches)) return false;
+//   return esc_url_raw($matches[1]);
+// }
 
 ?>

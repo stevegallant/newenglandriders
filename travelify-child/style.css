@@ -8,8 +8,185 @@
  Version:      1.0.0
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
- Tags:         
+ Tags:
  Text Domain:  travelify-child
 */
 
-@import (url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+/* style site title text */
+h1#site-title,
+#site-title a {
+	color: black;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+	text-shadow: -1px 0 silver, 0 1px silver, 1px 0 silver, 0 -1px silver;
+	margin-left: 25px;
+}
+
+/* hide indiv page titles */
+body.page h2.entry-title {
+    display: none;
+}
+
+/* Set background image for header with logo & title */
+#branding {
+	background-image: url("https://www.newenglandriders.org/wp/wp-content/uploads/2019/07/cropped-nerheaderbg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
+
+/* remove extra white space */
+.hgroup-wrap {
+    padding-top: 0;
+}
+
+#search-4 {
+	background-color: #186ebf;
+	border-radius: 5px;
+}
+/* style divs */
+#primary,
+#secondary {
+	border-radius: 5px;
+}
+
+/* style Kickstands-up CTA */
+#custom_html-3 {
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+/* Style the logo image */
+#site-logo img {
+	width: 100px;
+  float: left;
+  border-radius: 10%;
+  margin: 10px 10px 0px 0px;
+/*   display: inline-block; */
+}
+
+/* hide theme/WP info in footer */
+.copyright {
+	display: none;
+}
+
+/* Style online links */
+.ner-link {
+	list-style-type: none;
+	display: inline;
+}
+.ner-link a {
+/* 	margin-right: 10px; */
+}
+
+/* Styling post-format 'link' */
+#content .format-link .entry-title a {
+  display: inline;
+}
+#content .format-link h2.entry-title {
+  color: #6ba7a5;
+}
+#content .format-link  h2.entry-title:before {
+  display: inline-block;
+  content: " ";
+  background: no-repeat url(images/link.png);
+  background-size: contain;
+  width: 50px;
+  height: 1em;
+}
+#content .format-link .entry-title p {
+  text-align: center;
+}
+
+
+}
+
+
+/*****************************/
+/******* MEDIA QUERIES *******/
+/*****************************/
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+	/* Override change to dropdown menu for medium size device screens */
+	#main-nav {
+		height: initial;
+		padding: initial;
+	}
+	#main-nav ul {
+		display: initial;
+	}
+	#main-nav select {
+		display: none;
+		width: initial;
+		border: initial;
+		font: initial;
+		color: initial;
+		height: initial;
+	}
+	/* end dropdown override */
+
+	#main {
+		padding-top: initial;
+	}
+} /* --- end media query */
+
+/****** SMALL SCREENS ******/
+@media only screen and (max-width: 479px) {
+	/* Re-order sidebar and main content for mobile screen */
+	#main #container {
+		display: flex;
+		flex-direction: column;
+	}
+	#primary {
+		order: 2;
+	}
+	#secondary {
+		order: 1;
+	}
+
+	/* Allow nav menu conversion to dropdown menu for smallest size device screens */
+	#main-nav {
+		height: 36px;
+		padding: 13px 0 0;
+	}
+	#main-nav ul {
+		display: none;
+	}
+	#main-nav select {
+		display: block;
+		width: 100%;
+		border: none;
+		font: 14px 'Ubuntu', sans-serif;
+		color: #fff;
+		background-color: #186ebf;
+		height: 24px;
+	}
+
+	#main-nav select:first-child {
+
+	}
+		/* Center images in mobile view */
+	.alignright,
+	.alignleft {
+		display: block;
+		margin: auto;
+		float: none;
+		width: 100%;
+		height: auto;
+	}
+
+	/* Arrange NER online links to column format in mobile */
+	.ner-link {
+		display: block;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+} /* --- end media query */
+
+/*Hide home menu from the menu*/
+li#menu-item-447 {
+    display: none;
+}
