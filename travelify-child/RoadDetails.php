@@ -15,7 +15,7 @@
 	 */
 	do_action( 'travelify_before_main_container' );
 ?>
-
+<p>This is text proving the Road Details template is being used.</p>
 <div id="container">
 	<?php
 		/**
