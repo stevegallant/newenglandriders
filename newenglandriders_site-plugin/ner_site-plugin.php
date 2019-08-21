@@ -116,11 +116,7 @@ add_filter('mime_types', 'add_custom_mime_types', 1, 1);
 // }
 // add_action( 'template_redirect', 'my_theme_output_upload_mimes' );
 
-
-// /******** Set title for  post-format 'link' to link directly to URL ***/
-// function get_my_url() {
-//   if (! preg_match('/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', get_the_content(), $matches)) return false;
-//   return esc_url_raw($matches[1]);
-// }
+/********* Add Excerpts to Page post type ****/
+add_post_type_support('page', 'excerpt');
 
 ?>
