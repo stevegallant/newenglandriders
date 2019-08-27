@@ -168,13 +168,21 @@ body.page h2.entry-title {
 
 	}
 		/* Center images in mobile view */
-	.alignright,
-	.alignleft {
+	img.alignright,
+	img.alignleft {
 		display: block;
 		margin: auto;
-		float: none;
+		/* float: none; */
 		width: 100%;
 		height: auto;
+	}
+
+/* Override centering of images in mobile view, for certain pages like NER Groups */
+	img.overridemobileimgalign {
+		display: inline;
+		width: initial;
+		margin: 0px 30px 0px auto;
+		/* float: inherit; */
 	}
 
 	/* Arrange NER online links to column format in mobile */
