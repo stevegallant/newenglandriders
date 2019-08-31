@@ -100,7 +100,8 @@ body.page h2.entry-title {
   text-align: center;
 }
 
-
+.amazon-product-thumb {
+	width: 135px !important;
 }
 
 

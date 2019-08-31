@@ -4,6 +4,7 @@ Plugin Name: NER Custom Plugin for newenglandriders.org
 Description: Custom site-specific code for newenglandriders.org
 Version: 1.0
 Author: S. Gallant
+Revised: 08/31/2019
 */
 
 // Custom functions to allow Pages and Attachments to use the default Categories and Tags taxonomies
@@ -94,6 +95,60 @@ function create_locale_hierarchical_taxonomy() {
     'rewrite' => array('slug' => 'locale'),
   ));
 }
+
+/******** CUSTOM POST TYPES *******/
+// hook into the init action and call custom post types when it fires
+function custom_post_type_route-details() {
+	//Set UI labels for CPT
+	$labels = array(
+		'name' => _x('Route Details', 'Post Type General Name', 'travelify-child'),
+		'singular_name' => _x('Route Details', 'Post Type Singular Name', 'travelify-child'),
+		'menu_name' => __('Route Details', 'travelify-child'),
+		'parent_item_colon' => __('Parent Route', 'travelify-child'),
+		'all_items' => __('All Routes', 'travelify-child'),
+		'view_item' => __('View Route', 'travelify-child'),
+		'add_new_item' => __('Add New Route', 'travelify-child'),
+		'add_new' => __('Add New', 'travelify-child'),
+		'edit_item' => __('Edit Route Details', 'travelify-child'),
+		'update_item' => __('Update Route Details', 'travelify-child'),
+		'search_items' => __('Search Routes', 'travelify-child'),
+		'not_found' => __('Not found', 'travelify-child'),
+		'not_found_in_trash' => __('Not found in Trash', 'travelify-child'),
+		);
+
+	// Set other options for Custom Post Type 
+	$args = array(
+		'label' => __('Route Details', 'travelify-child'),
+		'description' => __('Details of road segments and day rides', 'travelify-child'),
+		'labels' => $labels,
+		//Features this CPT supports in Post Editor
+		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields',),
+		'taxonomies' => array('routescale', 'locale'),
+		'hierarchical' => false,
+		'public' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'show_in_nav_menus' => true,
+		'show_in_admin_bar' => true,
+		'menu_position' => 5,
+		'can_export' => true,
+		'has_archive' => true,
+		'exclude_from_search' => false,
+		'publicly_queryable' => true,
+		'capability_type' => 'page',	
+	);
+	// Register the CPT
+	register_post_type('route-details',$args);
+
+}
+
+// Hook into the 'init' action to register CPT
+add_action('init', 'custom_post_type_route-details', 0);
+
+
+
+
+
 
 
 

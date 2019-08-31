@@ -1,5 +1,3 @@
-1<?php /* Template Name: Road Details */ ?>
-
 <?php
 /**
  * Displays the page section of the theme.
@@ -15,7 +13,7 @@
 	 */
 	do_action( 'travelify_before_main_container' );
 ?>
-<p>This is text proving the Road Details template is being used.</p>
+
 <div id="container">
 	<?php
 		/**
@@ -27,6 +25,8 @@
 		 */
 		do_action( 'travelify_main_container' );
 	?>
+	<?php the_terms( $post->ID, 'routescale', 'Route Scale: ', ', ', ' ' ); ?>
+	<?php the_terms( $post->ID, 'locale', 'Locale: ', ', ', ' ' ); ?>
 </div><!-- #container -->
 
 <?php
