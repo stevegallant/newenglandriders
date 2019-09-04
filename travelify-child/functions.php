@@ -187,19 +187,11 @@ function travelify_theloop_for_archive() {
 	if( have_posts() ) {
 		while( have_posts() ) {
 			the_post();
-
 			do_action( 'travelify_before_post' );
-
 			get_template_part('content','archive');
 ?>
-
-
-
-
-
 <?php
 			do_action( 'travelify_after_post' );
-
 		}
 	}
 	else {
@@ -210,5 +202,40 @@ function travelify_theloop_for_archive() {
 }
 
 
+/****** REPLACE SINGLE POST LOOP FROM TRAVELIFY THEME ******/
+function travelify_theloop_for_single() {
+	global $post;
+	if( have_posts() ) {
+		while( have_posts() ) {
+			the_post();
+			do_action( 'travelify_before_post' );
+			// Display content template based on custom post type
+			if(is_singular('route-details')){
+				get_template_part('content','route-details');
+			} else {
+				// default single post content template
+				get_template_part('content','single');
+			}
+?>
+<?php
+			do_action( 'travelify_after_post' );
+		}
+	}
+	else {
+		?>
+		<h1 class="entry-title"><?php _e( 'No Posts Found.', 'travelify' ); ?></h1>
+      <?php
+   }
+}
 
+/***** ADD FILTER TO PROCESS SHORTCODES IN ACF RATINGS-RELATED FIELDS *****/
+add_filter('acf/format_value/name=gpx_file','do_shortcode');
+
+/*** FILTER TO ALLOW GPX FILE UPLOADS ****/
+function add_custom_mime_types($mimes = array()) {
+  // $mimes['gpx'] = 'application/gpx+xml';
+  $mimes['gpx'] = 'application/gpx+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'add_custom_mime_types');
 ?>

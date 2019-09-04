@@ -104,6 +104,16 @@ body.page h2.entry-title {
 	width: 135px !important;
 }
 
+.route-source-link {
+	display: inline-block;
+	width: 100px;
+	padding: 4px 10px;
+	margin-bottom: 4px;
+	text-align: center;
+	text-decoration: none;
+	background-color: lightgrey;
+	border-radius: 8px;
+}
 
 /*****************************/
 /******* MEDIA QUERIES *******/
