@@ -36,10 +36,11 @@ add_action('pre_get_posts', 'tags_categories_support_query');
 // hook into the init action and call custom taxonomies when it fires
 add_action('init', 'create_routescale_hierarchical_taxonomy', 0);
 add_action('init', 'create_locale_hierarchical_taxonomy', 0);
+add_action('init', 'create_routefeatures_taxonomy', 0);
 
 // Create a custom taxonomy named 'Route Sizes'
 function create_routescale_hierarchical_taxonomy() {
-  // Add new taxonomy, make it hierarchical
+  // Add new taxonomy Route Scale, make it hierarchical
   // First do the translations part for GUI
   $labels = array(
     'name' => _x('Route Scale', 'taxonomy general name'),
@@ -56,7 +57,7 @@ function create_routescale_hierarchical_taxonomy() {
   );
 
   // Register the taxonomy
-  register_taxonomy('routescale',array('page'), array(
+  register_taxonomy('routescale',array('route-details'), array(
     'hierarchical' => true,
     'labels' => $labels,
     'show_ui' => true,
@@ -85,7 +86,7 @@ function create_locale_hierarchical_taxonomy() {
   );
 
   // Register the taxonomy
-  register_taxonomy('locale',array('page'), array(
+  register_taxonomy('locale',array('page','route-details'), array(
     'hierarchical' => true,
     'labels' => $labels,
     'show_ui' => true,
@@ -94,6 +95,35 @@ function create_locale_hierarchical_taxonomy() {
     'rewrite' => array('slug' => 'locale'),
   ));
 }
+
+// Create a custom taxonomy named 'Route Features'
+function create_routefeatures_taxonomy() {
+  // Add new taxonomy, make it non-hierarchical
+  // First do the translations part for GUI
+  $labels = array(
+    'name' => _x('Route Features', 'taxonomy general name'),
+    'singular_name' => _x('Route Feature', 'taxonomy singular name'),
+    'search_items' => __('Search Route Features'),
+    'all_items' => __('All Route Features'),
+    'edit_item' => __('Edit Feature'),
+    'update_item' => __('Update Feature'),
+    'add_new_item' => __('Add New Route Feature'),
+    'new_item_name' => __('New Route Feature Name'),
+    'menu_name' => __('NER Route Features'),
+  );
+
+  // Register the taxonomy
+  register_taxonomy('routefeatures',array('route-details'), array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array('slug' => 'route-features'),
+  ));
+}
+
+
 
 /******** CUSTOM POST TYPES *******/
 // hook into the init action and call custom post types when it fires

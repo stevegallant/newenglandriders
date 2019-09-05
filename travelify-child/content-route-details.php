@@ -39,32 +39,39 @@
 
           if(get_field("google_maps_nav")) {?>
             <a href="<?php the_field('google_maps_nav');?>"><span class="route-source-link">Google Nav</span></a>
-          <?php } ?>
-        </div> <!-- end route-sources -->
-        <iframe src="<?php the_field('map_embed');?>" width="auto" height="300" frameborder="0" style="border:0"></iframe>
-        <table class="route-data-table">
-          <tr>
-            <td><b>Miles</b> </td>
-            <td><?php the_field('mileage');?></td>
-          </tr>
-          <tr>
-            <td><b>Endpoints</b> </td>
-            <td><?php the_field('endpoint_1');?>, <?php the_field('endpoint_2');?></td>
-          </tr>
-          <tr>
-            <td><b>Surface</b> </td>
-            <td><?php the_field('surface');?></td>
-          </tr>
-          <tr>
-            <td><b>Description</b> </td>
-            <td><?php the_field('description');?></td>
-          </tr>
-          <tr>
-            <td><b>Turn By Turn</b> </td>
-            <td><?php the_field('turn-by-turn');?></td>
-          </tr>
+          <?php }
 
-        </table> <!-- end route-data-table -->
+          if(get_field("turn-by-turn")) {?>
+            <a href="<?php the_field('turn-by-turn');?>"><span class="route-source-link">Turn-by-Turn</span></a>
+          <?php } ?>
+
+        </div> <!-- end route-sources -->
+        <div class="route-map-wrapper">
+          <iframe class="route-map-zoomed" src="<?php the_field('map_embed');?>" width="300" height="300" frameborder="0" style="border:0"></iframe>
+        </div>
+        <div class="route-data-wrapper">
+            <table>
+            <tr>
+              <td><b>Miles</b> </td>
+              <td><?php the_field('mileage');?></td>
+            </tr>
+            <tr>
+              <td><b>Endpoints</b> </td>
+              <td><?php the_field('endpoint_1');?>, <?php the_field('endpoint_2');?></td>
+            </tr>
+            <tr>
+              <td><b>Surface</b> </td>
+              <td><?php the_field('surface');?></td>
+            </tr>
+          </table>
+        </div> <!-- end route-data-wrapper -->
+        <div style="clear: both;"></div>
+
+        <?php if(get_field("description")) {?>
+          <h3>Description</h3>
+          <?php the_field('description');?>
+        <?php } ?>
+
         <h3>Rated by Riders</h3>
         <p>One per rider. If you need to update your rating: take a copy of the text, delete and recreate.</p>
         <div>

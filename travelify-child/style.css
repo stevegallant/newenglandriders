@@ -104,21 +104,37 @@ body.page h2.entry-title {
 	width: 135px !important;
 }
 
+.route-sources {
+	text-align: center;
+}
 .route-source-link {
 	display: inline-block;
 	width: 100px;
-	padding: 4px 10px;
+	padding: 4px 8px;
 	margin-bottom: 4px;
 	text-align: center;
 	text-decoration: none;
-	background-color: lightgrey;
+	background-color: #f9f9f9;
 	border-radius: 8px;
+}
+
+.route-map-zoomed {
+	display: float;
+	float: left;
+	margin-bottom: 1em;
+}
+
+.route-data-wrapper {
+	display: float;
+	float: left;
+	width: 250px;
+	margin-left: 16px;
 }
 
 /*****************************/
 /******* MEDIA QUERIES *******/
 /*****************************/
-@media only screen and (min-width: 480px) and (max-width: 767px) {
+@media only screen and (min-width: 480px) and (max-width: 768px) {
 
 	/* Override change to dropdown menu for medium size device screens */
 	#main-nav {
@@ -140,6 +156,26 @@ body.page h2.entry-title {
 
 	#main {
 		padding-top: initial;
+	}
+
+} /* --- end media query */
+
+/* Route Details map and table data arrangement on med/smaller screens */
+@media only screen and (max-width: 768px) {
+	.route-map-wrapper {
+		text-align: center;
+	}
+	.route-map-zoomed {
+		display: inline;
+		float: none;
+		margin: 0 auto;
+	}
+
+	.route-data-wrapper {
+		display: block;
+		width: 100%;
+		margin-top: 1em;
+		margin-left: initial;
 	}
 } /* --- end media query */
 
@@ -202,6 +238,7 @@ body.page h2.entry-title {
 		width: 100%;
 		margin-bottom: 20px;
 	}
+
 
 } /* --- end media query */
 
