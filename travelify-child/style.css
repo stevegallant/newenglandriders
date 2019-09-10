@@ -131,6 +131,15 @@ body.page h2.entry-title {
 	margin-left: 16px;
 }
 
+/* Additional styling for CBX Multi Ratings plugin */
+.cbxmcratingreview_q_field_answer {
+	font-weight: bold;
+}
+
+#content ul.cbxmcratingreview_review_readonly_criterias {
+	margin: 0px;
+}
+
 /*****************************/
 /******* MEDIA QUERIES *******/
 /*****************************/

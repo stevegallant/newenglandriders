@@ -72,12 +72,21 @@
           <?php the_field('description');?>
         <?php } ?>
 
+        <h3>NER Rating</h3>
+        <div>
+          <?php echo do_shortcode('[cbxmcratingreview_postreviews form_id="1" show_filter="0"]'); ?>
+          <br />
+          <?php echo do_shortcode('[cbxmcratingreview_reviewform form_id="1"]'); ?>
+        </div>
+
         <h3>Rated by Riders</h3>
         <p>One per rider. If you need to update your rating: take a copy of the text, delete and recreate.</p>
         <div>
-          <strong>Average Rating</strong> [cbxmcratingreview_postavgrating]
-          [cbxmcratingreview_postreviews]
-          [cbxmcratingreview_reviewform form_id="1"]
+          <strong>Average Rider Rating</strong> <?php echo do_shortcode('[cbxmcratingreview_postavgrating form_id="3"]'); ?>
+          <br />
+          <?php echo do_shortcode('[cbxmcratingreview_postreviews  form_id="3"]'); ?>
+          <br />
+          <?php echo do_shortcode('[cbxmcratingreview_reviewform form_id="3"]'); ?>
         </div>
         <?php
         // hiding the main body content field for this Custom Post Type
