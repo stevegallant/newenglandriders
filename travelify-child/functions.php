@@ -188,9 +188,10 @@ function travelify_theloop_for_archive() {
 		while( have_posts() ) {
 			the_post();
 			do_action( 'travelify_before_post' );
+			// Here we need logic to choose template parts based on what styling
+			// is needed for the different archive views.
 			get_template_part('content','archive');
-?>
-<?php
+
 			do_action( 'travelify_after_post' );
 		}
 	}
