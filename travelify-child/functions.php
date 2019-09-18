@@ -190,7 +190,12 @@ function travelify_theloop_for_archive() {
 			do_action( 'travelify_before_post' );
 			// Here we need logic to choose template parts based on what styling
 			// is needed for the different archive views.
-			get_template_part('content','archive');
+			// if (has_term('','routescale')) {
+			if ('route-details' == get_post_type()) {
+				get_template_part('content','archive-route-details');
+			} else {
+				get_template_part('content','archive');
+			}
 
 			do_action( 'travelify_after_post' );
 		}
@@ -199,7 +204,7 @@ function travelify_theloop_for_archive() {
 		?>
 		<h1 class="entry-title"><?php _e( 'No Posts Found.', 'travelify' ); ?></h1>
       <?php
-   }
+  }
 }
 
 
