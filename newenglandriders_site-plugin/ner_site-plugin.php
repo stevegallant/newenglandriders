@@ -168,24 +168,59 @@ function custom_post_type_route_details() {
 	);
 	// Register the CPT
 	register_post_type('route-details',$args);
-
 }
-
 // Hook into the 'init' action to register CPT
 add_action('init', 'custom_post_type_route_details', 0);
 
+// CPT Locale Details
+function custom_post_type_locale_details() {
+	//Set UI labels for CPT
+	$labels = array(
+		'name' => _x('Locale Detail', 'Post Type General Name', 'travelify-child'),
+		'singular_name' => _x('Locale Detail', 'Post Type Singular Name', 'travelify-child'),
+		'menu_name' => __('Locale Detail Pages', 'travelify-child'),
+		'parent_item_colon' => __('Parent Locale', 'travelify-child'),
+		'all_items' => __('All Locales', 'travelify-child'),
+		'view_item' => __('View Locale Page', 'travelify-child'),
+		'add_new_item' => __('Add New Locale', 'travelify-child'),
+		'add_new' => __('Add New', 'travelify-child'),
+		'edit_item' => __('Edit Locale Detail', 'travelify-child'),
+		'update_item' => __('Update Locale Detail', 'travelify-child'),
+		'search_items' => __('Search Locales', 'travelify-child'),
+		'not_found' => __('Not found', 'travelify-child'),
+		'not_found_in_trash' => __('Not found in Trash', 'travelify-child'),
+		);
+
+	// Set other options for Custom Post Type
+	$args = array(
+		'label' => __('Locale Detail', 'travelify-child'),
+		'description' => __('Details of riding locales/regions', 'travelify-child'),
+		'labels' => $labels,
+		//Features this CPT supports in Post Editor
+		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields',),
+		'taxonomies' => array('category'),
+		'hierarchical' => false,
+		'public' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'show_in_nav_menus' => true,
+		'show_in_admin_bar' => true,
+		'menu_position' => 5,
+		'can_export' => true,
+		'has_archive' => true,
+		'exclude_from_search' => false,
+		'publicly_queryable' => true,
+		'capability_type' => 'page',
+	);
+	// Register the CPT
+	register_post_type('locale-details',$args);
+}
+// Hook into the 'init' action to register CPT
+add_action('init', 'custom_post_type_locale_details', 0);
 
 
 
-/****** Allow GPX files to be uploaded ***************/
-// function add_custom_mime_types($mimes = array()) {
-//   // $mimes['gpx'] = 'application/gpx+xml';
-//   $mimes['gpx'] = "application/gpx+xml";
-//   return $mimes;
-// }
-// add_filter('upload_mimes', 'add_custom_mime_types');
-
-/********* Add Excerpts to Page post type ****/
+/********* Add Excerpts to default 'Page' post type ****/
 add_post_type_support('page', 'excerpt');
 
 ?>

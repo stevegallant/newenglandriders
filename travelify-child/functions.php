@@ -218,6 +218,8 @@ function travelify_theloop_for_single() {
 			// Display content template based on custom post type
 			if(is_singular('route-details')){
 				get_template_part('content','route-details');
+			} elseif (is_singular('locale-details')) {
+				get_template_part('content','locale-details');
 			} else {
 				// default single post content template
 				get_template_part('content','single');

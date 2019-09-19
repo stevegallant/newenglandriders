@@ -104,6 +104,7 @@ body.page h2.entry-title {
 	width: 135px !important;
 }
 
+/* Style route-details template part */
 .route-sources {
 	text-align: center;
 }
@@ -130,6 +131,68 @@ body.page h2.entry-title {
 	width: 250px;
 	margin-left: 16px;
 }
+
+/* Style locale-details template part */
+.locale-resources {
+	text-align: center;
+}
+
+/* .locale-resource-link,
+.locale-resource-links {
+	display: inline-block;
+	box-sizing: border-box;
+	width: 45%;
+	padding: 4px 8px;
+	margin-bottom: 4px;
+	text-align: center;
+	text-decoration: none;
+	background-color: #f9f9f9;
+	border-radius: 8px;
+} */
+.locale-resource-link,
+.locale-resource-links {
+	display: inline-flex;
+	box-sizing: border-box;
+	width: 45%;
+	margin-bottom: 4px;
+	text-align: center;
+	text-decoration: none;
+	background-color: #f9f9f9;
+	border-radius: 8px;
+}
+
+a.locale-resource-list {
+	display: inline-block;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 4px 0px;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+	transition-duration: 0.2s;
+	border-radius: 8px 0px 0px 8px;
+}
+
+a.locale-resource-gpx {
+	display: inline-block;
+	float: right;
+	box-sizing: border-box;
+	width: 68px;
+	height: 100%;
+	padding: 4px 0px;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	background-color: #186ebf;
+	border-radius: 0px 8px 8px 0px;
+}
+
+a.locale-resource-list:hover,
+a.locale-resource-gpx:hover {
+	color: white;
+	background-color: #144277;
+}
+
 
 /* Additional styling for CBX Multi Ratings plugin */
 .cbxmcratingreview_q_field_answer {
@@ -239,10 +302,17 @@ span.route-endpoints {
 		height: 24px;
 	}
 
-	#main-nav select:first-child {
-
+	/*Hide home menu from the menu - done by ColorLib */
+	li#menu-item-447 {
+	    display: none;
 	}
-		/* Center images in mobile view */
+
+	/* Override heading sizes for small screens */
+	.entry-title, .entry-title a {
+		font-size: 24px;
+	}
+
+	/* Center images in mobile view */
 	img.alignright,
 	img.alignleft {
 		display: block;
@@ -252,7 +322,7 @@ span.route-endpoints {
 		height: auto;
 	}
 
-/* Override centering of images in mobile view, for certain pages like NER Groups */
+	/* Override centering of images in mobile view, for certain pages like NER Groups */
 	img.overridemobileimgalign {
 		display: inline;
 		width: initial;
@@ -267,10 +337,11 @@ span.route-endpoints {
 		margin-bottom: 20px;
 	}
 
+	.locale-resource-link,
+	.locale-resource-links {
+		width: 100%;
+		margin-bottom: 8px;
+	}
+
 
 } /* --- end media query */
-
-/*Hide home menu from the menu*/
-li#menu-item-447 {
-    display: none;
-}
