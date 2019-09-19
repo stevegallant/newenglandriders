@@ -4,13 +4,17 @@
   <article>
     <?php do_action( 'travelify_before_post_header' ); ?>
     <header class="entry-header">
+      <div class="locale-header">
         <h2 class="entry-title">
           <?php the_title(); ?>
         </h2><!-- .entry-title -->
-        <?php
-        if(get_field("feature_photo")) {?>
-          <a class="locale-photo" href=""><?php the_field('feature_photo');?></a>
-        <?php } ?>
+        <div class="locale-photo">
+          <?php
+          if(get_field("feature_photo")) {?>
+            <a href="<?php the_field('feature_photo');?>" target="_blank"><img src="<?php the_field('feature_photo');?>" /></a>
+          <?php } ?>
+        </div>
+      </div>
     </header>
     <?php do_action( 'travelify_after_post_header' ); ?>
     <?php do_action( 'travelify_before_post_meta' ); ?>
@@ -63,6 +67,8 @@
           </div> <!-- locale-resource-links -->
 
         </div> <!-- end locale-resources -->
+        <br />
+        <hr />
 
         <p><?php the_field("description"); ?></p>
 

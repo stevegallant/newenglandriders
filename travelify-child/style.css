@@ -133,22 +133,26 @@ body.page h2.entry-title {
 }
 
 /* Style locale-details template part */
+.locale-header {
+	display: flex;
+	flex: nowrap;
+}
+.locale-header h2 {
+	display: inline-block;
+}
+
+.locale-photo {
+	display: inline-block;
+	padding: 10px 4px;
+}
+.locale-photo img {
+	width: 180px;
+}
+
 .locale-resources {
 	text-align: center;
 }
 
-/* .locale-resource-link,
-.locale-resource-links {
-	display: inline-block;
-	box-sizing: border-box;
-	width: 45%;
-	padding: 4px 8px;
-	margin-bottom: 4px;
-	text-align: center;
-	text-decoration: none;
-	background-color: #f9f9f9;
-	border-radius: 8px;
-} */
 .locale-resource-link,
 .locale-resource-links {
 	display: inline-flex;
