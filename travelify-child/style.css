@@ -67,6 +67,11 @@ body.page h2.entry-title {
 /*   display: inline-block; */
 }
 
+/*Hide home menu from the menu - done by ColorLib */
+li#menu-item-447 {
+		display: none;
+}
+
 /* hide theme/WP info in footer */
 .copyright {
 	display: none;
@@ -145,6 +150,7 @@ body.page h2.entry-title {
 	display: inline-block;
 	padding: 10px 4px;
 }
+
 .locale-photo img {
 	width: 180px;
 }
@@ -306,10 +312,6 @@ span.route-endpoints {
 		height: 24px;
 	}
 
-	/*Hide home menu from the menu - done by ColorLib */
-	li#menu-item-447 {
-	    display: none;
-	}
 
 	/* Override heading sizes for small screens */
 	.entry-title, .entry-title a {
@@ -346,6 +348,16 @@ span.route-endpoints {
 		width: 100%;
 		margin-bottom: 8px;
 	}
+
+	.locale-photo img {
+		display: none; /* hide locale feature photo on small screen */
+	}
+
+
+		/*Hide home menu from the menu - done by ColorLib */
+		li#menu-item-447 {
+		    display: block;
+		}
 
 
 } /* --- end media query */

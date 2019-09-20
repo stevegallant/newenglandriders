@@ -207,7 +207,6 @@ function travelify_theloop_for_archive() {
   }
 }
 
-
 /****** REPLACE SINGLE POST LOOP FROM TRAVELIFY THEME ******/
 function travelify_theloop_for_single() {
 	global $post;
@@ -235,6 +234,40 @@ function travelify_theloop_for_single() {
       <?php
    }
 }
+
+/****** REPLACE SINGLE PAGE LOOP FROM TRAVELIFY THEME ******/
+function travelify_theloop_for_page() {
+	global $post;
+	if( have_posts() ) {
+		while( have_posts() ) {
+			the_post();
+			do_action( 'travelify_before_post' );
+			if (is_page('b-o-n-e')) {
+				get_template_part('content', 'page-b-o-n-e');
+			}
+			else {
+				get_template_part('content', 'page');
+			}
+
+			do_action( 'travelify_after_post' );
+		}
+	}
+	else {
+		?>
+		<h1 class="entry-title"><?php _e( 'No Posts Found.', 'travelify' ); ?></h1>
+  <?php
+  }
+}
+
+/**** CHANGE SORTING OF ARCHIVE LISTS TO ASC BY TITLE */
+add_action('pre_get_posts', 'sort_order_title');
+function sort_order_title($query) {
+	if(is_archive()):
+		//If you wanted it for the archive of a custom post type use: is_post_type_archive( $post_type )
+		$query->set('order', 'ASC');
+		$query->set('orderby', 'title');
+	endif;
+};
 
 /***** ADD FILTER TO PROCESS SHORTCODES IN ACF RATINGS-RELATED FIELDS *****/
 add_filter('acf/format_value/name=gpx_file','do_shortcode');
