@@ -38,7 +38,7 @@ add_action('init', 'create_routescale_hierarchical_taxonomy', 0);
 add_action('init', 'create_locale_hierarchical_taxonomy', 0);
 add_action('init', 'create_routefeatures_taxonomy', 0);
 
-// Create a custom taxonomy named 'Route Sizes'
+// Create a custom taxonomy named 'Route Scale'
 function create_routescale_hierarchical_taxonomy() {
   // Add new taxonomy Route Scale, make it hierarchical
   // First do the translations part for GUI
@@ -86,7 +86,7 @@ function create_locale_hierarchical_taxonomy() {
   );
 
   // Register the taxonomy
-  register_taxonomy('locale',array('page','route-details'), array(
+  register_taxonomy('locale',array('page','route-details','locale-details'), array(
     'hierarchical' => true,
     'labels' => $labels,
     'show_ui' => true,

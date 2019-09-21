@@ -16,6 +16,11 @@
       <div class="entry-content clearfix">
         <?php the_content(); ?>
 
+        <div class="locale-chooser-form">
+          <?php //route_element_search_form(); ?>
+
+        </div> <!-- locale-chooser-form -->
+
       </div>
 
       <?php
