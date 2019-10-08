@@ -3,8 +3,8 @@
 // Enqueue styles from parent and child themes
 function theme_enqueue_styles() {
 	$parent_style = 'travelify-style';
-    wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
-	wp_enqueue_style( 'child-style',
+  wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+	wp_enqueue_style( 'ner-style',
         get_stylesheet_directory_uri() . '/style.css',
         array( $parent_style ),
         wp_get_theme()->get('Version')
@@ -174,11 +174,6 @@ function get_my_url() {
 	}
 	return esc_url_raw( $matches[1] );
 }
-// function get_my_url() {
-//   if (! preg_match('/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', get_the_content(), $matches)) return false;
-//   return esc_url_raw($matches[1]);
-// }
-
 
 /***** REPLACE ARCHIVE LOOP FROM TRAVELIFY THEME *****/
 function travelify_theloop_for_archive() {
@@ -400,6 +395,43 @@ function route_element_search_form($args) {
 	$form_output .= 'Jump directly to list of route elements for a locale:';
 	$form_output .= $form2_output;
 	return $form_output;
+}
+
+/*** SUBSCRIBER LOCK-DOWN  ***/
+// Re-direct subscriber accounts out of admin and to homepage
+add_action('admin_init', 'redirectSubToFrontend');
+function redirectSubToFrontEnd() {
+  $ourCurrentUser = wp_get_current_user();
+  if (count($ourCurrentUser->roles) == 1 AND $ourCurrentUser->roles[0] == 'subscriber') {
+    wp_redirect(site_url('/'));
+    exit;
+  }
+}
+
+// remove top admin bar for logged in subscribers
+add_action('wp_loaded', 'noSubAdminBar');
+function noSubAdminBar() {
+  $ourCurrentUser = wp_get_current_user();
+  if (count($ourCurrentUser->roles) == 1 AND $ourCurrentUser->roles[0] == 'subscriber') {
+    show_admin_bar(false);
+  }
+}
+
+// Customize login screen
+add_filter('login_headerurl', 'ourHeaderUrl');
+function ourHeaderUrl() {
+  return esc_url(site_url('/'));
+}
+
+add_action('login_enqueue_scripts', 'ourLoginCSS');
+function ourLoginCSS() {
+	wp_enqueue_style( 'ner-style', get_stylesheet_uri(), NULL, microtime());
+  wp_enqueue_style('custom-google-fonts', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
+}
+
+add_filter('login_headertext', 'ourLoginTitle');
+function ourLoginTitle() {
+  return get_bloginfo('name');
 }
 
 ?>
