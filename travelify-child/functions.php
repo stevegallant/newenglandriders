@@ -305,7 +305,11 @@ function bone_pre_get_posts($query) {
 	$meta_query = array();
 	// add meta_query elements
 	if (!empty(get_query_var('route-element'))) {
-		$meta_query[] = array('key' => 'route_element_type', 'value' => get_query_var('route-element'), 'compare' => 'LIKE');
+		$meta_query[] = array(
+			'key' => 'route_element_type',
+			'value' => get_query_var('route-element'),
+			'compare' => 'LIKE'
+		);
 	}
 	if( count( $meta_query ) > 1 ){
     $meta_query['relation'] = 'AND';

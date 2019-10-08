@@ -34,15 +34,13 @@ add_action('pre_get_posts', 'tags_categories_support_query');
 
 /******** CUSTOM TAXONOMIES *******/
 // hook into the init action and call custom taxonomies when it fires
-add_action('init', 'create_routescale_hierarchical_taxonomy', 0);
-add_action('init', 'create_locale_hierarchical_taxonomy', 0);
-add_action('init', 'create_routefeatures_taxonomy', 0);
+add_action('init', 'create_ner_taxonomies', 0);
 
-// Create a custom taxonomy named 'Route Scale'
-function create_routescale_hierarchical_taxonomy() {
+// Define NER custom taxonomies
+function create_ner_taxonomies() {
   // Add new taxonomy Route Scale, make it hierarchical
   // First do the translations part for GUI
-  $labels = array(
+  $routescaleLabels = array(
     'name' => _x('Route Scale', 'taxonomy general name'),
     'singular_name' => _x('Route Scale', 'taxonomy singular name'),
     'search_items' => __('Search Route Scale'),
@@ -59,19 +57,17 @@ function create_routescale_hierarchical_taxonomy() {
   // Register the taxonomy
   register_taxonomy('routescale',array('route-details'), array(
     'hierarchical' => true,
-    'labels' => $labels,
+    'labels' => $routescaleLabels,
     'show_ui' => true,
     'show_admin_column' => true,
     'query_var' => true,
     'rewrite' => array('slug' => 'routescale'),
   ));
-}
 
-// Create a custom taxonomy named 'Locale'
-function create_locale_hierarchical_taxonomy() {
+  // Create a custom taxonomy named 'Locale'
   // Add new taxonomy, make it hierarchical
   // First do the translations part for GUI
-  $labels = array(
+  $localeLabels = array(
     'name' => _x('Locale', 'taxonomy general name'),
     'singular_name' => _x('Locale', 'taxonomy singular name'),
     'search_items' => __('Search Locale'),
@@ -88,19 +84,17 @@ function create_locale_hierarchical_taxonomy() {
   // Register the taxonomy
   register_taxonomy('locale',array('page','route-details','locale-details'), array(
     'hierarchical' => true,
-    'labels' => $labels,
+    'labels' => $localeLabels,
     'show_ui' => true,
     'show_admin_column' => true,
     'query_var' => true,
     'rewrite' => array('slug' => 'locale'),
   ));
-}
 
-// Create a custom taxonomy named 'Route Features'
-function create_routefeatures_taxonomy() {
+  // Create a custom taxonomy named 'Route Features'
   // Add new taxonomy, make it non-hierarchical
   // First do the translations part for GUI
-  $labels = array(
+  $routefeaturesLabels = array(
     'name' => _x('Route Features', 'taxonomy general name'),
     'singular_name' => _x('Route Feature', 'taxonomy singular name'),
     'search_items' => __('Search Route Features'),
@@ -115,7 +109,7 @@ function create_routefeatures_taxonomy() {
   // Register the taxonomy
   register_taxonomy('routefeatures',array('route-details'), array(
     'hierarchical' => false,
-    'labels' => $labels,
+    'labels' => $routefeaturesLabels,
     'show_ui' => true,
     'show_admin_column' => true,
     'query_var' => true,
