@@ -120,10 +120,13 @@ function create_ner_taxonomies() {
 
 
 /******** CUSTOM POST TYPES *******/
+// Hook into the 'init' action to register CPT
+add_action('init', 'ner_custom_post_types', 0);
+
 // hook into the init action and call custom post types when it fires
-function custom_post_type_route_details() {
+function ner_custom_post_types() {
 	//Set UI labels for CPT
-	$labels = array(
+	$routedetailsLabels = array(
 		'name' => _x('Route Details', 'Post Type General Name', 'travelify-child'),
 		'singular_name' => _x('Route Details', 'Post Type Singular Name', 'travelify-child'),
 		'menu_name' => __('Route Details Pages', 'travelify-child'),
@@ -140,10 +143,10 @@ function custom_post_type_route_details() {
 		);
 
 	// Set other options for Custom Post Type
-	$args = array(
+	$routedetailsArgs = array(
 		'label' => __('Route Details', 'travelify-child'),
 		'description' => __('Details of road segments and day rides', 'travelify-child'),
-		'labels' => $labels,
+		'labels' => $routedetailsLabels,
 		//Features this CPT supports in Post Editor
 		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields',),
 		'taxonomies' => array('routescale', 'locale',),
@@ -161,15 +164,11 @@ function custom_post_type_route_details() {
 		'capability_type' => 'page',
 	);
 	// Register the CPT
-	register_post_type('route-details',$args);
-}
-// Hook into the 'init' action to register CPT
-add_action('init', 'custom_post_type_route_details', 0);
+	register_post_type('route-details', $routedetailsArgs);
 
-// CPT Locale Details
-function custom_post_type_locale_details() {
+  // CPT Locale Details
 	//Set UI labels for CPT
-	$labels = array(
+	$localedetailsLabels = array(
 		'name' => _x('Locale Detail', 'Post Type General Name', 'travelify-child'),
 		'singular_name' => _x('Locale Detail', 'Post Type Singular Name', 'travelify-child'),
 		'menu_name' => __('Locale Detail Pages', 'travelify-child'),
@@ -186,10 +185,10 @@ function custom_post_type_locale_details() {
 		);
 
 	// Set other options for Custom Post Type
-	$args = array(
+	$localedetailsArgs = array(
 		'label' => __('Locale Detail', 'travelify-child'),
 		'description' => __('Details of riding locales/regions', 'travelify-child'),
-		'labels' => $labels,
+		'labels' => $localedetailsLabels,
 		//Features this CPT supports in Post Editor
 		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields',),
 		'taxonomies' => array('category'),
@@ -207,10 +206,10 @@ function custom_post_type_locale_details() {
 		'capability_type' => 'page',
 	);
 	// Register the CPT
-	register_post_type('locale-details',$args);
-}
-// Hook into the 'init' action to register CPT
-add_action('init', 'custom_post_type_locale_details', 0);
+	register_post_type('locale-details', $localedetailsArgs);
+  
+} // end ner_custom_post_types
+
 
 
 
