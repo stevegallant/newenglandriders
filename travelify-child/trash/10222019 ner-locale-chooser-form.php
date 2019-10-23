@@ -43,6 +43,7 @@ function bone_pre_get_posts($query) {
     $query->set( 'meta_query', $meta_query );
   }
 }
+// ABOVE function is DISABLED for now, using shortcode
 // add_action('pre_get_posts', 'bone_pre_get_posts', 1);
 
 //create shortcode
@@ -53,7 +54,7 @@ add_action('init', 'route_element_search_setup');
 
 // Create first select field for locale
 function route_element_search_form($args) {
-	// The secondary query for the form
+	// The secondary query for the form - all Locale Details posts
 	$bone_query = new WP_Query(array(
 		'post_type' => 'locale-details',
 		'posts_per_page' => '-1',
