@@ -57,6 +57,10 @@ h1#site-title,
 body.page h2.entry-title {
     display: none;
 }
+/* override hidden h2 for locale-details template part */
+div.locale-header h2.entry-title {
+    display: inline-block;
+}
 
 /* Set background image for header with logo & title */
 #branding {
@@ -232,6 +236,14 @@ a.locale-resource-gpx:hover {
 	background-color: #144277;
 }
 
+/* Style locale select element on BONE/BOA pages */
+.locale-select-box {
+  padding: 4px;
+  border: 2px solid #186ebf;
+  border-radius: 5px;
+  font-size: 1.25em;
+
+}
 
 /* Additional styling for CBX Multi Ratings plugin */
 .cbxmcratingreview_q_field_answer {

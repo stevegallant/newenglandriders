@@ -18,7 +18,6 @@
 
         <div class="locale-chooser-form">
           <?php
-
           // Run new custom query for select element
           $all_locales_query = new WP_Query(array(
             'post_type' => 'locale-details',
@@ -37,19 +36,19 @@
           			}
               }
           } //end sub-loop
-
-          // Restore original page query data
+          asort($locale_names);
+          // Restore original page query data after populating select element
         	wp_reset_postdata();
          ?>
 
          <!-- Display form for selecting locale -->
           <form action="<?php echo get_permalink(); ?>" method="GET" role="search">
-            <div class="localeselectbox">
+
               <?php
               // Assemble select dropdown element for Locale selection form
               //if (is_array($locale_names)) { ?>
-                <select name="locale">
-                  <option value="" selected="selected">Select locale</option>
+                <select name="locale" class="locale-select-box">
+                  <option value="" selected="selected">Select riding locale</option>
                   <?php // Use locale names from array for options in drop-down
                   foreach ($locale_names as $term) { ?>
                     <option value="<?php echo $term; ?>"><?php echo $term; ?></option>';
@@ -58,84 +57,9 @@
 
               <?php
               //} // echo $select_locale; ?>
-            </div>
-            <p><input type="submit" value="Go!" class="button" /></p>
+
+            <input type="submit" value="Go!" class="button" />
           </form>
-          <br />
-
-          <?php
-          $chosenLocale = $_GET['locale'];
-          if ($chosenLocale) {
-            // Set arguments for new WP_Query for specific locale
-            $args2 = array(
-              'post_type' => 'locale-details',
-              'posts_per_page' => '-1',
-              'meta_query' => array(
-                array(
-                  'key' => 'locale_name',
-                  'value' => $chosenLocale,
-                  'compare' => 'LIKE',
-                ),
-              ),
-            );
-
-            // Run new custom query for specific locale
-            $locale_query = new WP_Query($args2);
-            while ($locale_query->have_posts()) {
-              $locale_query->the_post(); ?>
-
-              <div class="entry-content clearfix">
-                <div class="locale-map-wrapper">
-                  <iframe class="locale-map" src="<?php the_field('map_embed');?>" width="100%" height="320px" frameborder="0" style="border:0"></iframe>
-                </div>
-
-                <div class="locale-resources">
-                  <div class="locale-resource-links">
-                    <a href="<?php the_field('list_roads');?>" class="locale-resource-list">Roads</a>
-                    <a href="<?php the_field('gpx_roads');?>" class="locale-resource-gpx">GPX</a>
-                  </div> <!-- locale-resource-links -->
-                  <div class="locale-resource-links">
-                    <a href="<?php the_field('list_restaurants');?>" class="locale-resource-list">Restaurants</a>
-                    <a href="<?php the_field('gpx_restaurants');?>" class="locale-resource-gpx">GPX</a>
-                  </div> <!-- locale-resource-links -->
-                  <div class="locale-resource-links">
-                    <a href="<?php the_field('list_scenicviews');?>" class="locale-resource-list">Scenic Views</a>
-                    <a href="<?php the_field('gpx_scenicviews');?>" class="locale-resource-gpx">GPX</a>
-                  </div> <!-- locale-resource-links -->
-                  <div class="locale-resource-links">
-                    <a href="<?php the_field('list_attractions');?>" class="locale-resource-list">Attractions</a>
-                    <a href="<?php the_field('gpx_attractions');?>" class="locale-resource-gpx">GPX</a>
-                  </div> <!-- locale-resource-links -->
-                  <div class="locale-resource-links">
-                    <a href="<?php the_field('list_hotels');?>" class="locale-resource-list">Hotels</a>
-                    <a href="<?php the_field('gpx_hotels');?>" class="locale-resource-gpx">GPX</a>
-                  </div> <!-- locale-resource-links -->
-                  <div class="locale-resource-links">
-                    <a href="<?php the_field('list_campgrounds');?>" class="locale-resource-list">All Campgrounds</a>
-                    <a href="<?php the_field('gpx_campgrounds');?>" class="locale-resource-gpx">GPX</a>
-                  </div> <!-- locale-resource-links -->
-                </div> <!-- end locale-resources -->
-                <br />
-                <hr />
-                <p><?php the_field("description"); ?></p>
-                <?php
-
-                wp_link_pages( array(
-                  'before'            => '<div style="clear: both;"></div><div class="pagination clearfix">'.__( 'Pages:', 'travelify' ),
-                  'after'             => '</div>',
-                  'link_before'       => '<span>',
-                  'link_after'        => '</span>',
-                  'pagelink'          => '%',
-                  'echo'              => 1
-                     ) );
-                     ?>
-              </div>
-            <?php
-            }
-          }
-          // Restore original post data
-        	wp_reset_postdata();
-          ?>
         </div> <!-- locale-chooser-form -->
       </div> <!-- end entry-content -->
 
@@ -147,4 +71,38 @@
       ?>
 
   </article>
-</section>
+</section> <!-- END BONE page content section -->
+
+
+
+
+<?php
+// Run third query for specific local chosen by user
+$chosenLocale = $_GET['locale'];
+if ($chosenLocale) {
+  // Set arguments for new WP_Query for specific locale
+  $args2 = array(
+    'post_type' => 'locale-details',
+    'posts_per_page' => '-1',
+    'meta_query' => array(
+      array(
+        'key' => 'locale_name',
+        'value' => $chosenLocale,
+        'compare' => 'LIKE',
+      ),
+    ),
+  );
+
+  // Run new custom query for specific locale
+  $locale_query = new WP_Query($args2);
+  while ($locale_query->have_posts()) {
+    $locale_query->the_post();
+    get_template_part('content', 'locale-details');
+  }
+
+  // Restore original post data
+  wp_reset_postdata();
+
+}  // end if
+
+?>

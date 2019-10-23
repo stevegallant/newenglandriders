@@ -1,6 +1,4 @@
-<?php
-
-?>
+<?php ?>
 
 <section id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <article>
@@ -23,13 +21,9 @@
 
       <div class="entry-meta-bar clearfix">
         <div class="entry-meta">
-            <?php //travelify_posted_on(); ?>
-            <?php //if( has_category() ) { ?>
-                <!-- <span class="category"><?php //the_category(', '); ?></span> -->
-              <?php //} ?>
             <?php if ( comments_open() ) { ?>
                 <span class="comments"><?php comments_popup_link( __( 'No Comments', 'travelify' ), __( '1 Comment', 'travelify' ), __( '% Comments', 'travelify' ), '', __( 'Comments Off', 'travelify' ) ); ?></span>
-              <?php } ?>
+            <?php } ?>
         </div><!-- .entry-meta -->
       </div>
 
