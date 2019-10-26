@@ -33,4 +33,6 @@ add_action('pre_get_posts', 'tags_categories_support_query');
 /********* Add Excerpts to default 'Page' post type ****/
 add_post_type_support('page', 'excerpt');
 
+
+
 ?>

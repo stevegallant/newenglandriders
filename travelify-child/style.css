@@ -173,7 +173,8 @@ li#menu-item-447 {
 /* Style locale-details template part */
 .locale-header {
 	display: flex;
-	flex: nowrap;
+	flex-wrap: nowrap;
+  justify-content: space-between;
 }
 .locale-header h2 {
 	display: inline-block;
@@ -186,6 +187,7 @@ li#menu-item-447 {
 
 .locale-photo img {
 	width: 180px;
+  float: right;
 }
 
 .locale-resources {

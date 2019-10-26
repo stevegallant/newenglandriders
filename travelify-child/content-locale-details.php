@@ -38,7 +38,7 @@
 
         <div class="locale-resources">
           <div class="locale-resource-links">
-            <a href="<?php the_field('list_roads');?>" class="locale-resource-list">Roads</a>
+            <a href="<?php the_field('list_roads');?>" class="locale-resource-list" target="_blank">Roads</a>
             <a href="<?php the_field('gpx_roads');?>" class="locale-resource-gpx">GPX</a>
           </div> <!-- locale-resource-links -->
           <div class="locale-resource-links">
