@@ -13,13 +13,7 @@
 
       <div class="entry-meta-bar clearfix">
         <div class="entry-meta">
-            <?php // travelify_posted_on(); ?>
-            <?php // if( has_category() ) { ?>
-                <span class="category"><?php the_taxonomies(', '); ?></span>
-              <?php // } ?>
-            <?php if ( comments_open() ) { ?>
-                <span class="comments"><?php comments_popup_link( __( 'No Comments', 'travelify' ), __( '1 Comment', 'travelify' ), __( '% Comments', 'travelify' ), '', __( 'Comments Off', 'travelify' ) ); ?></span>
-              <?php } ?>
+            <span class="category"><?php the_taxonomies(', '); ?></span>
         </div><!-- .entry-meta -->
       </div>
 
@@ -27,44 +21,22 @@
       <?php do_action( 'travelify_before_post_content' ); ?>
 
       <div class="entry-content clearfix">
-        <div class="route-sources">
-          <?php
-          if(get_field("gpx_file")) {?>
-            <a href="<?php the_field('gpx_file');?>"><span class="route-source-link">GPX</span></a>
-          <?php }
-
-          if(get_field("gpx-shaping")) {?>
-            <a href="<?php the_field('gpx-shaping');?>"><span class="route-source-link">GPX-Shaping</span></a>
-          <?php }
-
-          if(get_field("google_maps_nav")) {?>
-            <a href="<?php the_field('google_maps_nav');?>"><span class="route-source-link">Google Nav</span></a>
-          <?php }
-
-          if(get_field("turn-by-turn")) {?>
-            <a href="<?php the_field('turn-by-turn');?>"><span class="route-source-link">Turn-by-Turn</span></a>
-          <?php } ?>
-
-        </div> <!-- end route-sources -->
-        <div class="route-map-wrapper">
-          <iframe class="route-map-zoomed" src="<?php the_field('map_embed');?>" width="300" height="300" frameborder="0" style="border:0"></iframe>
+        <div class="element-map-wrapper">
+          <iframe class="element-map-zoomed" src="<?php the_field('map_embed');?>" width="300" height="300" frameborder="0" style="border:0"></iframe>
         </div>
-        <div class="route-data-wrapper">
+        <div class="element-data-wrapper">
             <table>
             <tr>
-              <td><b>Miles</b> </td>
-              <td><?php the_field('mileage');?></td>
+              <td><?php the_field('restaurant_address');?></td>
             </tr>
             <tr>
-              <td><b>Endpoints</b> </td>
-              <td><?php the_field('endpoint_1');?>, <?php the_field('endpoint_2');?></td>
+              <td><a href="<?php the_field('restaurant_website');?>">Website</a></td>
             </tr>
             <tr>
-              <td><b>Surface</b> </td>
-              <td><?php the_field('surface');?></td>
+              <td><a href="<?php the_field('yelp_reviews');?>">Yelp Reviews</a></td>
             </tr>
           </table>
-        </div> <!-- end route-data-wrapper -->
+        </div> <!-- end element-data-wrapper -->
         <div style="clear: both;"></div>
 
         <?php if(get_field("description")) {?>
@@ -72,21 +44,14 @@
           <?php the_field('description');?>
         <?php } ?>
 
-        <h3>NER Rating</h3>
-        <div>
-          <?php echo do_shortcode('[cbxmcratingreview_postreviews form_id="1" show_filter="0"]'); ?>
-          <br />
-          <?php echo do_shortcode('[cbxmcratingreview_reviewform form_id="1"]'); ?>
-        </div>
-
         <h3>Rated by Riders</h3>
         <p>One per rider. If you need to update your rating: take a copy of the text, delete and recreate.</p>
         <div>
           <strong>Average Rider Rating</strong> <?php echo do_shortcode('[cbxmcratingreview_postavgrating form_id="3"]'); ?>
           <br />
-          <?php echo do_shortcode('[cbxmcratingreview_postreviews  form_id="3"]'); ?>
+          <?php echo do_shortcode('[cbxmcratingreview_postreviews  form_id="2"]'); ?>
           <br />
-          <?php echo do_shortcode('[cbxmcratingreview_reviewform form_id="3"]'); ?>
+          <?php echo do_shortcode('[cbxmcratingreview_reviewform form_id="2"]'); ?>
         </div>
         <?php
         // hiding the main body content field for this Custom Post Type

@@ -13,10 +13,7 @@
 
       <div class="entry-meta-bar clearfix">
         <div class="entry-meta">
-            <?php // travelify_posted_on(); ?>
-            <?php // if( has_category() ) { ?>
                 <span class="category"><?php the_taxonomies(', '); ?></span>
-              <?php // } ?>
             <?php if ( comments_open() ) { ?>
                 <span class="comments"><?php comments_popup_link( __( 'No Comments', 'travelify' ), __( '1 Comment', 'travelify' ), __( '% Comments', 'travelify' ), '', __( 'Comments Off', 'travelify' ) ); ?></span>
               <?php } ?>
@@ -46,10 +43,10 @@
           <?php } ?>
 
         </div> <!-- end route-sources -->
-        <div class="route-map-wrapper">
-          <iframe class="route-map-zoomed" src="<?php the_field('map_embed');?>" width="300" height="300" frameborder="0" style="border:0"></iframe>
+        <div class="element-map-wrapper">
+          <iframe class="element-map-zoomed" src="<?php the_field('map_embed');?>" width="300" height="300" frameborder="0" style="border:0"></iframe>
         </div>
-        <div class="route-data-wrapper">
+        <div class="element-data-wrapper">
             <table>
             <tr>
               <td><b>Miles</b> </td>
@@ -64,7 +61,7 @@
               <td><?php the_field('surface');?></td>
             </tr>
           </table>
-        </div> <!-- end route-data-wrapper -->
+        </div> <!-- end element-data-wrapper -->
         <div style="clear: both;"></div>
 
         <?php if(get_field("description")) {?>

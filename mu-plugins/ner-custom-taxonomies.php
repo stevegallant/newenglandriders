@@ -89,4 +89,29 @@ function create_ner_taxonomies() {
     'query_var' => true,
     'rewrite' => array('slug' => 'route-features'),
   ));
+
+  // Create a custom taxonomy named 'Cuisine'
+  // Add new taxonomy, make it non-hierarchical
+  // First do the translations part for GUI
+  $cuisineLabels = array(
+    'name' => _x('Cuisines', 'taxonomy general name'),
+    'singular_name' => _x('Cuisine', 'taxonomy singular name'),
+    'search_items' => __('Search Cuisines'),
+    'all_items' => __('All Cuisines'),
+    'edit_item' => __('Edit Cuisine'),
+    'update_item' => __('Update Cuisine'),
+    'add_new_item' => __('Add New Cuisine'),
+    'new_item_name' => __('New Cuisine Name'),
+    'menu_name' => __('NER Cuisines'),
+  );
+
+  // Register the taxonomy
+  register_taxonomy('cuisine',array('restaurant-details'), array(
+    'hierarchical' => false,
+    'labels' => $cuisineLabels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array('slug' => 'cuisine'),
+  ));
 }

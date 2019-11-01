@@ -214,6 +214,8 @@ function travelify_theloop_for_single() {
 				get_template_part('content','route-details');
 			} elseif (is_singular('locale-details')) {
 				get_template_part('content','locale-details');
+			} elseif (is_singular('restaurant-details')) {
+				get_template_part('content','restaurant-details');
 			} else {
 				// default single post content template
 				get_template_part('content','single');

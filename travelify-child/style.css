@@ -157,14 +157,12 @@ li#menu-item-447 {
 	border-radius: 8px;
 }
 
-.route-map-zoomed {
-	display: float;
+.element-map-zoomed {
 	float: left;
 	margin-bottom: 1em;
 }
 
-.route-data-wrapper {
-	display: float;
+.element-data-wrapper {
 	float: left;
 	width: 250px;
 	margin-left: 16px;
@@ -306,16 +304,16 @@ span.route-endpoints {
 
 /* Route Details map and table data arrangement on med/smaller screens */
 @media only screen and (max-width: 768px) {
-	.route-map-wrapper {
+	.element-map-wrapper {
 		text-align: center;
 	}
-	.route-map-zoomed {
+	.element-map-zoomed {
 		display: inline;
 		float: none;
 		margin: 0 auto;
 	}
 
-	.route-data-wrapper {
+	.element-data-wrapper {
 		display: block;
 		width: 100%;
 		margin-top: 1em;
