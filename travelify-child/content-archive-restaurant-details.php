@@ -26,8 +26,8 @@
 
       <div class="entry-meta-bar clearfix route-meta-bar">
         <div class="entry-meta">
-          <?php echo get_the_term_list($post->ID, 'locale', '',', ');?>
-          <span class="ital"> - <?php the_field('endpoint_1');?> to <?php the_field('endpoint_2');?></span>
+          <?php echo get_the_term_list($post->ID, 'cuisine', '',', ');?>
+          <span class="ital"> - <?php the_field('restaurant_address');?></span>
           <?php if( has_category() ) { ?>
               <span class="category"><?php the_category(', '); ?></span>
           <?php } ?>

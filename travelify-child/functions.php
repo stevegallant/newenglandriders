@@ -188,6 +188,8 @@ function travelify_theloop_for_archive() {
 			// if (has_term('','routescale')) {
 			if ('route-details' == get_post_type()) {
 				get_template_part('content','archive-route-details');
+			} elseif ('restaurant-details' == get_post_type()) {
+					get_template_part('content','archive-restaurant-details');
 			} else {
 				get_template_part('content','archive');
 			}

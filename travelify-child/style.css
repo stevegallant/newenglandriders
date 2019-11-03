@@ -105,6 +105,10 @@ li#menu-item-447 {
 		display: none;
 }
 
+.entry-content a {
+  text-decoration: none;
+}
+
 /* hide theme/WP info in footer */
 .copyright {
 	display: none;
@@ -262,10 +266,8 @@ span.entry-title a {
 	padding-bottom: 4px;
 }
 
-span.route-endpoints {
+span.ital {
 	font-style: italic;
-	/* padding-top: 4px;
-	padding-bottom: 4px; */
 }
 
 .route-meta-bar {

@@ -43,11 +43,12 @@
           <h3>Description</h3>
           <?php the_field('description');?>
         <?php } ?>
-
+        <hr />
         <h3>Rated by Riders</h3>
         <p>One per rider. If you need to update your rating: take a copy of the text, delete and recreate.</p>
         <div>
-          <strong>Average Rider Rating</strong> <?php echo do_shortcode('[cbxmcratingreview_postavgrating form_id="3"]'); ?>
+          <strong>Average Rider Rating</strong>
+          <?php echo do_shortcode('[cbxmcratingreview_postavgrating form_id="2"]'); ?>
           <br />
           <?php echo do_shortcode('[cbxmcratingreview_postreviews  form_id="2"]'); ?>
           <br />
