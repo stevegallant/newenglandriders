@@ -36,9 +36,9 @@ function ner_custom_post_types() {
 		'description' => __('Details of road segments and day rides', 'travelify-child'),
 		'labels' => $routedetailsLabels,
 		//Features this CPT supports in Post Editor
-		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields',),
+		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields','page-attributes'),
 		'taxonomies' => array('routescale', 'locale',),
-		'hierarchical' => false,
+		'hierarchical' => true,
 		'public' => true,
 		'show_ui' => true,
 		'show_in_menu' => true,
@@ -137,5 +137,47 @@ function ner_custom_post_types() {
 	);
 	// Register the CPT
 	register_post_type('restaurant-details', $restaurantDetailsArgs);
+
+	// Hotel Details CPT
+	//Set UI labels for CPT
+	$hotelDetailsLabels = array(
+		'name' => _x('Hotel Details', 'Post Type General Name', 'travelify-child'),
+		'singular_name' => _x('Hotel Details', 'Post Type Singular Name', 'travelify-child'),
+		'menu_name' => __('Hotel Details', 'travelify-child'),
+		'parent_item_colon' => __('Parent Hotel', 'travelify-child'),
+		'all_items' => __('All Hotels', 'travelify-child'),
+		'view_item' => __('View Hotel', 'travelify-child'),
+		'add_new_item' => __('Add New Hotel', 'travelify-child'),
+		'add_new' => __('Add New', 'travelify-child'),
+		'edit_item' => __('Edit Hotel', 'travelify-child'),
+		'update_item' => __('Update Hotel', 'travelify-child'),
+		'search_items' => __('Search Hotels', 'travelify-child'),
+		'not_found' => __('Not found', 'travelify-child'),
+		'not_found_in_trash' => __('Not found in Trash', 'travelify-child'),
+		);
+
+	// Set other options for CPT
+	$hotelDetailsArgs = array(
+		'label' => __('Hotel Details', 'travelify-child'),
+		'description' => __('Details of hotels', 'travelify-child'),
+		'labels' => $hotelDetailsLabels,
+		//Features this CPT supports in Post Editor
+		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields',),
+		'taxonomies' => array('locale',),
+		'hierarchical' => false,
+		'public' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'show_in_nav_menus' => true,
+		'show_in_admin_bar' => true,
+		'menu_position' => 8,
+		'can_export' => true,
+		'has_archive' => true,
+		'exclude_from_search' => false,
+		'publicly_queryable' => true,
+		'capability_type' => 'page',
+	);
+	// Register the CPT
+	register_post_type('hotel-details', $hotelDetailsArgs);
 
 } // end ner_custom_post_types

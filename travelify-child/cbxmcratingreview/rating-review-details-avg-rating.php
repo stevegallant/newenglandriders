@@ -48,6 +48,8 @@
 	</div>
 <?php endif; ?>
 <?php
+	// SJG: Hide the bar chart as part of the Rating Average details view
+	$show_chart = false;
 
 	if ( $show_chart ) : ?>
 		<div class="cbxmcratingreview_template_avg_rating_readonly_chart">
