@@ -48,7 +48,7 @@
         <p>One per rider. If you need to update your rating: take a copy of the text, delete and recreate.</p>
         <div>
           <strong>Average Rider Rating</strong>
-          <?php echo do_shortcode('[cbxmcratingreview_postavgrating form_id="2"]'); ?>
+          <?php echo do_shortcode('[cbxmcratingreview_postavgrating form_id="2" details="1"]'); ?>
           <br />
           <?php echo do_shortcode('[cbxmcratingreview_postreviews  form_id="2"]'); ?>
           <br />

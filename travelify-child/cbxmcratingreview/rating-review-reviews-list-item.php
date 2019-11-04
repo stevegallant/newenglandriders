@@ -11,6 +11,11 @@
 	 * @subpackage cbxmcratingreview/templates
 	 */
 
+	 /**
+	 * Modified: 11/4/2019
+	 * Mod by: S. Gallant for NER Website custom styling
+	 **/
+
 	if ( ! defined( 'WPINC' ) ) {
 		die;
 	}
@@ -40,6 +45,9 @@
 			<span itemprop="name"><?php echo esc_attr( $post_title ); ?></span>
 		</span>
 
+<!-- Eliminate next section showing user and date for the NER Route Rating form -->
+<?php
+if ($form_id != 1) { ?>
 	<p class="cbxmcratingreview_review_list_item_user">
 		<a itemprop="author" itemscope itemtype="http://schema.org/Person"
 		   class="cbxmcratingreview_review_list_item_user_name"
@@ -64,6 +72,7 @@
 		</a>
 		<span class="clearfix cbxmcratingreview_clearfix clear"></span>
 	</p>
+	<?php } ?>
 
 
 	<div class="clearfix cbxmcratingreview_clearfix clear"></div>
