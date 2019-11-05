@@ -42,23 +42,23 @@
             <a href="<?php the_field('gpx_roads');?>" class="locale-resource-gpx">GPX</a>
           </div> <!-- locale-resource-links -->
           <div class="locale-resource-links">
-            <a href="<?php the_field('list_restaurants');?>" class="locale-resource-list">Restaurants</a>
+            <a href="<?php the_field('list_restaurants');?>" class="locale-resource-list" target="_blank">Restaurants</a>
             <a href="<?php the_field('gpx_restaurants');?>" class="locale-resource-gpx">GPX</a>
           </div> <!-- locale-resource-links -->
           <div class="locale-resource-links">
-            <a href="<?php the_field('list_scenicviews');?>" class="locale-resource-list">Scenic Views</a>
+            <a href="<?php the_field('list_scenicviews');?>" class="locale-resource-list" target="_blank">Scenic Views</a>
             <a href="<?php the_field('gpx_scenicviews');?>" class="locale-resource-gpx">GPX</a>
           </div> <!-- locale-resource-links -->
           <div class="locale-resource-links">
-            <a href="<?php the_field('list_attractions');?>" class="locale-resource-list">Attractions</a>
+            <a href="<?php the_field('list_attractions');?>" class="locale-resource-list" target="_blank">Attractions</a>
             <a href="<?php the_field('gpx_attractions');?>" class="locale-resource-gpx">GPX</a>
           </div> <!-- locale-resource-links -->
           <div class="locale-resource-links">
-            <a href="<?php the_field('list_hotels');?>" class="locale-resource-list">Hotels</a>
+            <a href="<?php the_field('list_hotels');?>" class="locale-resource-list" target="_blank">Hotels</a>
             <a href="<?php the_field('gpx_hotels');?>" class="locale-resource-gpx">GPX</a>
           </div> <!-- locale-resource-links -->
           <div class="locale-resource-links">
-            <a href="<?php the_field('list_campgrounds');?>" class="locale-resource-list">All Campgrounds</a>
+            <a href="<?php the_field('list_campgrounds');?>" class="locale-resource-list" target="_blank">All Campgrounds</a>
             <a href="<?php the_field('gpx_campgrounds');?>" class="locale-resource-gpx">GPX</a>
           </div> <!-- locale-resource-links -->
 

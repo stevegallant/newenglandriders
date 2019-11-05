@@ -185,13 +185,19 @@ function travelify_theloop_for_archive() {
 			do_action( 'travelify_before_post' );
 			// Here we need logic to choose template parts based on what styling
 			// is needed for the different archive views.
-			// if (has_term('','routescale')) {
-			if ('route-details' == get_post_type()) {
-				get_template_part('content','archive-route-details');
-			} elseif ('restaurant-details' == get_post_type()) {
+
+			switch (get_post_type()) {
+				case 'route-details':
+					get_template_part('content','archive-route-details');
+					break;
+				case 'restaurant-details':
 					get_template_part('content','archive-restaurant-details');
-			} else {
-				get_template_part('content','archive');
+					break;
+				case 'hotel-details':
+					get_template_part('content','archive-hotel-details');
+					break;
+				default:
+					get_template_part('content','archive');
 			}
 
 			do_action( 'travelify_after_post' );
@@ -212,15 +218,22 @@ function travelify_theloop_for_single() {
 			the_post();
 			do_action( 'travelify_before_post' );
 			// Display content template based on custom post type
-			if(is_singular('route-details')){
-				get_template_part('content','route-details');
-			} elseif (is_singular('locale-details')) {
-				get_template_part('content','locale-details');
-			} elseif (is_singular('restaurant-details')) {
-				get_template_part('content','restaurant-details');
-			} else {
-				// default single post content template
-				get_template_part('content','single');
+
+			switch (get_post_type()) {
+					case 'locale-details':
+						get_template_part('content','locale-details');
+						break;
+					case 'route-details':
+					get_template_part('content','route-details');
+					break;
+				case 'restaurant-details':
+					get_template_part('content','restaurant-details');
+					break;
+				case 'hotel-details':
+					get_template_part('content','hotel-details');
+					break;
+				default:
+					get_template_part('content','single');
 			}
 ?>
 <?php

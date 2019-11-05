@@ -114,4 +114,30 @@ function create_ner_taxonomies() {
     'query_var' => true,
     'rewrite' => array('slug' => 'cuisine'),
   ));
+
+  // Create a custom taxonomy named 'Hotel Tags'
+  // Add new taxonomy, make it non-hierarchical
+  // First do the translations part for GUI
+  $hotelTagLabels = array(
+    'name' => _x('Hotel Tags', 'taxonomy general name'),
+    'singular_name' => _x('Hotel Tag', 'taxonomy singular name'),
+    'search_items' => __('Search Hotel Tags'),
+    'all_items' => __('All Hotel Tags'),
+    'edit_item' => __('Edit Hotel Tag'),
+    'update_item' => __('Update Hotel Tag'),
+    'add_new_item' => __('Add New Hotel Tag'),
+    'new_item_name' => __('New Hotel Tag Name'),
+    'menu_name' => __('NER Hotel Tags'),
+  );
+
+  // Register the taxonomy
+  register_taxonomy('hotel-tag',array('hotel-details'), array(
+    'hierarchical' => false,
+    'labels' => $hotelTagLabels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array('slug' => 'hotel-tag'),
+  ));
+
 }
