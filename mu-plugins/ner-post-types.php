@@ -180,4 +180,46 @@ function ner_custom_post_types() {
 	// Register the CPT
 	register_post_type('hotel-details', $hotelDetailsArgs);
 
+	// Scenic View CPT
+	//Set UI labels for CPT
+	$scenicViewLabels = array(
+		'name' => _x('Scenic Views', 'Post Type General Name', 'travelify-child'),
+		'singular_name' => _x('Scenic View Details', 'Post Type Singular Name', 'travelify-child'),
+		'menu_name' => __('Scenic Views', 'travelify-child'),
+		'parent_item_colon' => __('Parent Scenic View', 'travelify-child'),
+		'all_items' => __('All Scenic Views', 'travelify-child'),
+		'view_item' => __('View Scenic View', 'travelify-child'),
+		'add_new_item' => __('Add New Scenic View', 'travelify-child'),
+		'add_new' => __('Add New', 'travelify-child'),
+		'edit_item' => __('Edit Scenic View', 'travelify-child'),
+		'update_item' => __('Update Scenic View', 'travelify-child'),
+		'search_items' => __('Search Scenic Views', 'travelify-child'),
+		'not_found' => __('Not found', 'travelify-child'),
+		'not_found_in_trash' => __('Not found in Trash', 'travelify-child'),
+		);
+
+	// Set other options for CPT
+	$scenicViewArgs = array(
+		'label' => __('Scenic View Details', 'travelify-child'),
+		'description' => __('Details of scenic views', 'travelify-child'),
+		'labels' => $scenicViewLabels,
+		//Features this CPT supports in Post Editor
+		'supports' => array('title','editor','revisions','custom-fields','thumbnail'),
+		'taxonomies' => array('locale',),
+		'hierarchical' => false,
+		'public' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'show_in_nav_menus' => true,
+		'show_in_admin_bar' => true,
+		'menu_position' => 9,
+		'can_export' => true,
+		'has_archive' => true,
+		'exclude_from_search' => false,
+		'publicly_queryable' => true,
+		'capability_type' => 'page',
+	);
+	// Register the CPT
+	register_post_type('scenicview-details', $scenicViewArgs);
+
 } // end ner_custom_post_types

@@ -160,11 +160,15 @@ function custom_travelify_headerdetails() {
 }
 
 /********* Add additional post formats *******/
-//add theme support for addl post formats
-function additional_post_formats() {
+
+function ner_theme_features() {
+	//add theme support for addl post formats
 	add_theme_support('post-formats', array('link', 'gallery', 'video'));
+	// Add Featured Image support
+	add_theme_support('post-thumbnails');
 }
-add_action('after_setup_theme', 'additional_post_formats');
+add_action('after_setup_theme', 'ner_theme_features');
+
 
 /******** (for Link post format) returns raw URL from content of a post
 that contains a single hyperlink ***/
@@ -196,6 +200,9 @@ function travelify_theloop_for_archive() {
 				case 'hotel-details':
 					get_template_part('content','archive-hotel-details');
 					break;
+				case 'scenicview-details':
+					get_template_part('content','archive-scenicview-details');
+					break;
 				default:
 					get_template_part('content','archive');
 			}
@@ -217,8 +224,8 @@ function travelify_theloop_for_single() {
 		while( have_posts() ) {
 			the_post();
 			do_action( 'travelify_before_post' );
-			// Display content template based on custom post type
 
+			// Display content template based on custom post type
 			switch (get_post_type()) {
 					case 'locale-details':
 						get_template_part('content','locale-details');
@@ -231,6 +238,9 @@ function travelify_theloop_for_single() {
 					break;
 				case 'hotel-details':
 					get_template_part('content','hotel-details');
+					break;
+				case 'scenicview-details':
+					get_template_part('content','scenicview-details');
 					break;
 				default:
 					get_template_part('content','single');
