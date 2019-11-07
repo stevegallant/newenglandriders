@@ -28,10 +28,10 @@
     <div class="entry-meta-bar clearfix route-meta-bar">
       <div class="entry-meta">
         <?php
-        if (has_term('', 'scenicview-tag')) {
-          echo get_the_term_list($post->ID, 'scenicview-tag', '',', ') . " - ";
+        if (has_term('', 'attraction-tag')) {
+          echo get_the_term_list($post->ID, 'attraction-tag', '',', ') . " - ";
         } ?>
-        <span class="ital"><?php the_field('scenicview_address');?></span>
+        <span class="ital"><?php the_field('attraction_address');?></span>
       </div><!-- .entry-meta -->
     </div>
 

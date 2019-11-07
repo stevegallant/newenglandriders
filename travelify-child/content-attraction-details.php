@@ -21,15 +21,9 @@
       <?php do_action( 'travelify_before_post_content' ); ?>
 
       <div class="entry-content clearfix">
-        <!-- <div class="element-map-wrapper">
-          <iframe class="element-map-zoomed" src="<?php //the_field('map_embed');?>" width="300" height="300" frameborder="0" style="border:0"></iframe>
-        </div> -->
-
         <div class="element-photo-wrapper">
           <?php
-          //$image = get_field('scenicview_photo');
           if (has_post_thumbnail()) { ?>
-            <!-- <img class="element-photo-zoomed" src="<?php //echo esc_url($image['url']);?>" alt="<?php //echo esc_url($image['alt']); ?>" width="300" height="300" /> -->
             <div class="element-photo-zoomed">
               <?php
               $full_image_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
@@ -44,7 +38,7 @@
         <div class="element-data-wrapper">
             <table>
             <tr>
-              <td><?php the_field('scenicview_address');?></td>
+              <td><?php the_field('attraction_address');?></td>
             </tr>
             <tr>
               <td><?php
@@ -53,14 +47,17 @@
                 the_field('longitude');?>
               </td>
             </tr>
+            <tr>
+              <td><a href="<?php the_field('attraction_website');?>" target="_blank">Website</a></td>
+            </tr>
 
           </table>
         </div> <!-- end element-data-wrapper -->
         <div style="clear: both;"></div>
 
-        <?php if(get_field("scenicview_notes")) {?>
+        <?php if(get_field("ner_notes")) {?>
           <h3>NER Notes</h3>
-          <?php the_field('scenicview_notes');?>
+          <?php the_field('ner_notes');?>
         <?php } ?>
 
         <?php

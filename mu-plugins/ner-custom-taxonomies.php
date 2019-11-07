@@ -140,4 +140,29 @@ function create_ner_taxonomies() {
     'rewrite' => array('slug' => 'hotel-tag'),
   ));
 
+  // Create a custom taxonomy named 'Attraction Tags'
+  // Add new taxonomy, make it non-hierarchical
+  // First do the translations part for GUI
+  $attractionTagLabels = array(
+    'name' => _x('Attraction Tags', 'taxonomy general name'),
+    'singular_name' => _x('Attraction Tag', 'taxonomy singular name'),
+    'search_items' => __('Search Attraction Tags'),
+    'all_items' => __('All Attraction Tags'),
+    'edit_item' => __('Edit Attraction Tag'),
+    'update_item' => __('Update Attraction Tag'),
+    'add_new_item' => __('Add New Attraction Tag'),
+    'new_item_name' => __('New Attraction Tag Name'),
+    'menu_name' => __('NER Attraction Tags'),
+  );
+
+  // Register the taxonomy
+  register_taxonomy('attraction-tag',array('attraction-details'), array(
+    'hierarchical' => false,
+    'labels' => $attractionTagLabels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array('slug' => 'attraction-tag'),
+  ));
+
 }

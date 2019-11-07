@@ -185,7 +185,7 @@ function ner_custom_post_types() {
 	$scenicViewLabels = array(
 		'name' => _x('Scenic Views', 'Post Type General Name', 'travelify-child'),
 		'singular_name' => _x('Scenic View Details', 'Post Type Singular Name', 'travelify-child'),
-		'menu_name' => __('Scenic Views', 'travelify-child'),
+		'menu_name' => __('Scenic View Details', 'travelify-child'),
 		'parent_item_colon' => __('Parent Scenic View', 'travelify-child'),
 		'all_items' => __('All Scenic Views', 'travelify-child'),
 		'view_item' => __('View Scenic View', 'travelify-child'),
@@ -221,5 +221,47 @@ function ner_custom_post_types() {
 	);
 	// Register the CPT
 	register_post_type('scenicview-details', $scenicViewArgs);
+
+	// Attraction Details CPT
+	//Set UI labels for CPT
+	$attractionLabels = array(
+		'name' => _x('Attractions', 'Post Type General Name', 'travelify-child'),
+		'singular_name' => _x('Attraction Details', 'Post Type Singular Name', 'travelify-child'),
+		'menu_name' => __('Attraction Details', 'travelify-child'),
+		'parent_item_colon' => __('Parent Attraction', 'travelify-child'),
+		'all_items' => __('All Attractions', 'travelify-child'),
+		'view_item' => __('View Attraction', 'travelify-child'),
+		'add_new_item' => __('Add New Attraction', 'travelify-child'),
+		'add_new' => __('Add New', 'travelify-child'),
+		'edit_item' => __('Edit Attraction', 'travelify-child'),
+		'update_item' => __('Update Attraction', 'travelify-child'),
+		'search_items' => __('Search Attractions', 'travelify-child'),
+		'not_found' => __('Not found', 'travelify-child'),
+		'not_found_in_trash' => __('Not found in Trash', 'travelify-child'),
+		);
+
+	// Set other options for CPT
+	$attractionArgs = array(
+		'label' => __('Attraction Details', 'travelify-child'),
+		'description' => __('Details of attraction', 'travelify-child'),
+		'labels' => $attractionLabels,
+		//Features this CPT supports in Post Editor
+		'supports' => array('title','editor','revisions','custom-fields','thumbnail'),
+		'taxonomies' => array('locale',),
+		'hierarchical' => false,
+		'public' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'show_in_nav_menus' => true,
+		'show_in_admin_bar' => true,
+		'menu_position' => 10,
+		'can_export' => true,
+		'has_archive' => true,
+		'exclude_from_search' => false,
+		'publicly_queryable' => true,
+		'capability_type' => 'page',
+	);
+	// Register the CPT
+	register_post_type('attraction-details', $attractionArgs);
 
 } // end ner_custom_post_types

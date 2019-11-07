@@ -203,6 +203,9 @@ function travelify_theloop_for_archive() {
 				case 'scenicview-details':
 					get_template_part('content','archive-scenicview-details');
 					break;
+				case 'attraction-details':
+					get_template_part('content','archive-attraction-details');
+					break;
 				default:
 					get_template_part('content','archive');
 			}
@@ -241,6 +244,9 @@ function travelify_theloop_for_single() {
 					break;
 				case 'scenicview-details':
 					get_template_part('content','scenicview-details');
+					break;
+				case 'attraction-details':
+					get_template_part('content','attraction-details');
 					break;
 				default:
 					get_template_part('content','single');
