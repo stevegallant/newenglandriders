@@ -17,7 +17,7 @@
           the_title();?>
         </a>
       </span><!-- .entry-title -->
-      <?php echo the_field('ner_notes'); ?>
+      <p><?php echo the_field('ner_notes'); ?></p>
     </header>
 
     <?php
@@ -27,11 +27,12 @@
 
     <div class="entry-meta-bar clearfix route-meta-bar">
       <div class="entry-meta">
+        <span class="ital"><?php the_field('attraction_address');?></span>
         <?php
         if (has_term('', 'attraction-tag')) {
-          echo get_the_term_list($post->ID, 'attraction-tag', '',', ') . " - ";
+          echo " - Tags: " . get_the_term_list($post->ID, 'attraction-tag', '',', ');
         } ?>
-        <span class="ital"><?php the_field('attraction_address');?></span>
+
       </div><!-- .entry-meta -->
     </div>
 
