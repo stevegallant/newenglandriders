@@ -206,6 +206,9 @@ function travelify_theloop_for_archive() {
 				case 'attraction-details':
 					get_template_part('content','archive-attraction-details');
 					break;
+				case 'campground-details':
+					get_template_part('content','archive-campground-details');
+					break;
 				default:
 					get_template_part('content','archive');
 			}
@@ -248,6 +251,9 @@ function travelify_theloop_for_single() {
 				case 'attraction-details':
 					get_template_part('content','attraction-details');
 					break;
+				case 'campground-details':
+						get_template_part('content','campground-details');
+						break;
 				default:
 					get_template_part('content','single');
 			}

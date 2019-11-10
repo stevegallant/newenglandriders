@@ -21,10 +21,10 @@
 
     <div class="entry-meta-bar clearfix route-meta-bar">
       <div class="entry-meta">
-        <span class="ital"><?php the_field('hotel_address');?></span>
+        <span class="ital"><?php the_field('campground_address');?></span>
         <?php
-        if (has_term('', 'hotel-tag')) {
-          echo ' - Tags: ' . get_the_term_list($post->ID, 'hotel-tag', '',', ');
+        if (has_term('', 'campground-tag')) {
+          echo ' - Tags: ' . get_the_term_list($post->ID, 'campground-tag', '',', ');
         } ?>
 
       </div><!-- .entry-meta -->

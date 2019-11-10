@@ -227,7 +227,7 @@ function ner_custom_post_types() {
 	$attractionLabels = array(
 		'name' => _x('Attractions', 'Post Type General Name', 'travelify-child'),
 		'singular_name' => _x('Attraction Details', 'Post Type Singular Name', 'travelify-child'),
-		'menu_name' => __('Attraction Details', 'travelify-child'),
+		'menu_name' => __('Attractions', 'travelify-child'),
 		'parent_item_colon' => __('Parent Attraction', 'travelify-child'),
 		'all_items' => __('All Attractions', 'travelify-child'),
 		'view_item' => __('View Attraction', 'travelify-child'),
@@ -263,5 +263,47 @@ function ner_custom_post_types() {
 	);
 	// Register the CPT
 	register_post_type('attraction-details', $attractionArgs);
+
+	// Campground Details CPT
+	//Set UI labels for CPT
+	$campgroundLabels = array(
+		'name' => _x('Campground Details', 'Post Type General Name', 'travelify-child'),
+		'singular_name' => _x('Campground Details', 'Post Type Singular Name', 'travelify-child'),
+		'menu_name' => __('Campgrounds', 'travelify-child'),
+		'parent_item_colon' => __('Parent Campground', 'travelify-child'),
+		'all_items' => __('All Campgrounds', 'travelify-child'),
+		'view_item' => __('View Campground', 'travelify-child'),
+		'add_new_item' => __('Add New Campground', 'travelify-child'),
+		'add_new' => __('Add New', 'travelify-child'),
+		'edit_item' => __('Edit Campground', 'travelify-child'),
+		'update_item' => __('Update Campground', 'travelify-child'),
+		'search_items' => __('Search Campgrounds', 'travelify-child'),
+		'not_found' => __('Not found', 'travelify-child'),
+		'not_found_in_trash' => __('Not found in Trash', 'travelify-child'),
+		);
+
+	// Set other options for CPT
+	$campgroundArgs = array(
+		'label' => __('Campground Details', 'travelify-child'),
+		'description' => __('Details of campgrounds', 'travelify-child'),
+		'labels' => $campgroundLabels,
+		//Features this CPT supports in Post Editor
+		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields',),
+		'taxonomies' => array('locale',),
+		'hierarchical' => false,
+		'public' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'show_in_nav_menus' => true,
+		'show_in_admin_bar' => true,
+		'menu_position' => 8,
+		'can_export' => true,
+		'has_archive' => true,
+		'exclude_from_search' => false,
+		'publicly_queryable' => true,
+		'capability_type' => 'page',
+	);
+	// Register the CPT
+	register_post_type('campground-details', $campgroundArgs);
 
 } // end ner_custom_post_types
