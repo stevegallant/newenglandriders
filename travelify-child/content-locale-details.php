@@ -61,6 +61,10 @@
             <a href="<?php the_field('list_campgrounds');?>" class="locale-resource-list" target="_blank">All Campgrounds</a>
             <a href="<?php the_field('gpx_campgrounds');?>" class="locale-resource-gpx">GPX</a>
           </div> <!-- locale-resource-links -->
+          <div class="locale-resource-links">
+            <a href="<?php the_field('list_dirtroads');?>" class="locale-resource-list" target="_blank">Dirt Roads</a>
+            <a href="<?php the_field('gpx_dirtroads');?>" class="locale-resource-gpx">GPX</a>
+          </div> <!-- locale-resource-links -->
 
         </div> <!-- end locale-resources -->
         <br />

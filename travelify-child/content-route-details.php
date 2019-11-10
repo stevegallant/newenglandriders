@@ -34,6 +34,10 @@
             <a href="<?php the_field('gpx-shaping');?>"><span class="route-source-link">GPX-Shaping</span></a>
           <?php }
 
+          if(get_field("gpx-track")) {?>
+            <a href="<?php the_field('gpx-track');?>"><span class="route-source-link">GPX-Track</span></a>
+          <?php }
+
           if(get_field("google_maps_nav")) {?>
             <a href="<?php the_field('google_maps_nav');?>"><span class="route-source-link">Google Nav</span></a>
           <?php }
