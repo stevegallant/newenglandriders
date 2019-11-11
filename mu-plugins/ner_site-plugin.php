@@ -7,22 +7,18 @@ Author: S. Gallant
 */
 
 // Custom functions to allow Pages and Attachments to use the default Categories and Tags taxonomies
-function support_category_for_pages() {
-    // Add category support to pages
-    register_taxonomy_for_object_type('category', 'page');
-}
-function support_tag_for_pages() {
-    // Add tag support to pages
-    register_taxonomy_for_object_type('post_tag', 'page');
-}
-function support_category_for_attachments() {
+function ner_default_taxonomy_mod() {
+  // Add category support to pages
+  register_taxonomy_for_object_type('category', 'page');
+
+  // Add tag support to pages
+  register_taxonomy_for_object_type('post_tag', 'page');
+
   // Add category support for Attachment post type
   register_taxonomy_for_object_type('category', 'attachment');
 }
 // hook into init action for above functions
-add_action( 'init', 'support_category_for_pages' );
-add_action( 'init', 'support_tag_for_pages' );
-add_action('init', 'support_category_for_attachments');
+add_action( 'init', 'ner_default_taxonomy_mod' );
 
 //ensure all Tags and Categories from all post types are included in queries
 function tags_categories_support_query($wp_query) {

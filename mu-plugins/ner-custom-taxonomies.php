@@ -38,6 +38,33 @@ function create_ner_taxonomies() {
     'rewrite' => array('slug' => 'routescale'),
   ));
 
+  // Add new taxonomy Surface Type, make it hierarchical
+  // First do the translations part for GUI
+  $surfacetypeLabels = array(
+    'name' => _x('Surface Type', 'taxonomy general name'),
+    'singular_name' => _x('Surface Type', 'taxonomy singular name'),
+    'search_items' => __('Search Surface Type'),
+    'all_items' => __('All Surface Types'),
+    'parent_item' => __('Parent Surface Type'),
+    'parent_item_colon' => __('Parent Surface Type:'),
+    'edit_item' => __('Edit Surface Type'),
+    'update_item' => __('Update Surface Type'),
+    'add_new_item' => __('Add New Surface Type'),
+    'new_item_name' => __('New Surface Type Name'),
+    'menu_name' => __('NER Surface Type'),
+  );
+
+  // Register the taxonomy
+  register_taxonomy('surface',array('route-details'), array(
+    'hierarchical' => true,
+    'labels' => $surfacetypeLabels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array('slug' => 'surface'),
+  ));
+
+
   // Create a custom taxonomy named 'Locale'
   // Add new taxonomy, make it hierarchical
   // First do the translations part for GUI

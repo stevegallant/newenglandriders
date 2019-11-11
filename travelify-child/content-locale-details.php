@@ -36,40 +36,43 @@
           <iframe class="locale-map" src="<?php the_field('map_embed');?>" width="100%" height="320px" frameborder="0" style="border:0"></iframe>
         </div>
 
-        <div class="locale-resources">
-          <div class="locale-resource-links">
-            <a href="<?php the_field('list_roads');?>" class="locale-resource-list" target="_blank">Roads</a>
-            <a href="<?php the_field('gpx_roads');?>" class="locale-resource-gpx">GPX</a>
-          </div> <!-- locale-resource-links -->
-          <div class="locale-resource-links">
-            <a href="<?php the_field('list_restaurants');?>" class="locale-resource-list" target="_blank">Restaurants</a>
-            <a href="<?php the_field('gpx_restaurants');?>" class="locale-resource-gpx">GPX</a>
-          </div> <!-- locale-resource-links -->
-          <div class="locale-resource-links">
-            <a href="<?php the_field('list_scenicviews');?>" class="locale-resource-list" target="_blank">Scenic Views</a>
-            <a href="<?php the_field('gpx_scenicviews');?>" class="locale-resource-gpx">GPX</a>
-          </div> <!-- locale-resource-links -->
-          <div class="locale-resource-links">
-            <a href="<?php the_field('list_attractions');?>" class="locale-resource-list" target="_blank">Attractions</a>
-            <a href="<?php the_field('gpx_attractions');?>" class="locale-resource-gpx">GPX</a>
-          </div> <!-- locale-resource-links -->
-          <div class="locale-resource-links">
-            <a href="<?php the_field('list_hotels');?>" class="locale-resource-list" target="_blank">Hotels</a>
-            <a href="<?php the_field('gpx_hotels');?>" class="locale-resource-gpx">GPX</a>
-          </div> <!-- locale-resource-links -->
-          <div class="locale-resource-links">
-            <a href="<?php the_field('list_campgrounds');?>" class="locale-resource-list" target="_blank">All Campgrounds</a>
-            <a href="<?php the_field('gpx_campgrounds');?>" class="locale-resource-gpx">GPX</a>
-          </div> <!-- locale-resource-links -->
-          <div class="locale-resource-links">
-            <a href="<?php the_field('list_dirtroads');?>" class="locale-resource-list" target="_blank">Dirt Roads</a>
-            <a href="<?php the_field('gpx_dirtroads');?>" class="locale-resource-gpx">GPX</a>
-          </div> <!-- locale-resource-links -->
+        <div class="route-element-btn-container">
+          <div class="route-element-btn-group">
+            <a href="<?php the_field('list_roads');?>" class="btn-route-element-list" target="_blank">Roads</a>
+            <a href="<?php the_field('gpx_roads');?>" class="btn-route-element-gpx">GPX</a>
+          </div> <!-- route-element-btn-group -->
+          <div class="route-element-btn-group">
+            <a href="<?php the_field('list_restaurants');?>" class="btn-route-element-list" target="_blank">Restaurants</a>
+            <a href="<?php the_field('gpx_restaurants');?>" class="btn-route-element-gpx">GPX</a>
+          </div> <!-- route-element-btn-group -->
+          <div class="route-element-btn-group">
+            <a href="<?php the_field('list_scenicviews');?>" class="btn-route-element-list" target="_blank">Scenic Views</a>
+            <a href="<?php the_field('gpx_scenicviews');?>" class="btn-route-element-gpx">GPX</a>
+          </div> <!-- route-element-btn-group -->
+          <div class="route-element-btn-group">
+            <a href="<?php the_field('list_attractions');?>" class="btn-route-element-list" target="_blank">Attractions</a>
+            <a href="<?php the_field('gpx_attractions');?>" class="btn-route-element-gpx">GPX</a>
+          </div> <!-- route-element-btn-group -->
+          <div class="route-element-btn-group">
+            <a href="<?php the_field('list_hotels');?>" class="btn-route-element-list" target="_blank">Hotels</a>
+            <a href="<?php the_field('gpx_hotels');?>" class="btn-route-element-gpx">GPX</a>
+          </div> <!-- route-element-btn-group -->
+          <div class="route-element-btn-group">
+            <a href="<?php the_field('list_campgrounds');?>" class="btn-route-element-list" target="_blank">All Campgrounds</a>
+            <a href="<?php the_field('gpx_campgrounds');?>" class="btn-route-element-gpx">GPX</a>
+          </div> <!-- route-element-btn-group -->
+          <div class="route-element-btn-group">
+            <a href="<?php the_field('list_dirtroads');?>" class="btn-route-element-list" target="_blank">Dirt Roads</a>
+            <a href="<?php the_field('gpx_dirtroads');?>" class="btn-route-element-gpx">GPX</a>
+          </div> <!-- route-element-btn-group -->
+          <div class="route-element-btn-group">
+            <a href="<?php the_field('list_dirtroads');?>" class="btn-route-element-list" target="_blank">Day Rides</a>
+            <a href="<?php the_field('gpx_dirtroads');?>" class="btn-route-element-gpx">N/A</a>
+          </div> <!-- route-element-btn-group -->
 
-        </div> <!-- end locale-resources -->
+        </div> <!-- end route-element-btn-container -->
         <br />
         <hr />
-
         <p><?php the_field("description"); ?></p>
 
         <?php //the_content();
@@ -84,28 +87,23 @@
           }
         }
 
-             wp_link_pages( array(
-          'before'            => '<div style="clear: both;"></div><div class="pagination clearfix">'.__( 'Pages:', 'travelify' ),
-          'after'             => '</div>',
-          'link_before'       => '<span>',
-          'link_after'        => '</span>',
-          'pagelink'          => '%',
-          'echo'              => 1
-             ) );
-             ?>
+        wp_link_pages( array(
+        'before'            => '<div style="clear: both;"></div><div class="pagination clearfix">'.__( 'Pages:', 'travelify' ),
+        'after'             => '</div>',
+        'link_before'       => '<span>',
+        'link_after'        => '</span>',
+        'pagelink'          => '%',
+        'echo'              => 1
+        ) );
+        ?>
       </div>
 
       <?php
-
       do_action( 'travelify_after_post_content' );
-
       do_action( 'travelify_before_comments_template' );
-
-       comments_template();
-
-       do_action ( 'travelify_after_comments_template' );
-
-       ?>
+      comments_template();
+      do_action ( 'travelify_after_comments_template' );
+      ?>
 
   </article>
 </section>
