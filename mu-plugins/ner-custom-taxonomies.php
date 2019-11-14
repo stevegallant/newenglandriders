@@ -25,7 +25,7 @@ function create_ner_taxonomies() {
     'update_item' => __('Update Route Scale'),
     'add_new_item' => __('Add New Route Scale'),
     'new_item_name' => __('New Route Scale Name'),
-    'menu_name' => __('NER Route Scale'),
+    'menu_name' => __('Route Scale'),
   );
 
   // Register the taxonomy
@@ -51,7 +51,7 @@ function create_ner_taxonomies() {
     'update_item' => __('Update Surface Type'),
     'add_new_item' => __('Add New Surface Type'),
     'new_item_name' => __('New Surface Type Name'),
-    'menu_name' => __('NER Surface Type'),
+    'menu_name' => __('Surface Type'),
   );
 
   // Register the taxonomy
@@ -79,7 +79,7 @@ function create_ner_taxonomies() {
     'update_item' => __('Update Locale'),
     'add_new_item' => __('Add New Locale'),
     'new_item_name' => __('New Locale Name'),
-    'menu_name' => __('NER Locale'),
+    'menu_name' => __('Locale'),
   );
 
   // Register the taxonomy
@@ -104,7 +104,7 @@ function create_ner_taxonomies() {
     'update_item' => __('Update Feature'),
     'add_new_item' => __('Add New Route Feature'),
     'new_item_name' => __('New Route Feature Name'),
-    'menu_name' => __('NER Route Features'),
+    'menu_name' => __('Route Features'),
   );
 
   // Register the taxonomy
@@ -129,7 +129,7 @@ function create_ner_taxonomies() {
     'update_item' => __('Update Cuisine'),
     'add_new_item' => __('Add New Cuisine'),
     'new_item_name' => __('New Cuisine Name'),
-    'menu_name' => __('NER Cuisines'),
+    'menu_name' => __('Cuisines'),
   );
 
   // Register the taxonomy
@@ -154,7 +154,7 @@ function create_ner_taxonomies() {
     'update_item' => __('Update Hotel Tag'),
     'add_new_item' => __('Add New Hotel Tag'),
     'new_item_name' => __('New Hotel Tag Name'),
-    'menu_name' => __('NER Hotel Tags'),
+    'menu_name' => __('Hotel Tags'),
   );
 
   // Register the taxonomy
@@ -179,7 +179,7 @@ function create_ner_taxonomies() {
     'update_item' => __('Update Attraction Tag'),
     'add_new_item' => __('Add New Attraction Tag'),
     'new_item_name' => __('New Attraction Tag Name'),
-    'menu_name' => __('NER Attraction Tags'),
+    'menu_name' => __('Attraction Tags'),
   );
 
   // Register the taxonomy

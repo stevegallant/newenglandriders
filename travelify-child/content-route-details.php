@@ -13,7 +13,13 @@
 
       <div class="entry-meta-bar clearfix">
         <div class="entry-meta">
-                <span class="category"><?php the_taxonomies(', '); ?></span>
+                <span class="category">
+                  <?php //the_taxonomies(', ');
+                  echo get_the_term_list($post->ID, 'locale', 'Locale: ', ', '). '; ';
+                  echo get_the_term_list($post->ID, 'routescale', 'Scale: ', ', ') .'; ';
+                  echo get_the_term_list($post->ID, 'routefeatures', 'Features: ', ', ');
+                  ?>
+                </span>
             <?php if ( comments_open() ) { ?>
                 <span class="comments"><?php comments_popup_link( __( 'No Comments', 'travelify' ), __( '1 Comment', 'travelify' ), __( '% Comments', 'travelify' ), '', __( 'Comments Off', 'travelify' ) ); ?></span>
               <?php } ?>
@@ -25,9 +31,29 @@
 
       <div class="entry-content clearfix">
 
+        <!-- <div class="element-map-wrapper">
+          <iframe class="element-map-zoomed" src="<?php //the_field('map_embed');?>" width="300" height="300" frameborder="0" style="border:0"></iframe>
+        </div> -->
+
+        <!-- Embedded map centered on route element -->
+        <?php
+        // Get locale taxonomy slug to retrieve correct map ID from global array
+        $locale_slug = get_the_terms($post->ID, 'locale')[0]->slug;
+        global $map_ids; // defined in site plugin
+        $map_id = $map_ids[$locale_slug];
+        // Assemble URL for embedded map
+        $map_url = 'https://www.google.com/maps/d/u/0/embed?mid=';
+        $map_url .= $map_id;
+        if (get_field('map_center_lat') && get_field('map_center_long')) {
+          $map_url .= '&ll=' . get_field('map_center_lat') . '%2C' . get_field('map_center_long');
+          $map_url .= '&z=' . get_field('map_zoom');
+        }
+        ?>
         <div class="element-map-wrapper">
-          <iframe class="element-map-zoomed" src="<?php the_field('map_embed');?>" width="300" height="300" frameborder="0" style="border:0"></iframe>
+          <iframe class="element-map-zoomed" src="<?php echo $map_url;?>" width="300" height="300" frameborder="0" style="border:0"></iframe>
         </div>
+
+
         <div class="element-data-wrapper">
             <table>
             <tr>
@@ -40,7 +66,7 @@
             </tr>
             <tr>
               <td><b>Surface</b> </td>
-              <td><?php echo get_the_terms('surface');?></td>
+              <td><?php echo strip_tags(get_the_term_list($post->ID, 'surface','',', ')); ?></td>
             </tr>
           </table>
         </div> <!-- end element-data-wrapper -->

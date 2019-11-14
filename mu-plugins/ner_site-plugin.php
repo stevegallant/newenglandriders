@@ -29,6 +29,26 @@ add_action('pre_get_posts', 'tags_categories_support_query');
 /********* Add Excerpts to default 'Page' post type ****/
 add_post_type_support('page', 'excerpt');
 
+/****** Array of Google Map IDs for embedded maps *******/
+global $map_ids;
+$map_ids = array(
+  'ct' => '1wgQsXozc5yu_AKGVjZ6c4lhAP30H3ruQ',
+  'ma' => '1jfAXOageah5elJTzBFwx9vxe07wWXqHg',
+  'me' => '1uXL6HdJ5fw-yIhzz4_q7QK_t4m1I0dKR',
+  'nb' => '16f6fpPrAdHJVQm3hIaq3CM6Jp3yolgGC',
+  'nh' => '1x5Kp3mkiiulj5Uj07yvbQMivkc1iFgVA',
+  'nj' => '1rLvEvaMOnIT5gsiAd0obXG_IcPPkLCkt',
+  'nl' => '1dXFZ718bvx10p0gPJiHn23Fbgy1bmDUg',
+  'ns' => '1v6lF6K0jaOzDEiXosgE1u69FrqBqOA5s',
+  'ny' => '1deFfpRZpA6Qd-vSQuJtMg7iyLy3B1zHN',
+  'on' => '1k73lbvdsNpnMtMP8_b_hYRF8KusWYWHp',
+  'pa' => '1oEQYBi150Dp1n1DA7v0sRYzI_3XapoYn',
+  'pei' => '1uyuTOKRqMDiDWN7Szu0e6b5r_cpvCcfA',
+  'qc' => '1_c1gLz33sEnq_4oDudI7NgwmH1214luO',
+  'ri' => '1RKZEMiDBEmQggWM4iT3jnozCtdnRYAdT',
+  'vt' => '1OU5pdbmligQXyH3eQC5VafzzHIJ7LXxZ',
+  'wv' => '1ovVls7wJaVv9nMKsU0LWKcbXwNvpGZPc',
 
+)
 
 ?>
