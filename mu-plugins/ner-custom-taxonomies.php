@@ -29,7 +29,7 @@ function create_ner_taxonomies() {
   );
 
   // Register the taxonomy
-  register_taxonomy('routescale',array('route-details'), array(
+  register_taxonomy('routescale',array('route'), array(
     'hierarchical' => true,
     'labels' => $routescaleLabels,
     'show_ui' => true,
@@ -55,7 +55,7 @@ function create_ner_taxonomies() {
   );
 
   // Register the taxonomy
-  register_taxonomy('surface',array('route-details'), array(
+  register_taxonomy('surface',array('route'), array(
     'hierarchical' => true,
     'labels' => $surfacetypeLabels,
     'show_ui' => true,
@@ -83,7 +83,7 @@ function create_ner_taxonomies() {
   );
 
   // Register the taxonomy
-  register_taxonomy('locale',array('page','route-details','locale-details'), array(
+  register_taxonomy('locale',array('page','route','locale-details'), array(
     'hierarchical' => true,
     'labels' => $localeLabels,
     'show_ui' => true,
@@ -108,7 +108,7 @@ function create_ner_taxonomies() {
   );
 
   // Register the taxonomy
-  register_taxonomy('routefeatures',array('route-details'), array(
+  register_taxonomy('routefeatures',array('route'), array(
     'hierarchical' => false,
     'labels' => $routefeaturesLabels,
     'show_ui' => true,
@@ -133,7 +133,7 @@ function create_ner_taxonomies() {
   );
 
   // Register the taxonomy
-  register_taxonomy('cuisine',array('restaurant-details'), array(
+  register_taxonomy('cuisine',array('restaurant'), array(
     'hierarchical' => false,
     'labels' => $cuisineLabels,
     'show_ui' => true,
@@ -158,7 +158,7 @@ function create_ner_taxonomies() {
   );
 
   // Register the taxonomy
-  register_taxonomy('hotel-tag',array('hotel-details'), array(
+  register_taxonomy('hotel-tag',array('hotel'), array(
     'hierarchical' => false,
     'labels' => $hotelTagLabels,
     'show_ui' => true,
@@ -183,7 +183,7 @@ function create_ner_taxonomies() {
   );
 
   // Register the taxonomy
-  register_taxonomy('attraction-tag',array('attraction-details'), array(
+  register_taxonomy('attraction-tag',array('attraction'), array(
     'hierarchical' => false,
     'labels' => $attractionTagLabels,
     'show_ui' => true,

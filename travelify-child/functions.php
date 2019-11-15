@@ -191,23 +191,23 @@ function travelify_theloop_for_archive() {
 			// is needed for the different archive views.
 
 			switch (get_post_type()) {
-				case 'route-details':
-					get_template_part('content','archive-route-details');
+				case 'route':
+					get_template_part('content','archive-route');
 					break;
-				case 'restaurant-details':
-					get_template_part('content','archive-restaurant-details');
+				case 'restaurant':
+					get_template_part('content','archive-restaurant');
 					break;
-				case 'hotel-details':
-					get_template_part('content','archive-hotel-details');
+				case 'hotel':
+					get_template_part('content','archive-hotel');
 					break;
-				case 'scenicview-details':
-					get_template_part('content','archive-scenicview-details');
+				case 'scenicview':
+					get_template_part('content','archive-scenicview');
 					break;
-				case 'attraction-details':
-					get_template_part('content','archive-attraction-details');
+				case 'attraction':
+					get_template_part('content','archive-attraction');
 					break;
-				case 'campground-details':
-					get_template_part('content','archive-campground-details');
+				case 'campground':
+					get_template_part('content','archive-campground');
 					break;
 				default:
 					get_template_part('content','archive');
@@ -233,27 +233,30 @@ function travelify_theloop_for_single() {
 
 			// Display content template based on custom post type
 			switch (get_post_type()) {
-					case 'locale-details':
-						get_template_part('content','locale-details');
-						break;
-					case 'route-details':
-					get_template_part('content','route-details');
+				case 'locale-details':
+					get_template_part('content','locale-details');
 					break;
-				case 'restaurant-details':
-					get_template_part('content','restaurant-details');
+				case 'route':
+					get_template_part('content','route');
 					break;
-				case 'hotel-details':
-					get_template_part('content','hotel-details');
+				case 'restaurant':
+					get_template_part('content','restaurant');
 					break;
-				case 'scenicview-details':
-					get_template_part('content','scenicview-details');
+				case 'hotel':
+					get_template_part('content','hotel');
 					break;
-				case 'attraction-details':
-					get_template_part('content','attraction-details');
+				case 'scenicview':
+					get_template_part('content','scenicview');
 					break;
-				case 'campground-details':
-						get_template_part('content','campground-details');
-						break;
+				case 'attraction':
+					get_template_part('content','attraction');
+					break;
+				case 'campground':
+					get_template_part('content','campground');
+					break;
+				case 'trip':
+					get_template_part('content','trip');
+					break;
 				default:
 					get_template_part('content','single');
 			}
