@@ -36,7 +36,7 @@ function ner_custom_post_types() {
 		'description' => __('Details of riding locales/regions', 'travelify-child'),
 		'labels' => $localedetailsLabels,
 		//Features this CPT supports in Post Editor
-		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields',),
+		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields','thumbnail'),
 		'taxonomies' => array('category'),
 		'hierarchical' => false,
 		'public' => true,
@@ -122,7 +122,7 @@ function ner_custom_post_types() {
 		'description' => __('Details of restaurants', 'travelify-child'),
 		'labels' => $restaurantLabels,
 		//Features this CPT supports in Post Editor
-		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields',),
+		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields','thumbnail'),
 		'taxonomies' => array('locale',),
 		'hierarchical' => false,
 		'public' => true,
@@ -165,7 +165,7 @@ function ner_custom_post_types() {
 		'description' => __('Details of hotels', 'travelify-child'),
 		'labels' => $hotelLabels,
 		//Features this CPT supports in Post Editor
-		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields',),
+		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields','thumbnail'),
 		'taxonomies' => array('locale',),
 		'hierarchical' => false,
 		'public' => true,
@@ -337,7 +337,7 @@ function ner_custom_post_types() {
 		'description' => __('Details of NER trips', 'travelify-child'),
 		'labels' => $tripLabels,
 		//Features this CPT supports in Post Editor
-		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields',),
+		'supports' => array('title','editor','excerpt','comments','revisions','custom-fields','thumbnail'),
 		'taxonomies' => array('locale',),
 		'hierarchical' => false,
 		'public' => true,

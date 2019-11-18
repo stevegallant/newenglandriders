@@ -146,7 +146,7 @@ li#menu-item-447 {
 	width: 135px !important;
 }
 
-/* Style route-details template part */
+/* Style route template part */
 .btn-route-file-dl {
 	display: inline-block;
 	width: 100px;
@@ -287,6 +287,22 @@ span.ital {
 	padding-top: 0px;
 	padding-bottom: 0px;
 }
+
+/* Style dates for trip pages */
+.trip-dates-container {
+  text-align: center;
+}
+.trip-dates {
+  display: inline-block;
+  padding: .5em;
+  /* margin: 0 auto; */
+  font-size: 1.5em;
+  background-color: #f9f9f9;
+  /* border: 2px solid #186ebf; */
+  border-radius: 5px;
+  box-shadow: 6px 2px 2px;
+}
+
 
 /*****************************/
 /******* MEDIA QUERIES *******/
