@@ -48,7 +48,15 @@ $map_ids = array(
   'ri' => '1RKZEMiDBEmQggWM4iT3jnozCtdnRYAdT',
   'vt' => '1OU5pdbmligQXyH3eQC5VafzzHIJ7LXxZ',
   'wv' => '1ovVls7wJaVv9nMKsU0LWKcbXwNvpGZPc',
-
+  'va' => '1ueR1nd29v3mNia6Tft_mJVYkLvPkdPMb',
+  'nc' => '1MOiPnMZZdVtc-lF-4PbRMq2gF_vXwr3E',
+  'tn' => '1DXyz_r4k8Gat13bpY-dK9H0PjDw5G1HT',
+  'md' => '1r5Y6fkU9RPkX-VDaJEuFgdgtGbgikI5U',
+  'oh' => '1kAUoXELunBhC_v4Mb3OdJhDSoV8f5Y7E',
+  'ky' => '1C5SFHmtXZ_yRjdnAafi0A1Nkjd7kYJiE',
+  'sc' => '1NMAWcZ-FbcGZbyk6rnlyvx33bEOQ4OMM',
+  'ga' => '13ur1yR6T-HeNlvUahJumCaRecrOQi05p',
+  'al' => '11bTri2-OuuVd73sAJIEQ2y8HgkG6F_4O',
 )
 
 ?>

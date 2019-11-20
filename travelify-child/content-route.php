@@ -68,6 +68,14 @@
               <td><b>Surface</b> </td>
               <td><?php echo strip_tags(get_the_term_list($post->ID, 'surface','',', ')); ?></td>
             </tr>
+            <?php if (!has_term('paved', 'surface')) { ?>
+            <tr>
+              <td colspan="2">
+                <span class="disclaimer">Unpaved road conditions can vary widely so please proceed with caution as conditions may have changed. Gates may be open or closed so ride cautiously. Treat private property with respect so that others may enjoy the ride.</span>
+              </td>
+            </tr>
+            <?php } ?>
+
           </table>
         </div> <!-- end element-data-wrapper -->
         <div style="clear: both;"></div>
@@ -106,11 +114,12 @@
         <?php
         // Insert logic to choose rider rating form id based on road surface
         $formID = 0;
-        if (get_field('surface') != 'Paved') {
-          $formID = 6;  // unpaved road rating
-        } else {
+        if (has_term('paved', 'surface')) {
           $formID = 3;  // paved road rating
+        } else {
+          $formID = 6;  // unpaved road rating
         }
+
         $shortcode1 = '[cbxmcratingreview_postreviews  form_id="'. $formID . '"]';
         $shortcode2 = '[cbxmcratingreview_reviewform form_id="' . $formID . '"]';
         ?>

@@ -100,16 +100,49 @@
         <div>
           <h3>Destination</h3>
           <?php the_field('area_notes'); ?>
+          <a href="<?php the_field('amenities_map'); ?>">Destination Amenties Map</a>
         </div>
 
         <h3>Trip Rides</h3>
+        <div class="rides-map">
+          <?php
+          $rides_map = get_field('rides_map_image');
+          if (!empty($rides_map)) { ?>
+            <img src="<?php echo esc_url($rides_map['url']); ?>" alt="<?php echo esc_attr($rides_map['alt']); ?>"/>
+          <?php } ?>
+        </div>
+
         <div>
           <?php
           $relatedRides = get_field('related_rides');
           foreach($relatedRides as $ride) { ?>
             <div class="trip-ride-card">
-              <a href="<?php echo get_the_permalink($ride); ?>" target="_blank"><?php echo get_the_title($ride); ?></a>
-            </div>
+              <h4><a href="<?php echo get_the_permalink($ride); ?>" target="_blank"><?php echo get_the_title($ride); ?></a></h4>
+
+              <div class="route-element-btn-container">
+                <?php
+                if(get_field("gpx_file", $ride->ID)) {?>
+                  <a href="<?php the_field('gpx_file', $ride->ID);?>"><span class="btn-route-file-dl">GPX</span></a>
+                <?php }
+
+                if(get_field("gpx-shaping", $ride->ID)) {?>
+                  <a href="<?php the_field('gpx-shaping', $ride->ID);?>"><span class="btn-route-file-dl">GPX-Shaping</span></a>
+                <?php }
+
+                if(get_field("gpx-track", $ride->ID)) {?>
+                  <a href="<?php the_field('gpx-track', $ride->ID);?>"><span class="btn-route-file-dl">GPX-Track</span></a>
+                <?php }
+
+                if(get_field("google_maps_nav", $ride->ID)) {?>
+                  <a href="<?php the_field('google_maps_nav', $ride->ID);?>"><span class="btn-route-file-dl">Google Nav</span></a>
+                <?php }
+
+                if(get_field("turn-by-turn", $ride->ID)) {?>
+                  <a href="<?php the_field('turn-by-turn', $ride->ID);?>"><span class="btn-route-file-dl">Turn-by-Turn</span></a>
+                <?php } ?>
+              </div> <!-- end route-element-btn-container -->
+
+            </div> <!-- end trip-ride-card -->
           <?php } ?>
         </div>
 
