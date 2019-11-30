@@ -31,10 +31,6 @@
 
       <div class="entry-content clearfix">
 
-        <!-- <div class="element-map-wrapper">
-          <iframe class="element-map-zoomed" src="<?php //the_field('map_embed');?>" width="300" height="300" frameborder="0" style="border:0"></iframe>
-        </div> -->
-
         <!-- Embedded map centered on route element -->
         <?php
         // Get locale taxonomy slug to retrieve correct map ID from global array

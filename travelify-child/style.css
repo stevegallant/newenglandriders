@@ -304,7 +304,7 @@ span.ital {
 
 /* style related rides in trip template */
 .trip-ride-card {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-radius: 4px;
   box-shadow: 4px 4px lightgrey;
   padding: 6px;
