@@ -67,7 +67,7 @@
 
         <div class="route-element-btn-container">
           <div class="route-element-btn-group">
-            <a href="<?php echo get_bloginfo('url') . '/route/?locale='. $locale_slug; ?>" class="btn-route-element-list" target="_blank">Roads</a>
+            <a href="<?php echo get_bloginfo('url') . '/route/?locale='. $locale_slug . '&routescale=segment' . '&surface=paved'; ?>" class="btn-route-element-list" target="_blank">Roads</a>
             <a href="<?php echo $dl_path . 'roads/';?>" class="btn-route-element-gpx">GPX</a>
           </div> <!-- route-element-btn-group -->
           <div class="route-element-btn-group">

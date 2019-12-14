@@ -21,19 +21,35 @@
       <?php do_action( 'travelify_before_post_content' ); ?>
 
       <div class="entry-content clearfix">
+
+        <!-- Embedded map centered on route element -->
+        <?php
+        // Get locale taxonomy slug to retrieve correct map ID from global array
+        $locale_slug = get_the_terms($post->ID, 'locale')[0]->slug;
+        global $map_ids; // defined in site plugin
+        $map_id = $map_ids[$locale_slug];
+        // Assemble URL for embedded map
+        $map_url = 'https://www.google.com/maps/d/u/0/embed?mid=';
+        $map_url .= $map_id;
+        if (get_field('map_center_lat') && get_field('map_center_long')) {
+          $map_url .= '&ll=' . get_field('map_center_lat') . '%2C' . get_field('map_center_long');
+          $map_url .= '&z=' . get_field('map_zoom');
+        }
+        ?>
         <div class="element-map-wrapper">
-          <iframe class="element-map-zoomed" src="<?php the_field('map_embed');?>" width="300" height="300" frameborder="0" style="border:0"></iframe>
+          <iframe class="element-map-zoomed" src="<?php echo $map_url;?>" width="300" height="300" frameborder="0" style="border:0"></iframe>
         </div>
+
         <div class="element-data-wrapper">
             <table>
             <tr>
               <td><?php the_field('restaurant_address');?></td>
             </tr>
             <tr>
-              <td><a href="<?php the_field('restaurant_website');?>">Website</a></td>
+              <td><a href="<?php the_field('restaurant_website');?>">Restaurant's Website</a></td>
             </tr>
             <tr>
-              <td><a href="<?php the_field('yelp_reviews');?>">Yelp Reviews</a></td>
+              <td><a href="<?php the_field('restaurant_reviews');?>">Customer Reviews</a></td>
             </tr>
           </table>
         </div> <!-- end element-data-wrapper -->
