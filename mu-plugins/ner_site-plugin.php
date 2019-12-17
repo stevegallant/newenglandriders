@@ -15,7 +15,7 @@ function ner_default_taxonomy_mod() {
   register_taxonomy_for_object_type('post_tag', 'page');
 
   // Add category support for Attachment post type
-  register_taxonomy_for_object_type('category', 'attachment');
+  // register_taxonomy_for_object_type('category', 'attachment');
 }
 // hook into init action for above functions
 add_action( 'init', 'ner_default_taxonomy_mod' );

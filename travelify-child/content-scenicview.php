@@ -39,24 +39,20 @@
             </div>
           <?php } ?>
         </div>
+        
         <?php
         $scenicview_coords = get_field('map_center_lat') . ',' . get_field('map_center_long');
         $scenicview_map_url = 'https://www.google.com/maps/search/?api=1&query=' . $scenicview_coords;
-        // $scenicview_map_url .= get_field('map_center_lat') . ',' . get_field('map_center_long');
         ?>
+
         <div class="element-data-wrapper">
             <table>
             <tr>
               <td><?php the_field('scenicview_address');?></td>
             </tr>
             <tr>
-
               <td>
                 <a href="<?php echo $scenicview_map_url; ?>" target="_blank"><?php echo $scenicview_coords; ?></a>
-                <?php
-                // the_field('map_center_lat');
-                // echo ', ';
-                // the_field('map_center_long');?>
               </td>
             </tr>
 

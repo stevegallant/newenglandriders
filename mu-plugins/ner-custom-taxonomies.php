@@ -83,7 +83,7 @@ function create_ner_taxonomies() {
   );
 
   // Register the taxonomy
-  register_taxonomy('locale',array('page','route','locale-details'), array(
+  register_taxonomy('locale',array('page','route','locale-details','attachment'), array(
     'hierarchical' => true,
     'labels' => $localeLabels,
     'show_ui' => true,
@@ -190,6 +190,31 @@ function create_ner_taxonomies() {
     'show_admin_column' => true,
     'query_var' => true,
     'rewrite' => array('slug' => 'attraction-tag'),
+  ));
+
+  // Create a custom taxonomy named 'Media Tags'
+  // Add new taxonomy, make it non-hierarchical
+  // First do the translations part for GUI
+  $mediaTagLabels = array(
+    'name' => _x('Media Tags', 'taxonomy general name'),
+    'singular_name' => _x('Media Tag', 'taxonomy singular name'),
+    'search_items' => __('Search Media Tags'),
+    'all_items' => __('All Media Tags'),
+    'edit_item' => __('Edit Media Tag'),
+    'update_item' => __('Update Media Tag'),
+    'add_new_item' => __('Add New Media Tag'),
+    'new_item_name' => __('New Media Tag Name'),
+    'menu_name' => __('Media Tags'),
+  );
+
+  // Register the taxonomy
+  register_taxonomy('media-tag',array('attachment'), array(
+    'hierarchical' => false,
+    'labels' => $mediaTagLabels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array('slug' => 'media-tag'),
   ));
 
 }
