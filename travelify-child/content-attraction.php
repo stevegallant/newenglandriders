@@ -42,9 +42,10 @@
             </tr>
             <tr>
               <td><?php
-                the_field('latitude');
-                echo ', ';
-                the_field('longitude');?>
+                $map_url = 'https://www.google.com/maps/search/?api=1&query=';
+                $map_url .= get_field('map_center_lat') . ',' . get_field('map_center_long');
+                $coords = get_field('map_center_lat') . ', ' . get_field('map_center_long');?>
+                <a href="<?php echo $map_url; ?>" target="_blank"><?php echo $coords; ?></a>
               </td>
             </tr>
             <tr>

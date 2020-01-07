@@ -21,15 +21,9 @@
       <?php do_action( 'travelify_before_post_content' ); ?>
 
       <div class="entry-content clearfix">
-        <!-- <div class="element-map-wrapper">
-          <iframe class="element-map-zoomed" src="<?php //the_field('map_embed');?>" width="300" height="300" frameborder="0" style="border:0"></iframe>
-        </div> -->
-
         <div class="element-photo-wrapper">
           <?php
-          //$image = get_field('scenicview_photo');
           if (has_post_thumbnail()) { ?>
-            <!-- <img class="element-photo-zoomed" src="<?php //echo esc_url($image['url']);?>" alt="<?php //echo esc_url($image['alt']); ?>" width="300" height="300" /> -->
             <div class="element-photo-zoomed">
               <?php
               $full_image_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
@@ -39,7 +33,7 @@
             </div>
           <?php } ?>
         </div>
-        
+
         <?php
         $scenicview_coords = get_field('map_center_lat') . ',' . get_field('map_center_long');
         $scenicview_map_url = 'https://www.google.com/maps/search/?api=1&query=' . $scenicview_coords;

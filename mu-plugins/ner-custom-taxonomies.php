@@ -183,14 +183,17 @@ function create_ner_taxonomies() {
   );
 
   // Register the taxonomy
-  register_taxonomy('attraction-tag',array('attraction'), array(
+  register_taxonomy('attraction-tag', array('attraction'), array(
     'hierarchical' => false,
     'labels' => $attractionTagLabels,
     'show_ui' => true,
     'show_admin_column' => true,
     'query_var' => true,
     'rewrite' => array('slug' => 'attraction-tag'),
+    'meta_box_cb' => 'post_categories_meta_box', //display with hierarchical checkbox UI
+    // 'meta_box_sanitize_cb' => 'taxonomy_meta_box_sanitize_cb_input',
   ));
+
 
   // Create a custom taxonomy named 'Media Tags'
   // Add new taxonomy, make it non-hierarchical
@@ -218,3 +221,40 @@ function create_ner_taxonomies() {
   ));
 
 }
+
+// // use a filter to hide the parent selection checkbox on non-hierarch taxonomy
+add_filter('post_edit_category_parent_dropdown_args', 'hide_parent_dropdown_select');
+function hide_parent_dropdown_select($args) {
+  if ('attraction-tag' == $args['taxonomy']) {
+    $args['echo'] = false;
+  }
+  return $args;
+}
+
+// convert non-hier taxonomy term ID strings into integrers, to preserve relationship
+// see https://www.gazchap.com/posts/enable-checkbox-lists-non-hierarchical-taxonomies-wordpress/
+// add_action('admin_init', 'convert_tax_terms_to_int');
+// function convert_tax_terms_to_int() {
+//   if( isset( $_POST['tax_input'] ) && is_array( $_POST['tax_input'] ) ) {
+//     $new_tax_input = array();
+//     foreach( $_POST['tax_input'] as $tax => $terms) {
+//     	if( is_array( $terms ) ) {
+// 			  $taxonomy = get_taxonomy( $tax );
+// 			  if( !is_taxonomy_hierarchical($taxonomy)) {
+// 				  $terms = array_map( 'intval', array_filter( $terms ) );
+// 			  }
+// 			}
+// 			$new_tax_input[$tax] = $terms;
+// 		}
+// 		$_POST['tax_input'] = $new_tax_input;
+// 	}
+// }
+
+// function convert_tax_terms_to_int() {
+//   $taxonomy = 'attraction-tag';
+//   if (isset($_POST['tax_input'][$taxonomy]) && is_array($_POST['tax_input'][$taxonomy])) {
+//     $terms = $_POST['tax_input'][$taxonomy];
+//     $new_terms = array_map('intval', array_filter($terms));
+//     $_POST['tax_input'][$taxonomy] = $new_terms;
+//   }
+// }

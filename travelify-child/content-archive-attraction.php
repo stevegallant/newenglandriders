@@ -10,7 +10,7 @@
 
     <header class="entry-header">
       <span class="entry-title">
-        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute();?>">
+        <a href="<?php the_field('attraction_website'); ?>" title="<?php the_title_attribute();?>" target="_blank">
           <span class="scenicview-archive-thumb"><?php the_post_thumbnail(array(75,75)); ?></span>
           <?php
           echo '  ';
@@ -27,13 +27,21 @@
 
     <div class="entry-meta-bar clearfix route-meta-bar">
       <div class="entry-meta">
-        <span class="ital"><?php the_field('attraction_address');?></span>
+        <span class="ital">
+          <?php the_field('attraction_address');
+          $map_url = 'https://www.google.com/maps/search/?api=1&query=';
+          $map_url .= get_field('map_center_lat') . ',' . get_field('map_center_long');
+          ?>
+        </span>
         <?php
         if (has_term('', 'attraction-tag')) {
           echo " - Tags: " . get_the_term_list($post->ID, 'attraction-tag', '',', ');
         } ?>
 
       </div><!-- .entry-meta -->
+      <span style="float: right;">
+        <a href="<?php echo $map_url; ?>" class="map-link-archive-view" target="_blank">Map</a>
+      </span>
     </div>
 
     <?php do_action( 'travelify_after_post_meta' ); ?>

@@ -42,9 +42,9 @@
             </tr>
             <tr>
               <td><?php
-                the_field('latitude');
+                the_field('map_center_lat');
                 echo ', ';
-                the_field('longitude');?>
+                the_field('map_center_long');?>
               </td>
             </tr>
             <tr>
@@ -71,7 +71,7 @@
             <?php echo do_shortcode('[cbxmcratingreview_reviewform form_id="5"]'); ?>
           </div>
         <?php
-        
+
         // hiding the main body content field for this Custom Post Type
         // the_content();
 

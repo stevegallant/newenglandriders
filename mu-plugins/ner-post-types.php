@@ -252,7 +252,7 @@ function ner_custom_post_types() {
 		'labels' => $attractionLabels,
 		//Features this CPT supports in Post Editor
 		'supports' => array('title','editor','revisions','custom-fields','thumbnail'),
-		'taxonomies' => array('locale',),
+		'taxonomies' => array('locale', 'attraction-tag'),
 		'hierarchical' => false,
 		'public' => true,
 		'show_ui' => true,

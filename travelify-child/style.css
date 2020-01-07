@@ -124,13 +124,16 @@ li#menu-item-447 {
 }
 
 /* Styling post-format 'link' */
-#content .format-link .entry-title a {
+#content .format-link .entry-title a,
+#content .type-attraction .entry-title a {
   display: inline;
 }
-#content .format-link h2.entry-title {
+#content .format-link h2.entry-title,
+#content .type-attraction .entry-title {
   color: #6ba7a5;
 }
-#content .format-link  h2.entry-title:before {
+#content .format-link  h2.entry-title:before,
+#content .type-attraction .entry-title:before {
   display: inline-block;
   content: " ";
   background: no-repeat url(images/link.png);
@@ -260,6 +263,14 @@ a.btn-route-element-gpx:hover {
 .scenicview-archive-thumb {
   float: left;
   margin-right: 6px;
+}
+
+/* Style Google map links for archive pages  */
+.map-link-archive-view {
+  padding: 2px 3px;
+  color: white !important;
+  background-color: #07a0da;
+  border-radius: 3px;
 }
 
 /* Additional styling for CBX Multi Ratings plugin */
