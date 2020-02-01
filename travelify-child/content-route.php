@@ -36,7 +36,11 @@
         // Get locale taxonomy slug to retrieve correct map ID from global array
         $locale_slug = get_the_terms($post->ID, 'locale')[0]->slug;
         global $map_ids; // defined in site plugin
-        $map_id = $map_ids[$locale_slug];
+        if (get_field('map_id')) {
+          $map_id = get_field('map_id');
+        } else {
+          $map_id = $map_ids[$locale_slug];
+        }
         // Assemble URL for embedded map
         $map_url = 'https://www.google.com/maps/d/u/0/embed?mid=';
         $map_url .= $map_id;
@@ -56,6 +60,12 @@
               <td><b>Miles</b> </td>
               <td><?php the_field('mileage');?></td>
             </tr>
+            <?php if (get_field('est_ride_time')) { ?>
+            <tr>
+              <td><b>Ride Time</b> </td>
+              <td><?php echo get_field('est_ride_time') . ' w/o stops';?></td>
+            </tr>
+            <?php } ?>
             <tr>
               <td><b>Endpoints</b> </td>
               <td><?php the_field('endpoint_1');?>, <?php the_field('endpoint_2');?></td>
@@ -78,24 +88,36 @@
 
         <div class="route-element-btn-container">
           <?php
-          if(get_field("gpx_file")) {?>
-            <a href="<?php the_field('gpx_file');?>"><span class="btn-route-file-dl">GPX</span></a>
+          $dl_url = get_bloginfo('url') . '/download/'; //create URL prefix using current Site URL
+          if(get_field("gpx_file")) {
+
+            ?>
+            <a href="<?php echo $dl_url . get_field('gpx_file');?>" title="Universal GPX file with route versions for different devices.">
+              <span class="btn-route-file-dl">GPX</span>
+            </a>
           <?php }
 
           if(get_field("gpx-shaping")) {?>
-            <a href="<?php the_field('gpx-shaping');?>"><span class="btn-route-file-dl">GPX-Shaping</span></a>
+            <a href="<?php echo $dl_url . get_field('gpx-shaping');?>">
+              <span class="btn-route-file-dl">GPX-Shaping</span>
+            </a>
           <?php }
 
           if(get_field("gpx-track")) {?>
-            <a href="<?php the_field('gpx-track');?>"><span class="btn-route-file-dl">GPX-Track</span></a>
-          <?php }
-
-          if(get_field("google_maps_nav")) {?>
-            <a href="<?php the_field('google_maps_nav');?>"><span class="btn-route-file-dl">Google Nav</span></a>
+            <a href="<?php echo $dl_url . get_field('gpx-track');?>">
+              <span class="btn-route-file-dl">GPX-Track</span>
+            </a>
           <?php }
 
           if(get_field("turn-by-turn")) {?>
-            <a href="<?php the_field('turn-by-turn');?>"><span class="btn-route-file-dl">Turn-by-Turn</span></a>
+            <a href="<?php echo $dl_url . get_field('turn-by-turn');?>" title="Turn-by-turn directions to print out.">
+              <span class="btn-route-file-dl">Turn-by-Turn</span>
+            </a>
+          <?php }
+          if(get_field("ride-preview-pdf")) {?>
+            <a href="<?php echo $dl_url . get_field('ride-preview-pdf');?>" title="Ride preview report with photos.">
+              <span class="btn-route-file-dl">Ride Preview</span>
+            </a>
           <?php } ?>
 
         </div> <!-- end route-element-btn-container -->
