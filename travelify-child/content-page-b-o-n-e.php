@@ -88,7 +88,7 @@ if ($chosenLocale) {
       array(
         'key' => 'locale_name',
         'value' => $chosenLocale,
-        'compare' => 'LIKE',
+        'compare' => '=',
       ),
     ),
   );

@@ -62,6 +62,11 @@ div.locale-header h2.entry-title {
     display: inline-block;
 }
 
+/* override default theme heading sizes */
+h3 {
+  font-size: 22px;
+}
+
 /* Set background image for header with logo & title */
 #branding {
 	background-image: url("https://www.newenglandriders.org/wp/wp-content/uploads/2019/07/cropped-nerheaderbg.jpg");
@@ -249,6 +254,23 @@ a.btn-route-element-list:hover,
 a.btn-route-element-gpx:hover {
 	color: white;
 	background-color: #144277;
+}
+
+#locale-links-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+
+.ext-locale-link {
+  display: inline-block;
+  padding: .75em;
+  margin-bottom: 8px;
+  width: 150px;
+  border: 2px solid #144277;
+  border-radius: 2px;
+  text-align: center;
 }
 
 /* Style locale select element on BONE/BOA pages */

@@ -7,6 +7,7 @@
       <div class="locale-header">
         <h2 class="entry-title">
           <?php the_title(); ?>
+          Ride Planning
         </h2><!-- .entry-title -->
 
 
@@ -103,6 +104,48 @@
         <br />
         <hr />
         <p><?php the_field("description"); ?></p>
+
+        <!-- Section for external links related to Locale -->
+        <div id="locale-links-container">
+          <?php if (get_field("tourism_link")) { ?>
+            <a href="<?php the_field("tourism_link");?>" target="_blank">
+              <div class="ext-locale-link">
+                Official Tourism Site
+              </div>
+            </a>
+          <?php } ?>
+
+          <?php if (get_field("roadwork_link")) { ?>
+            <a href="<?php the_field("roadwork_link");?>" target="_blank">
+              <div class="ext-locale-link">
+                Roadwork Info
+              </div>
+            </a>
+          <?php } ?>
+
+          <?php if (get_field("roadside_america_link")) { ?>
+            <a href="<?php the_field("roadside_america_link");?>" target="_blank">
+              <div class="ext-locale-link">
+                Roadside America
+              </div>
+            </a>
+          <?php } ?>
+
+          <?php if (get_field("pictures_link")) { ?>
+            <a href="<?php the_field("pictures_link");?>" target="_blank">
+              <div class="ext-locale-link">
+                Photos
+              </div>
+            </a>
+          <?php } ?>
+
+        </div> <!-- end locale-links-container -->
+        <br />
+        <?php if (get_field("other_locale_links")) { ?>
+          <h3>More Useful Links</h3>
+          <?php the_field("other_locale_links");?>
+
+        <?php } ?>
 
         <?php //the_content();
         if( is_single() ) {
