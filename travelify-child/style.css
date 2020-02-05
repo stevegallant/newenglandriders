@@ -342,7 +342,7 @@ span.ital {
   box-shadow: 4px 4px lightgrey;
   padding: 6px;
   margin-bottom: 10px;
-  font-size: 1.25em;
+  /* font-size: 1.25em; */
 }
 
 .trip-ride-card span.btn-route-file-dl {
@@ -356,6 +356,14 @@ span.ital {
 .disclaimer {
   font-style: italic;
   color: orange;
+}
+
+.tbl-related-attractions {
+
+}
+
+.tbl-related-attractions .col1 {
+  min-width: 33%
 }
 
 /*****************************/
