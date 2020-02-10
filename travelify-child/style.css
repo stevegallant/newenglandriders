@@ -114,6 +114,11 @@ li#menu-item-447 {
   text-decoration: none;
 }
 
+#content ul a,
+#content ol a {
+  color: #186ebf;
+}
+
 /* hide theme/WP info in footer */
 .copyright {
 	display: none;
@@ -337,12 +342,10 @@ span.ital {
 
 /* style related rides in trip template */
 .trip-ride-card {
-  /* border: 2px solid black; */
   border-radius: 4px;
   box-shadow: 4px 4px lightgrey;
   padding: 6px;
   margin-bottom: 10px;
-  /* font-size: 1.25em; */
 }
 
 .trip-ride-card span.btn-route-file-dl {
@@ -358,13 +361,52 @@ span.ital {
   color: orange;
 }
 
-.tbl-related-attractions {
-
+.tbl-related-elements {
+  font-size: .75em;
 }
 
-.tbl-related-attractions .col1 {
-  min-width: 33%
+.tbl-related-elements .col1 {
+  width: 33%
 }
+
+/* Style collapsible sections for Trip template */
+.collapsible {
+  background-color: #f9f9f9;
+  color: inherit;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1em;
+}
+
+.collapsible:after {
+  content: '\02795';
+  font-size: 10px;
+  float: right;
+  margin-left: 5px;
+}
+
+.active-collap,
+.collapsible:hover {
+  /* background-color: #ccc; */
+}
+
+.active-collap:after {
+  content: "\02796";
+}
+
+.collapse-content {
+  padding: 0 18px;
+  /* display: none; */
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-out;
+  /* background-color: #f1f1f1; */
+}
+
 
 /*****************************/
 /******* MEDIA QUERIES *******/

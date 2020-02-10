@@ -256,6 +256,8 @@ function travelify_theloop_for_single() {
 					break;
 				case 'trip':
 					get_template_part('content','trip');
+					// load script for collapible div sections in Trip template
+					wp_enqueue_script('collapsingsection', get_stylesheet_directory_uri() . '/library/js/collapsingsection.js');
 					break;
 				default:
 					get_template_part('content','single');

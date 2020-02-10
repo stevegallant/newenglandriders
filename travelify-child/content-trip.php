@@ -7,6 +7,19 @@
         <h2 class="entry-title">
           <?php the_title(); ?>
         </h2><!-- .entry-title -->
+
+        <!-- Show featured image  -->
+        <?php // if (has_post_thumbnail()) { ?>
+          <!-- <div class="element-photo-zoomed"> -->
+          <?php
+          // $full_image_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
+          // echo '<a href="' . $full_image_url[0] . '" target="_blank">';
+          // the_post_thumbnail(array(300,300));
+          // echo '</a>'; ?>
+          <!-- </div> -->
+        <?php //} ?>
+
+
     </header>
     <?php do_action( 'travelify_after_post_header' ); ?>
     <?php do_action( 'travelify_before_post_meta' ); ?>
@@ -44,19 +57,19 @@
           </div>
           <br />
         <?php } ?>
+
         <section id="trip-booking">
           <h3>Booking</h3>
+
+          <!-- Display hotel image if there is one -->
           <div class="element-photo-wrapper">
             <?php
-            // Display featured image if there is one
-            if (has_post_thumbnail()) { ?>
-              <!-- <img class="element-photo-zoomed" src="<?php //echo esc_url($image['url']);?>" alt="<?php //echo esc_url($image['alt']); ?>" width="300" height="300" /> -->
+            if (get_field('hotel_photo')) { ?>
               <div class="element-photo-zoomed">
-                <?php
-                $full_image_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
-                echo '<a href="' . $full_image_url[0] . '" target="_blank">';
-                the_post_thumbnail(array(300,300));
-                echo '</a>'; ?>
+                <?php $hotelPhoto = get_field('hotel_photo'); ?>
+                <a href="<?php echo $hotelPhoto['url']; ?>" target="_blank">
+                <img src="<?php echo esc_url($hotelPhoto['url']); ?>" alt="<?php echo esc_attr($hotelPhoto['alt']); ?>" style="width:300px" />
+                </a>
               </div>
             <?php } ?>
           </div>
@@ -103,22 +116,53 @@
 
         <section id="trip-destination">
           <h3>Destination</h3>
+          <p><a href="<?php the_field('amenities_map'); ?>" target="_blank">Destination Amenties Map</a></p>
           <?php the_field('destination_notes'); ?>
-          <p><a href="<?php the_field('amenities_map'); ?>">Destination Amenties Map</a></p>
-          <p>Recommended Area Restaurants</p>
-          <p>Recommended Area Attractions/Views</p>
-          <table class="tbl-related-attractions">
-          <?php
-          $relatedAttractions = get_field('related_attractions');
-          foreach($relatedAttractions as $attraction) { ?>
-            <tr style="min-width: 33%">
-              <td class="col1"><a href="<?php echo get_the_permalink($attraction); ?>" target="_blank"><?php echo get_the_title($attraction); ?></a></td>
-              <td><?php echo wp_trim_words($attraction->ner_notes,20); ?></td>
-            </tr>
-          <?php } ?>
-          </table>
-        </section>
 
+          <button type="button" class="collapsible"><strong>Getting Around (off the bike)</strong></button>
+          <div class="collapse-content">
+            <?php the_field('local_transportation');?>
+          </div>
+
+          <button type="button" class="collapsible"><strong>Suggested Evenings Schedule</strong></button>
+          <div class="collapse-content">
+            <?php the_field('evenings_schedule');?>
+          </div>
+
+
+
+
+          <button type="button" class="collapsible"><strong>Recommended Eats</strong></button>
+          <div class="collapse-content">
+            <table class="tbl-related-elements">
+            <?php
+            $relatedRestaurants = get_field('related_restaurants');
+            foreach($relatedRestaurants as $restaurant) { ?>
+              <tr style="min-width: 33%">
+                <td class="col1"><a href="<?php echo get_the_permalink($restaurant); ?>" target="_blank"><?php echo get_the_title($restaurant); ?></a></td>
+                <td><?php echo wp_trim_words($restaurant->description,10); ?></td>
+              </tr>
+            <?php } ?>
+            </table>
+            <?php the_field('recommended_restaurants');?>
+          </div>
+
+          <button type="button" class="collapsible"><strong>Nearby Cool Stuff</strong></button>
+          <div class="collapse-content">
+            <table class="tbl-related-elements">
+            <?php
+            $relatedAttractions = get_field('related_attractions');
+            foreach($relatedAttractions as $attraction) { ?>
+              <tr style="min-width: 33%">
+                <td class="col1"><a href="<?php echo get_the_permalink($attraction); ?>" target="_blank"><?php echo get_the_title($attraction); ?></a></td>
+                <td><?php echo wp_trim_words($attraction->ner_notes,10); ?></td>
+              </tr>
+            <?php } ?>
+            </table>
+            <?php the_field('recommended_restaurants');?>
+          </div>
+        </section>
+        <p></p>
         <section id="trip-rides">
           <h3>Trip Rides</h3>
           <div class="rides-map">
