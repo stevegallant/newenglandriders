@@ -119,48 +119,54 @@
           <p><a href="<?php the_field('amenities_map'); ?>" target="_blank">Destination Amenties Map</a></p>
           <?php the_field('destination_notes'); ?>
 
-          <button type="button" class="collapsible"><strong>Getting Around (off the bike)</strong></button>
-          <div class="collapse-content">
-            <?php the_field('local_transportation');?>
-          </div>
+          <?php if (get_field('local_transportation')) { ?>
+              <button type="button" class="collapsible"><strong>Getting Around (off the bike)</strong></button>
+              <div class="collapse-content">
+                <?php the_field('local_transportation');?>
+              </div>
+          <?php } ?>
 
-          <button type="button" class="collapsible"><strong>Suggested Evenings Schedule</strong></button>
-          <div class="collapse-content">
-            <?php the_field('evenings_schedule');?>
-          </div>
+          <?php if (get_field('evenings_schedule')) { ?>
+            <button type="button" class="collapsible"><strong>Suggested Evenings Schedule</strong></button>
+            <div class="collapse-content">
+              <?php the_field('evenings_schedule');?>
+            </div>
+          <?php } ?>
 
+          <?php if (get_field('related_restaurants') || get_field('recommended_restaurants')) { ?>
+            <button type="button" class="collapsible"><strong>Recommended Eats</strong></button>
+            <div class="collapse-content">
+              <table class="tbl-related-elements">
+              <?php
+              $relatedRestaurants = get_field('related_restaurants');
+              foreach($relatedRestaurants as $restaurant) { ?>
+                <tr style="min-width: 33%">
+                  <td class="col1"><a href="<?php echo get_the_permalink($restaurant); ?>" target="_blank"><?php echo get_the_title($restaurant); ?></a></td>
+                  <td><?php echo wp_trim_words($restaurant->description,10); ?></td>
+                </tr>
+              <?php } ?>
+              </table>
+              <?php the_field('recommended_restaurants');?>
+            </div>
+          <?php } ?>
 
+          <?php if (get_field('related_attractions') || get_field('recommended_attractions')) { ?>
+            <button type="button" class="collapsible"><strong>Nearby Cool Stuff</strong></button>
+            <div class="collapse-content">
+              <table class="tbl-related-elements">
+              <?php
+              $relatedAttractions = get_field('related_attractions');
+              foreach($relatedAttractions as $attraction) { ?>
+                <tr style="min-width: 33%">
+                  <td class="col1"><a href="<?php echo get_the_permalink($attraction); ?>" target="_blank"><?php echo get_the_title($attraction); ?></a></td>
+                  <td><?php echo wp_trim_words($attraction->ner_notes,10); ?></td>
+                </tr>
+              <?php } ?>
+              </table>
+              <?php the_field('recommended_attractions');?>
+            </div>
+          <?php } ?>
 
-
-          <button type="button" class="collapsible"><strong>Recommended Eats</strong></button>
-          <div class="collapse-content">
-            <table class="tbl-related-elements">
-            <?php
-            $relatedRestaurants = get_field('related_restaurants');
-            foreach($relatedRestaurants as $restaurant) { ?>
-              <tr style="min-width: 33%">
-                <td class="col1"><a href="<?php echo get_the_permalink($restaurant); ?>" target="_blank"><?php echo get_the_title($restaurant); ?></a></td>
-                <td><?php echo wp_trim_words($restaurant->description,10); ?></td>
-              </tr>
-            <?php } ?>
-            </table>
-            <?php the_field('recommended_restaurants');?>
-          </div>
-
-          <button type="button" class="collapsible"><strong>Nearby Cool Stuff</strong></button>
-          <div class="collapse-content">
-            <table class="tbl-related-elements">
-            <?php
-            $relatedAttractions = get_field('related_attractions');
-            foreach($relatedAttractions as $attraction) { ?>
-              <tr style="min-width: 33%">
-                <td class="col1"><a href="<?php echo get_the_permalink($attraction); ?>" target="_blank"><?php echo get_the_title($attraction); ?></a></td>
-                <td><?php echo wp_trim_words($attraction->ner_notes,10); ?></td>
-              </tr>
-            <?php } ?>
-            </table>
-            <?php the_field('recommended_restaurants');?>
-          </div>
         </section>
         <p></p>
         <section id="trip-rides">
