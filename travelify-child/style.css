@@ -424,6 +424,12 @@ div.css-events-list table.events-table tr td {
   padding: 10px 0px 10px 12px;
 }
 
+.events-gm-div {
+  float: right;
+  margin: 0px 0px 15px 15px;
+}
+
+
 /*****************************/
 /******* MEDIA QUERIES *******/
 /*****************************/
@@ -472,6 +478,12 @@ div.css-events-list table.events-table tr td {
 		margin-top: 1em;
 		margin-left: initial;
 	}
+
+  /* Events Manager Google Map div adjust */
+  .events-gm-div {
+    float: none;
+  }
+
 } /* --- end media query */
 
 /****** SMALL SCREENS ******/
