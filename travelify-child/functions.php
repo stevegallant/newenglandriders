@@ -183,6 +183,12 @@ function get_my_url() {
 function travelify_theloop_for_archive() {
 	global $post;
 
+	if (is_post_type_archive('trip')) {
+		echo '<h2>NER Multi-Day Trips</h2>';
+		echo '<p>Our trips cover many of the best motorcycling regions in the East. The rides are the result of months of planning and represent the best day rides from each area we have seen posted anywhere.</p>';
+		echo '<p><a href="https://www.newenglandriders.org/wp/attending-ner-trips/">How NER Trips Work</a></p>';
+	}
+
 	if( have_posts() ) {
 		while( have_posts() ) {
 			the_post();
@@ -208,6 +214,9 @@ function travelify_theloop_for_archive() {
 					break;
 				case 'campground':
 					get_template_part('content','archive-campground');
+					break;
+				case 'trip':
+					get_template_part('content','archive-trip');
 					break;
 				default:
 					get_template_part('content','archive');
@@ -258,6 +267,9 @@ function travelify_theloop_for_single() {
 					get_template_part('content','trip');
 					// load script for collapible div sections in Trip template
 					wp_enqueue_script('collapsingsection', get_stylesheet_directory_uri() . '/library/js/collapsingsection.js');
+					break;
+				case 'event':
+					get_template_part('content','event');
 					break;
 				default:
 					get_template_part('content','single');

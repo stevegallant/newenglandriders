@@ -407,6 +407,22 @@ span.ital {
   /* background-color: #f1f1f1; */
 }
 
+.trip-schedule-date {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-size: 12px;
+  color: white;
+  background-color: orange;
+}
+
+/* Style Events Manager elements */
+table.events-table th {
+  background-color: #DEEDF7;
+}
+div.css-events-list table.events-table tr td {
+  padding: 10px 0px 10px 12px;
+}
 
 /*****************************/
 /******* MEDIA QUERIES *******/
