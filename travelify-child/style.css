@@ -30,16 +30,18 @@ body.login .button-primary:focus {
   box-shadow: 0 1px 0 rgb(186, 78, 56);
 }
 body.login {
-  background-color: #FAF0CA;
+  background-color: ##d3d3d3;
 }
 .login h1 a {
   color: #0D3B66;
-  font-size: 30px;
+  font-family: 'Lobster', cursive;
+  font-size: 34px;
   font-weight: 300;
-  background-image: none;
+  background-image: url(https://www.newenglandriders.org/wp/wp-content/uploads/2020/02/NER_Logo.png);
+  background-position: left;
   width: auto;
-  height: auto;
-  text-indent: 0;
+  height: 100px;
+  text-indent: 90px;
 }
 
 
@@ -101,8 +103,40 @@ h3 {
 	width: 100px;
   float: left;
   border-radius: 10%;
-  margin: 10px 10px 0px 0px;
-/*   display: inline-block; */
+  margin: 0px 10px 0px 0px;
+}
+
+/* Style site tagline */
+#site-description {
+  color: #222;
+  text-shadow: -1px 0 silver, 0 1px silver, 1px 0 silver, 0 -1px silver;
+}
+
+/* Style user login button */
+.btn-login {
+  float: left;
+  margin: 0 10px;
+  padding: 3px 6px;
+  border: solid 1px;
+  color: white;
+  background-color: #F95738;
+  border-color: rgb(224, 84, 56);
+  text-shadow: 0 -1px 1px rgb(212, 82, 56),1px 0 1px rgb(212, 82, 56),0 1px 1px rgb(212, 82, 56),-1px 0 1px rgb(212, 82, 56);
+  box-shadow: 0 1px 0 rgb(199, 80, 56);
+}
+
+.btn-login:active,
+.btn-login:hover,
+.btn-login:focus {
+  background-color: rgb(232, 85, 56);
+  border-color: rgb(212, 82, 56);
+  text-shadow: 0 -1px 1px rgb(199, 80, 56),1px 0 1px rgb(199, 80, 56),0 1px 1px rgb(199, 80, 56),-1px 0 1px rgb(199, 80, 56);
+  box-shadow: 0 1px 0 rgb(186, 78, 56);
+}
+
+/* Main Nav menu overrides */
+#main-nav a {
+  padding: 8px 25px 0 25px;
 }
 
 /*Hide home menu from the menu - done by ColorLib */

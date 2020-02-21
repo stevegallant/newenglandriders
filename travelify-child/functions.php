@@ -12,7 +12,7 @@ function theme_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
-// customize theme header
+// Customize theme header by replacing original function
 function customize_travelify_header(){
 	remove_action( 'travelify_header', 'travelify_headerdetails' );
 	add_action( 'travelify_header', 'custom_travelify_headerdetails', 99 );
@@ -20,98 +20,99 @@ function customize_travelify_header(){
 add_action('init', 'customize_travelify_header');
 
 /**
- * Shows Header Part Content
- *
+ * Custom NER function shows Header Template Part Content
  * Shows the site logo, title, description, searchbar, social icons etc.
  */
 function custom_travelify_headerdetails() {
-?>
-	<?php
-		global $travelify_theme_options_settings;
-   	$options = $travelify_theme_options_settings;
+	global $travelify_theme_options_settings;
+ 	$options = $travelify_theme_options_settings;
 
-   	$elements = array();
-		$elements = array(
-			$options[ 'social_facebook' ],
-			$options[ 'social_twitter' ],
-			$options[ 'social_googleplus' ],
-			$options[ 'social_linkedin' ],
-			$options[ 'social_pinterest' ],
-			$options[ 'social_youtube' ],
-			$options[ 'social_vimeo' ],
-			$options[ 'social_flickr' ],
-			$options[ 'social_tumblr' ],
-			$options[ 'social_instagram' ],
-			$options[ 'social_rss' ],
-			$options[ 'social_github' ]
-		);
+ 	$elements = array();
+	$elements = array(
+		$options[ 'social_facebook' ],
+		$options[ 'social_twitter' ],
+		$options[ 'social_googleplus' ],
+		$options[ 'social_linkedin' ],
+		$options[ 'social_pinterest' ],
+		$options[ 'social_youtube' ],
+		$options[ 'social_vimeo' ],
+		$options[ 'social_flickr' ],
+		$options[ 'social_tumblr' ],
+		$options[ 'social_instagram' ],
+		$options[ 'social_rss' ],
+		$options[ 'social_github' ]
+	);
 
-		$flag = 0;
-		if( !empty( $elements ) ) {
-			foreach( $elements as $option) {
-				if( !empty( $option ) ) {
-					$flag = 1;
-				}
-				else {
-					$flag = 0;
-				}
-				if( 1 == $flag ) {
-					break;
-				}
+	$flag = 0;
+	if( !empty( $elements ) ) {
+		foreach( $elements as $option) {
+			if( !empty( $option ) ) {
+				$flag = 1;
+			}
+			else {
+				$flag = 0;
+			}
+			if( 1 == $flag ) {
+				break;
 			}
 		}
-
-
-	?>
+	} ?>
 
 	<div class="container clearfix">
 		<div class="hgroup-wrap clearfix">
-					<section class="hgroup-right">
-						<?php travelify_socialnetworks( $flag ); ?>
-					</section><!-- .hgroup-right -->
-				<hgroup id="site-logo" class="clearfix">
-					<?php
-						if( $options[ 'header_show' ] != 'disable-both' && $options[ 'header_show' ] == 'header-text' ) {
-						?>
-							<h1 id="site-title">
-								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-									<?php bloginfo( 'name' ); ?>
-								</a>
-							</h1>
-							<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-						<?php
-						}
-						elseif( $options[ 'header_show' ] != 'disable-both' && $options[ 'header_show' ] == 'header-logo' ) {
-						?>
-							<h1 id="site-title">
-								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-									<img src="<?php echo $options[ 'header_logo' ]; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
-								</a>
-							</h1>
-						<?php
-						} else if( $options[ 'header_show' ] == 'disable-both'){ ?>
-							<h1 class="site-title">
-								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-									<img src="<?php echo $options[ 'header_logo' ]; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
-								</a>
-							</h1>
-							<h1 id="site-title">
-								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-									<?php bloginfo( 'name' ); ?>
-								</a>
-							</h1>
-							<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-						<?php }
-						?>
+			<section class="hgroup-right">
+				<?php travelify_socialnetworks( $flag ); ?>
+				<?php if (is_user_logged_in()) {
+					$currUser = wp_get_current_user(); ?>
+					<a href="<?php echo wp_logout_url();?>" class="btn-login" title="Log out <?php echo $currUser->user_login; ?>">Log Out</a>
+				<?php } else { ?>
+					<a href="<?php echo wp_login_url();?>" class="btn-login" title="NERd Login">Log In</a>
+				<?php } ?>
 
-				</hgroup><!-- #site-logo -->
+			</section><!-- .hgroup-right -->
+
+			<hgroup id="site-logo" class="clearfix">
+				<?php
+					if( $options[ 'header_show' ] != 'disable-both' && $options[ 'header_show' ] == 'header-text' ) {
+					?>
+						<h1 id="site-title">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+								<?php bloginfo( 'name' ); ?>
+							</a>
+						</h1>
+						<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+					<?php
+					}
+					elseif( $options[ 'header_show' ] != 'disable-both' && $options[ 'header_show' ] == 'header-logo' ) {
+					?>
+						<h1 id="site-title">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+								<img src="<?php echo $options[ 'header_logo' ]; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
+							</a>
+						</h1>
+					<?php
+					} else if( $options[ 'header_show' ] == 'disable-both'){ ?>
+						<h1 class="site-title">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+								<img src="<?php echo $options[ 'header_logo' ]; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
+							</a>
+						</h1>
+						<h1 id="site-title">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+								<?php bloginfo( 'name' ); ?>
+							</a>
+						</h1>
+						<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+					<?php }	?>
+			</hgroup><!-- #site-logo -->
 
 		</div><!-- .hgroup-wrap -->
 	</div><!-- .container -->
+
 	<?php $header_image = get_header_image();
-			if( !empty( $header_image ) ) :?>
-				<img src="<?php echo esc_url( $header_image ); ?>" class="header-image" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
-			<?php endif; ?>
+		if( !empty( $header_image ) ) :?>
+			<img src="<?php echo esc_url( $header_image ); ?>" class="header-image" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
+		<?php endif; ?>
 	<?php
 		if ( has_nav_menu( 'primary' ) ) {
 			$args = array(
@@ -159,18 +160,16 @@ function custom_travelify_headerdetails() {
 		}
 }
 
-/********* Add additional post formats *******/
-
+/********* Add additional Post Formats *******/
+add_action('after_setup_theme', 'ner_theme_features');
 function ner_theme_features() {
 	//add theme support for addl post formats
 	add_theme_support('post-formats', array('link', 'gallery', 'video'));
 	// Add Featured Image support
 	add_theme_support('post-thumbnails');
 }
-add_action('after_setup_theme', 'ner_theme_features');
 
-
-/******** (for Link post format) returns raw URL from content of a post
+/******** (for 'Link' post format) returns raw URL from content of a post
 that contains a single hyperlink ***/
 function get_my_url() {
 	if ( ! preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', get_the_content(), $matches ) ) {
@@ -360,7 +359,7 @@ function ourHeaderUrl() {
 add_action('login_enqueue_scripts', 'ourLoginCSS');
 function ourLoginCSS() {
 	wp_enqueue_style( 'ner-style', get_stylesheet_uri(), NULL, microtime());
-  wp_enqueue_style('custom-google-fonts', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
+  // wp_enqueue_style('custom-google-fonts', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
 }
 
 add_filter('login_headertext', 'ourLoginTitle');

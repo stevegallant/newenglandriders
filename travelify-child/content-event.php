@@ -8,6 +8,7 @@
           <?php
           if (get_field('event_full')) {
             the_field('event_full');
+            echo ' ';
           }
           the_title(); ?>
         </h2><!-- .entry-title -->
