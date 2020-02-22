@@ -518,6 +518,15 @@ div.css-events-list table.events-table tr td {
     float: none;
   }
 
+  /* Remove float display of content images for medium and smaller screens */
+  figure.alignleft, img.alignleft, figure.alignright, img.alignright {
+    float:none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
 } /* --- end media query */
 
 /****** SMALL SCREENS ******/
