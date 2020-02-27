@@ -119,10 +119,11 @@
               <span class="btn-route-file-dl">Ride Preview</span>
             </a>
           <?php } ?>
-
         </div> <!-- end route-element-btn-container -->
-
         <br />
+        <?php if(get_field("gpx_file")) { ?>
+          <p>Info on <a href="<?php echo esc_url(site_url('ner-gpx-files-contents'));?>" target="_blank">NER GPX Files Content</a></p>
+        <?php }?>
 
         <?php if(get_field("description")) {?>
           <h3>Description</h3>

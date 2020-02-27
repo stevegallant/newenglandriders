@@ -46,7 +46,8 @@
         <!-- Embedded map centered on route element -->
         <?php
         // Get locale taxonomy slug to retrieve correct map ID from global array
-        $locale_slug = get_the_terms($post->ID, 'locale')[0]->slug;
+        $locale_slug = get_field('locale_abbreviation');
+        // $locale_slug = get_the_terms($post->ID, 'locale')[0]->slug;
         global $map_ids; // defined in site plugin
         $map_id = $map_ids[$locale_slug];
         // Assemble URL for embedded map

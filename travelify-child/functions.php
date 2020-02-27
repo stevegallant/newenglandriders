@@ -273,8 +273,7 @@ function travelify_theloop_for_single() {
 				default:
 					get_template_part('content','single');
 			}
-?>
-<?php
+
 			do_action( 'travelify_after_post' );
 		}
 	}
@@ -294,8 +293,11 @@ function travelify_theloop_for_page() {
 			do_action( 'travelify_before_post' );
 			if (is_page('b-o-n-e')) {
 				get_template_part('content', 'page-b-o-n-e');
-			}
-			else {
+			} elseif (is_page('best-of-appalachia')) {
+				get_template_part('content', 'page-b-o-a');
+			} elseif (is_page('beyond-the-east')) {
+					get_template_part('content', 'page-beyond-the-east');
+			} else {
 				get_template_part('content', 'page');
 			}
 
@@ -308,6 +310,59 @@ function travelify_theloop_for_page() {
   <?php
   }
 }
+
+/****** REPLACE SEARCH RESULTS LOOP FROM TRAVELIFY THEME ******/
+function travelify_theloop_for_search() {
+	global $post;
+
+	if( have_posts() ) {
+		while( have_posts() ) {
+			the_post();
+			do_action( 'travelify_before_post' );
+			$post_type = get_post_type_object(get_post_type(get_the_ID()));
+?>
+	<section id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<article>
+
+			<?php do_action( 'travelify_before_post_header' ); ?>
+
+			<header class="entry-header">
+    			<h3 class="entry-title">
+    				<a href="<?php
+						// For 'Link' post type, use URL from content for title hyperlink
+						// and open in a new browser tab
+						if (has_post_format('link')) {
+							$myLink = get_my_url();
+							echo $myLink; ?>" target="_blank
+						<?php } else {
+							the_permalink();
+						} ?>" title="<?php the_title_attribute();?>"><?php the_title(); ?>
+						<?php echo '<span style="font-size:.75em">(' . $post_type->labels->singular_name . ')</span>'; ?>
+						</a>
+					</h3><!-- .entry-title -->
+
+  		</header>
+
+  		<?php do_action( 'travelify_after_post_header' ); ?>
+			<?php do_action( 'travelify_before_post_content' ); ?>
+			<div class="entry-content clearfix">
+  			<?php the_excerpt(); ?>
+  		</div>
+
+  		<?php do_action( 'travelify_after_post_content' ); ?>
+		</article>
+	</section>
+<?php
+			do_action( 'travelify_after_post' );
+		}
+	}
+	else {
+		?>
+		<h1 class="entry-title"><?php _e( 'No Posts Found.', 'travelify' ); ?></h1>
+      <?php
+   }
+}
+
 
 /**** CHANGE SORTING OF ARCHIVE LISTS TO ASC BY TITLE */
 add_action('pre_get_posts', 'sort_order_title');
@@ -326,16 +381,18 @@ add_filter('acf/format_value/name=gpx_file','do_shortcode');
 function add_custom_mime_types($mimes = array()) {
   // $mimes['gpx'] = 'application/gpx+xml';
   $mimes['gpx'] = 'application/gpx+xml';
+	$mimes['gbd'] = 'application/octet-stream';
+	$mimes['bmp'] = 'image/bmp';
   return $mimes;
 }
-add_filter('upload_mimes', 'add_custom_mime_types');
+add_filter('upload_mimes', 'add_custom_mime_types',1,1);
 
 /*** SUBSCRIBER LOCK-DOWN  ***/
 // Re-direct subscriber accounts out of admin and to homepage
 add_action('admin_init', 'redirectSubToFrontend');
 function redirectSubToFrontEnd() {
   $ourCurrentUser = wp_get_current_user();
-  if (count($ourCurrentUser->roles) == 1 AND $ourCurrentUser->roles[0] == 'subscriber') {
+  if (count($ourCurrentUser->roles) == 1 AND $ourCurrentUser->roles[0] == 'subscriber' AND !defined('DOING_AJAX')) {
     wp_redirect(site_url('/'));
     exit;
   }

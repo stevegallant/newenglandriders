@@ -38,12 +38,11 @@
       </div>
 
       <?php do_action( 'travelify_after_post_content' ); ?>
-
       <?php do_action( 'travelify_before_post_meta' ); ?>
 
       <div class="entry-meta-bar clearfix">
         <div class="entry-meta">
-            <?php travelify_posted_on(); ?>
+            <?php // travelify_posted_on(); ?>
             <?php if( has_category() ) { ?>
                 <span class="category"><?php the_category(', '); ?></span>
               <?php } ?>
@@ -52,7 +51,9 @@
               <?php } ?>
         </div><!-- .entry-meta -->
         <?php
-        echo '<a class="readmore" href="' . get_permalink() . '" title="'.the_title( '', '', false ).'">'.__( 'Read more', 'travelify' ).'</a>';
+        if (!has_post_format('link')) {
+          echo '<a class="readmore" href="' . get_permalink() . '" title="'.the_title( '', '', false ).'">'.__( 'Read more', 'travelify' ).'</a>';
+        }
         ?>
       </div>
 

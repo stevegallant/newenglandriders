@@ -171,6 +171,9 @@
         <p></p>
         <section id="trip-rides">
           <h3>Trip Rides</h3>
+          <p>Below are several vetted day-rides to choose from on this trip. We may also list
+          some suggested routes to and from the trip destination hotel.</p>
+          <p>Info about <a href="<?php esc_url(site_url('/ner-gpx-files-contents')); ?>" target="_blank">NER GPX Files Content</a></p>
           <div class="rides-map">
             <?php
             $rides_map = get_field('rides_map_image');

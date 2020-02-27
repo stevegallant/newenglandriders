@@ -1,9 +1,7 @@
 <?php ?>
 <section id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <article>
-
     <?php do_action( 'travelify_before_post_header' ); ?>
-
     <header class="entry-header">
         <h2 class="entry-title">
           <?php the_title(); ?>
@@ -22,21 +20,11 @@
           $all_locales_query = new WP_Query(array(
             'post_type' => 'locale-details',
             'tax_query' => array(
-              'relation' => 'OR',
               array(
                 'taxonomy' => 'locale',
                 'field' => 'slug',
-                'terms' => array('northeast')
-              ),
-              array(
-                'taxonomy' => 'locale',
-                'field' => 'slug',
-                'terms' => array('cn-central')
-              ),
-              array(
-                'taxonomy' => 'locale',
-                'field' => 'slug',
-                'terms' => array('cn-atlantic')
+                'terms' => array('appalachia', 'northeast', 'cn-central', 'cn-atlantic'),
+                'operator' => 'NOT IN',
               ),
             ),
         		'posts_per_page' => '-1',
@@ -61,21 +49,13 @@
 
          <!-- Display form for selecting locale -->
           <form action="<?php echo get_permalink(); ?>" method="GET" role="search">
-
-              <?php
-              // Assemble select dropdown element for Locale selection form
-              //if (is_array($locale_names)) { ?>
-                <select name="locale" class="locale-select-box">
-                  <option value="" selected="selected">Select riding locale</option>
-                  <?php // Use locale names from array for options in drop-down
-                  foreach ($locale_names as $term) { ?>
-                    <option value="<?php echo $term; ?>"><?php echo $term; ?></option>';
-                  <?php } ?>
-                </select>
-
-              <?php
-              //} // echo $select_locale; ?>
-
+            <select name="locale" class="locale-select-box">
+              <option value="" selected="selected">Select riding locale</option>
+              <?php // Use locale names from array for options in drop-down
+              foreach ($locale_names as $term) { ?>
+                <option value="<?php echo $term; ?>"><?php echo $term; ?></option>';
+              <?php } ?>
+            </select>
             <input type="submit" value="Go!" class="button" />
           </form>
         </div> <!-- locale-chooser-form -->
@@ -89,13 +69,13 @@
       ?>
 
   </article>
-</section> <!-- END BONE page content section -->
+</section> <!-- END BOA page content section -->
 
 
 
 
 <?php
-// Run third query for specific local chosen by user
+// Run third query for specific locale chosen by user
 $chosenLocale = $_GET['locale'];
 if ($chosenLocale) {
   // Set arguments for new WP_Query for specific locale

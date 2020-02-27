@@ -189,6 +189,17 @@ li#menu-item-447 {
   text-align: center;
 }
 
+/* add/overwrite archive listing styles */
+#content .page {
+  padding: 20px 0px;
+}
+
+#content .post {
+  border-top: none;
+}
+
+
+/* Style thumbnail images from Amazon links */
 .amazon-product-thumb {
 	width: 135px !important;
 }
@@ -208,7 +219,7 @@ li#menu-item-447 {
 }
 
 a .btn-route-file-dl:hover {
-  background-color: #144277;
+  background-color: #0054a5;
 }
 
 .element-map-zoomed,
@@ -292,7 +303,7 @@ a.btn-route-element-gpx {
 a.btn-route-element-list:hover,
 a.btn-route-element-gpx:hover {
 	color: white;
-	background-color: #144277;
+	background-color: #0054a5;
 }
 
 #locale-links-container {
@@ -307,7 +318,7 @@ a.btn-route-element-gpx:hover {
   padding: .75em;
   margin-bottom: 8px;
   width: 150px;
-  border: 2px solid #144277;
+  border: 2px solid #0054a5;
   border-radius: 2px;
   text-align: center;
 }
