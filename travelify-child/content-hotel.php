@@ -39,7 +39,7 @@
         <div class="element-map-wrapper">
           <iframe class="element-map-zoomed" src="<?php echo $map_url;?>" width="300" height="300" frameborder="0" style="border:0"></iframe>
         </div>
-        
+
         <div class="element-data-wrapper">
             <table>
             <tr>
@@ -61,7 +61,8 @@
         <?php } ?>
         <hr />
         <h3>Rated by Riders</h3>
-        <p>One per rider. If you need to update your rating: take a copy of the text, delete and recreate.</p>
+        <p>One per rider. You can edit your previous reviews via your <a href="<?php echo esc_url(site_url('/my-reviews')); ?>" target="_blank">My Reviews</a> dashboard page.</p>
+        <p>Information on <a href="<?php echo esc_url(site_url('/reviews-and-ratings'));?>" target="_blank">Reviews and Ratings</a></p>
         <div>
           <strong>Average Rider Rating</strong>
           <?php echo do_shortcode('[cbxmcratingreview_postavgrating form_id="4" details="1"]'); ?>

@@ -177,6 +177,7 @@ li#menu-item-447 {
   color: #6ba7a5;
 }
 #content .format-link  h2.entry-title:before,
+#content .format-link  h3.entry-title:before,
 #content .type-attraction .entry-title:before {
   display: inline-block;
   content: " ";
@@ -269,7 +270,8 @@ a .btn-route-file-dl:hover {
 	margin-bottom: 4px;
 	text-align: center;
 	text-decoration: none;
-	background-color: #f9f9f9;
+  background-color: #f1f1f1;
+	/* background-color: #f9f9f9; */
 	border-radius: 8px;
 }
 
@@ -572,6 +574,16 @@ div.css-events-list table.events-table tr td {
 		height: 24px;
 	}
 
+	/*Hide home menu from the menu - done by ColorLib */
+	li#menu-item-447 {
+	    display: block;
+	}
+
+  /* Bold top-level nav menu li in dropdown menu */
+  #main-nav li.menu-item-has-children {
+    font-weight: bold;
+  }
+
 
 	/* Override heading sizes for small screens */
 	.entry-title, .entry-title a {
@@ -611,12 +623,5 @@ div.css-events-list table.events-table tr td {
 	.locale-photo img {
 		display: none; /* hide locale feature photo on small screen */
 	}
-
-
-		/*Hide home menu from the menu - done by ColorLib */
-		li#menu-item-447 {
-		    display: block;
-		}
-
 
 } /* --- end media query */

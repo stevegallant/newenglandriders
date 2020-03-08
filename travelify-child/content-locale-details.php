@@ -66,7 +66,7 @@
         // Store partial path for GPX download links
         $dl_path = get_bloginfo('url') . '/download/' . $locale_slug . '-';
         ?>
-
+        <p><strong>Listings & GPX Downloads</strong></p>
         <div class="route-element-btn-container">
           <div class="route-element-btn-group">
             <a href="<?php echo get_bloginfo('url') . '/route/?locale='. $locale_slug . '&routescale=segment' . '&surface=paved'; ?>" class="btn-route-element-list" target="_blank">Roads</a>
@@ -97,12 +97,12 @@
             <a href="<?php echo $dl_path . 'unpaved/';?>" class="btn-route-element-gpx">GPX</a>
           </div> <!-- route-element-btn-group -->
           <div class="route-element-btn-group">
-            <a href="<?php echo get_bloginfo('url') . '/route/?locale='. $locale_slug . '&routescale=day-ride'; ?>" class="btn-route-element-list" target="_blank">Day Rides</a>
-            <a href="#" class="btn-route-element-gpx" disabled>N/A</a>
+            <a href="<?php echo get_bloginfo('url') . '/route/?locale='. $locale_slug . '&routescale=day-ride'; ?>" class="btn-route-element-list" target="_blank">Complete Day-Rides</a>
+            <!-- <a href="#" class="btn-route-element-gpx" disabled>N/A</a> -->
           </div> <!-- route-element-btn-group -->
 
         </div> <!-- end route-element-btn-container -->
-        <br />
+
         <hr />
         <p><?php the_field("description"); ?></p>
 

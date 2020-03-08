@@ -173,7 +173,7 @@
           <h3>Trip Rides</h3>
           <p>Below are several vetted day-rides to choose from on this trip. We may also list
           some suggested routes to and from the trip destination hotel.</p>
-          <p>Info about <a href="<?php esc_url(site_url('/ner-gpx-files-contents')); ?>" target="_blank">NER GPX Files Content</a></p>
+          <p>Info about <a href="<?php echo esc_url(site_url('/ner-gpx-files-content')); ?>" target="_blank">NER GPX Files Content</a></p>
           <div class="rides-map">
             <?php
             $rides_map = get_field('rides_map_image');
@@ -186,6 +186,7 @@
         <div>
           <?php
           $relatedRides = get_field('related_rides');
+          $dl_url = get_bloginfo('url') . '/download/'; //create URL prefix using current Site URL
           foreach($relatedRides as $ride) { ?>
             <div class="trip-ride-card">
               <span class="trip-ride-card-title"><strong><a href="<?php echo get_the_permalink($ride); ?>" target="_blank"><?php echo get_the_title($ride); ?></a></strong></span>
@@ -194,11 +195,11 @@
               <div class="route-element-btn-container">
                 <?php
                 if(get_field("gpx_file", $ride->ID)) {?>
-                  <a href="<?php the_field('gpx_file', $ride->ID);?>"><span class="btn-route-file-dl">GPX</span></a>
+                  <a href="<?php echo esc_url($dl_url) . get_field('gpx_file', $ride->ID);?>"><span class="btn-route-file-dl">GPX</span></a>
                 <?php }
 
                 if(get_field("ride-preview-pdf", $ride->ID)) {?>
-                  <a href="<?php the_field('ride-preview-pdf', $ride->ID);?>"><span class="btn-route-file-dl">Ride Preview</span></a>
+                  <a href="<?php echo esc_url($dl_url) . get_field('ride-preview-pdf', $ride->ID);?>"><span class="btn-route-file-dl">Ride Preview</span></a>
                 <?php } ?>
               </div> <!-- end route-element-btn-container -->
 

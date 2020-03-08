@@ -337,7 +337,10 @@ function travelify_theloop_for_search() {
 						<?php } else {
 							the_permalink();
 						} ?>" title="<?php the_title_attribute();?>"><?php the_title(); ?>
-						<?php echo '<span style="font-size:.75em">(' . $post_type->labels->singular_name . ')</span>'; ?>
+						<?php
+						if (!has_post_format('link')) {
+							echo '<span style="font-size:.75em">(' . $post_type->labels->singular_name . ')</span>';
+						} ?>
 						</a>
 					</h3><!-- .entry-title -->
 

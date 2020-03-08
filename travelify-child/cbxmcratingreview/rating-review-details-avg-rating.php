@@ -22,6 +22,10 @@
 	$criteria_stat_scores = isset( $ratings_stars['criteria_stat_scores'] ) ? $ratings_stars['criteria_stat_scores'] : array();
 	$criteria_info        = isset( $ratings_stars['criteria_info'] ) ? $ratings_stars['criteria_info'] : array();
 
+	// SJG: set $show_short variable to false for specified rating forms
+	if ($form_id == 2 || $form_id == 4) {
+		$show_short = false;
+	}
 
 	do_action( 'cbxmcratingreview_details_avg_rating_before', $avg_rating_info );
 ?>

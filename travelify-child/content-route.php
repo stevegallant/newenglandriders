@@ -97,12 +97,6 @@
             </a>
           <?php }
 
-          if(get_field("gpx-shaping")) {?>
-            <a href="<?php echo $dl_url . get_field('gpx-shaping');?>">
-              <span class="btn-route-file-dl">GPX-Shaping</span>
-            </a>
-          <?php }
-
           if(get_field("gpx-track")) {?>
             <a href="<?php echo $dl_url . get_field('gpx-track');?>">
               <span class="btn-route-file-dl">GPX-Track</span>
@@ -122,7 +116,7 @@
         </div> <!-- end route-element-btn-container -->
         <br />
         <?php if(get_field("gpx_file")) { ?>
-          <p>Info on <a href="<?php echo esc_url(site_url('ner-gpx-files-contents'));?>" target="_blank">NER GPX Files Content</a></p>
+          <p>Info on <a href="<?php echo esc_url(site_url('ner-gpx-files-content'));?>" target="_blank">NER GPX Files Content</a></p>
         <?php }?>
 
         <?php if(get_field("description")) {?>
@@ -153,7 +147,8 @@
         <?php }?>
 
         <h3>Rated by Riders</h3>
-        <p>One per rider. If you need to update your rating: take a copy of the text, delete and recreate.</p>
+        <p>One per rider. You can edit your previous reviews via your <a href="<?php echo esc_url(site_url('/my-reviews')); ?>" target="_blank">My Reviews</a> dashboard page.</p>
+        <p>Information on <a href="<?php echo esc_url(site_url('/reviews-and-ratings'));?>" target="_blank">Reviews and Ratings</a></p>
         <div>
           <strong>Average Rider Rating</strong> <?php echo do_shortcode('[cbxmcratingreview_postavgrating form_id="3"]'); ?>
           <br />
