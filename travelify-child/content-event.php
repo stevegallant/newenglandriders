@@ -60,16 +60,11 @@
       </div>
 
       <?php
-
       do_action( 'travelify_after_post_content' );
-
       do_action( 'travelify_before_comments_template' );
-
-       comments_template();
-
-       do_action ( 'travelify_after_comments_template' );
-
-       ?>
+      comments_template();
+      do_action ( 'travelify_after_comments_template' );
+      ?>
 
   </article>
 </section>

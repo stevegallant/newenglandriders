@@ -21,7 +21,6 @@
       </header>
 
       <?php do_action( 'travelify_after_post_header' ); ?>
-
       <?php do_action( 'travelify_before_post_content' ); ?>
 
       <div class="entry-content clearfix">

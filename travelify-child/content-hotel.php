@@ -72,8 +72,6 @@
           <?php echo do_shortcode('[cbxmcratingreview_reviewform form_id="4"]'); ?>
         </div>
         <?php
-        // hiding the main body content field for this Custom Post Type
-        // the_content();
 
         if( is_single() ) {
           $tag_list = get_the_tag_list( '', __( ', ', 'travelify' ) );
@@ -98,16 +96,11 @@
       </div>
 
       <?php
-
       do_action( 'travelify_after_post_content' );
-
       do_action( 'travelify_before_comments_template' );
-
-       comments_template();
-
-       do_action ( 'travelify_after_comments_template' );
-
-       ?>
+      comments_template();
+      do_action ( 'travelify_after_comments_template' );
+      ?>
 
   </article>
 </section>

@@ -206,12 +206,6 @@
             </div> <!-- end trip-ride-card -->
           <?php } ?>
         </div>
-
-        <?php
-        // hiding the main body content field for this Custom Post Type
-        // the_content();
-        ?>
-
       </div>
 
       <?php

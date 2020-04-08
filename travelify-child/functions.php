@@ -540,7 +540,7 @@ function ourLoginTitle() {
 
 
 // Shortcode to use for copying text from a custom field to main content field
-add_shortcode('update-posts-from-custom-fields', 'upfc_fields321');
+// add_shortcode('update-posts-from-custom-fields', 'upfc_fields321');
 function upfc_fields321() {
 	$cpt = 'scenicview'; // slug of custom post type to process
 	$cpt_field = 'ner_notes'; // field name to copy from
@@ -579,9 +579,9 @@ function upfc_fields321() {
           $post->post_content_filtered = '';
           $post->post_excerpt = '';
           // uncomment next line when you are ready to commit changes
-          wp_update_post($post); $save_counter++;
+          // wp_update_post($post); $save_counter++;
           // uncomment next line if you want to delete the meta key (useful if you have too many posts and want to do them in batchces)
-          delete_post_meta($post->ID, $cpt_field); $delete_counter++;
+          // delete_post_meta($post->ID, $cpt_field); $delete_counter++;
 					?>
 					<div>
 						<p><b>Modified Content Field</b></p>

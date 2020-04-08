@@ -50,6 +50,7 @@
         // $locale_slug = get_the_terms($post->ID, 'locale')[0]->slug;
         global $map_ids; // defined in site plugin
         $map_id = $map_ids[$locale_slug];
+
         // Assemble URL for embedded map
         $map_url = 'https://www.google.com/maps/d/u/0/embed?mid=';
         $map_url .= $map_id;
