@@ -237,7 +237,7 @@ ul#ner-online-links {
   content: " ";
   background: no-repeat url(images/link.png);
   background-size: contain;
-  width: 50px;
+  width: 35px;
   height: 1em;
 }
 #content .format-link .entry-title p {
@@ -256,6 +256,10 @@ ul#ner-online-links {
 
 #content article .entry-header h2.entry-title {
   padding-bottom: 0;
+}
+
+#content .type-attraction p {
+  padding: 0 10px 0 50px;
 }
 
 /* Style thumbnail images from Amazon links */

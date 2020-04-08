@@ -17,7 +17,7 @@
           the_title();?>
         </a>
       </span><!-- .entry-title -->
-      <p><?php echo the_field('ner_notes'); ?></p>
+      <?php the_content(); ?>
     </header>
 
     <?php

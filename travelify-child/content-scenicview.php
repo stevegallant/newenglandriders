@@ -54,9 +54,9 @@
         </div> <!-- end element-data-wrapper -->
         <div style="clear: both;"></div>
 
-        <?php if(get_field("scenicview_notes")) {?>
+        <?php if($post->post_content !== '') {?>
           <h3>NER Notes</h3>
-          <?php the_field('scenicview_notes');?>
+          <?php the_content();?>
         <?php } ?>
 
         <?php
