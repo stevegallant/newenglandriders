@@ -12,9 +12,13 @@
  Text Domain:  travelify-child
 */
 
-@import url('https://fonts.googleapis.com/css?family=Lobster');
+/* @import url('https://fonts.googleapis.com/css?family=Lobster'); */
+/* @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:700i,900i|Cantarell:400i,700i|Carter+One|Fugaz+One|Lato:700i,900i|Montserrat:900i|Playball|Racing+Sans+One|Sriracha|Timmana|Trade+Winds&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:900i');
 
-/* Customize Login Screen */
+/**********************************/
+/* *****Customize Login Screen ****/
+/**********************************/
 body.login .button-primary {
   background-color: #F95738;
   border-color: rgb(224, 84, 56);
@@ -34,25 +38,65 @@ body.login {
 }
 .login h1 a {
   color: #0D3B66;
-  font-family: 'Lobster', cursive;
+  font-family: 'Montserrat', sans-serif;
   font-size: 34px;
-  font-weight: 300;
-  background-image: url(https://www.newenglandriders.org/wp/wp-content/uploads/2020/02/NER_Logo.png);
+  font-weight: 700;
+  background-image: url('../../uploads/2020/02/NER_Logo.png');
   background-position: left;
   width: auto;
   height: 100px;
   text-indent: 90px;
 }
 
+/**********************************/
+/* *****Customize Header ****/
+/**********************************/
+/* Style the logo image */
+/* Set background image for header with logo & title */
+#branding {
+	background-image: url('../../uploads/2019/07/cropped-nerheaderbg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+}
+
+#site-logo img {
+	width: 100px;
+  float: left;
+  border-radius: 10%;
+  margin: 0px 10px 0px 0px;
+}
 
 /* style site title text */
 h1#site-title,
 #site-title a {
-	color: black;
-  font-family: 'Lobster', cursive;
+	color: #f8f8f8 !important;
+  text-shadow: 2px 2px black, 1px 1px black;
+  /* font-family: 'Lobster', cursive; */
+  /* font-family: 'Cantarell', sans-serif; */
+  font-weight: 700;
+  font-style: italic;
+  /* letter-spacing: 1px; */
+  /* font-family: 'Carter One', cursive; */
+  /* font-family: 'Lato', sans-serif; */
+  /* font-family: 'Playball', cursive; */
+  /* font-family: 'Alegreya Sans', sans-serif; */
+  /* font-family: 'Trade Winds', cursive; */
+  /* font-family: 'Fugaz One', cursive; */
+  /* font-family: 'Sriracha', cursive; */
+  /* font-family: 'Timmana', sans-serif; */
+  /* font-family: 'Racing Sans One', cursive; */
+  font-family: 'Montserrat', sans-serif;
   font-size: 50px;
-	text-shadow: -1px 0 silver, 0 1px silver, 1px 0 silver, 0 -1px silver;
+  line-height: 105%;
+	/* text-shadow: -1px 0 silver, 0 1px silver, 1px 0 silver, 0 -1px silver; */
 	margin-left: 25px;
+}
+
+/* Style site tagline */
+#site-description {
+  color: silver;
+  text-shadow: -2px 0 2px black, 0 2px 2px black, 2px 0 2px black, 0 -2px 2px black;
 }
 
 /* hide indiv page titles */
@@ -67,14 +111,6 @@ div.locale-header h2.entry-title {
 /* override default theme heading sizes */
 h3 {
   font-size: 22px;
-}
-
-/* Set background image for header with logo & title */
-#branding {
-	background-image: url("https://www.newenglandriders.org/wp/wp-content/uploads/2019/07/cropped-nerheaderbg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center top;
 }
 
 /* remove extra white space */
@@ -98,24 +134,28 @@ h3 {
 	overflow: hidden;
 }
 
-/* Style the logo image */
-#site-logo img {
-	width: 100px;
-  float: left;
-  border-radius: 10%;
-  margin: 0px 10px 0px 0px;
+/* Style span containing login button and explainer link */
+.login-group {
+  display: flex;
+  flex-direction: column;
 }
-
-/* Style site tagline */
-#site-description {
-  color: #222;
-  text-shadow: -1px 0 silver, 0 1px silver, 1px 0 silver, 0 -1px silver;
+.login-group a {
+  margin: 0 10px;
+}
+.login-explain {
+  color: white;
+  font-size: 12px;
+}
+.login-explain:hover,
+.login-explain:focus {
+  color: white;
+  text-shadow: 0px 0px 4px silver;
 }
 
 /* Style user login button */
 .btn-login {
   float: left;
-  margin: 0 10px;
+  margin: 0 4px 0 10px;
   padding: 3px 6px;
   border: solid 1px;
   color: white;
@@ -128,6 +168,7 @@ h3 {
 .btn-login:active,
 .btn-login:hover,
 .btn-login:focus {
+  color: white;
   background-color: rgb(232, 85, 56);
   border-color: rgb(212, 82, 56);
   text-shadow: 0 -1px 1px rgb(199, 80, 56),1px 0 1px rgb(199, 80, 56),0 1px 1px rgb(199, 80, 56),-1px 0 1px rgb(199, 80, 56);
@@ -135,8 +176,16 @@ h3 {
 }
 
 /* Main Nav menu overrides */
+#main-nav {
+  z-index: 1000;
+}
+
 #main-nav a {
   padding: 8px 25px 0 25px;
+}
+
+.unclickable > a:hover {
+  cursor: default;
 }
 
 /*Hide home menu from the menu - done by ColorLib */
@@ -159,12 +208,17 @@ li#menu-item-447 {
 }
 
 /* Style online links */
+#ner-online-links {
+  display: flex;
+  justify-content: space-between;
+}
+ul#ner-online-links {
+    margin: 0;
+}
+
 .ner-link {
 	list-style-type: none;
 	display: inline;
-}
-.ner-link a {
-/* 	margin-right: 10px; */
 }
 
 /* Styling post-format 'link' */
@@ -192,13 +246,17 @@ li#menu-item-447 {
 
 /* add/overwrite archive listing styles */
 #content .page {
-  padding: 20px 0px;
+  padding: 10px 0px;
 }
 
 #content .post {
   border-top: none;
+  padding: 10px 0px;
 }
 
+#content article .entry-header h2.entry-title {
+  padding-bottom: 0;
+}
 
 /* Style thumbnail images from Amazon links */
 .amazon-product-thumb {
@@ -213,7 +271,6 @@ li#menu-item-447 {
 	margin-bottom: 4px;
 	text-align: center;
 	text-decoration: none;
-	/* background-color: #f9f9f9; */
 	border-radius: 8px;
   color: white;
   background-color: #07a0da;
@@ -302,8 +359,25 @@ a.btn-route-element-gpx {
 	border-radius: 0px 8px 8px 0px;
 }
 
+a.btn-download {
+  display: block;
+	/* float: right; */
+	box-sizing: border-box;
+	width: 120px;
+	/* height: 100%; */
+	padding: 4px;
+  /* margin: 4px auto 0px; */
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	/* background-color: #186ebf; */
+  background-color: #07a0da;
+	border-radius: 8px;
+}
+
 a.btn-route-element-list:hover,
-a.btn-route-element-gpx:hover {
+a.btn-route-element-gpx:hover,
+a.btn-download:hover {
 	color: white;
 	background-color: #0054a5;
 }
@@ -354,6 +428,11 @@ a.btn-route-element-gpx:hover {
 
 #content ul.cbxmcratingreview_review_readonly_criterias {
 	margin: 0px;
+}
+
+/* Style generic archive index pages */
+.entry-title a {
+  font-size: 24px;
 }
 
 /* Style custom archive view for routes */
@@ -422,11 +501,15 @@ span.ital {
   color: inherit;
   cursor: pointer;
   padding: 18px;
-  width: 100%;
+  /* width: 100%; */
   border: none;
   text-align: left;
   outline: none;
   font-size: 1em;
+}
+
+button.collapsible {
+  width: 100%;
 }
 
 .collapsible:after {
@@ -447,11 +530,9 @@ span.ital {
 
 .collapse-content {
   padding: 0 18px;
-  /* display: none; */
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.3s ease-out;
-  /* background-color: #f1f1f1; */
 }
 
 .trip-schedule-date {
@@ -474,6 +555,10 @@ div.css-events-list table.events-table tr td {
 .events-gm-div {
   float: right;
   margin: 0px 0px 15px 15px;
+}
+
+.widget-wrap {
+  display: none;
 }
 
 
@@ -540,6 +625,10 @@ div.css-events-list table.events-table tr td {
     width: 100%;
   }
 
+  a.btn-download {
+    margin: 1em auto 0px;
+  }
+
 } /* --- end media query */
 
 /****** SMALL SCREENS ******/
@@ -555,6 +644,17 @@ div.css-events-list table.events-table tr td {
 	#secondary {
 		order: 1;
 	}
+
+  #site-title a {
+    font-size: 36px;'
+  }
+
+  #site-description {
+    color: #F8F8F8;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: none;
+  }
 
 	/* Allow nav menu conversion to dropdown menu for smallest size device screens */
 	#main-nav {
@@ -574,21 +674,45 @@ div.css-events-list table.events-table tr td {
 		height: 24px;
 	}
 
+  /* Bold the parent-level menu options in mobile dropdown */
+  .tinynav option[value="#"] {
+    font-weight: bold;
+  }
+
 	/*Hide home menu from the menu - done by ColorLib */
 	li#menu-item-447 {
 	    display: block;
 	}
 
-  /* Bold top-level nav menu li in dropdown menu */
-  #main-nav li.menu-item-has-children {
-    font-weight: bold;
+  /* Hide Kickstands Up widget and Events Mgr widget */
+  #custom_html-3,
+  #em_widget-3 {
+    display: none;
   }
 
+  /* Remove extra space after search field */
+  div#main {
+    padding-top: 20px;
+  }
 
 	/* Override heading sizes for small screens */
 	.entry-title, .entry-title a {
 		font-size: 24px;
 	}
+
+/* Style slider for mobile */
+  div.featured-title a {
+    font-size: 18px;
+  }
+
+  .featured-text,
+  .featured-title {
+    display: block;
+  }
+
+  .featured-text {
+    width: auto;
+  }
 
 	/* Center images in mobile view */
 	img.alignright,
@@ -609,11 +733,15 @@ div.css-events-list table.events-table tr td {
 	}
 
 	/* Arrange NER online links to column format in mobile */
+  #ner-online-links {
+    flex-direction: column;
+  }
+
 	.ner-link {
-		display: block;
-		width: 100%;
 		margin-bottom: 20px;
+    align-self: center;
 	}
+
 
   .route-element-btn-group {
 		width: 100%;
@@ -623,5 +751,13 @@ div.css-events-list table.events-table tr td {
 	.locale-photo img {
 		display: none; /* hide locale feature photo on small screen */
 	}
+
+  #footerarea .widget-wrap {
+    display: initial;
+    padding: 0;
+  }
+  #footerarea .widget-area {
+    padding: 20px 0;
+  }
 
 } /* --- end media query */

@@ -56,15 +56,12 @@
         </div> <!-- end element-data-wrapper -->
         <div style="clear: both;"></div>
 
-        <?php if(get_field("ner_notes")) {?>
+        <?php if($post->post_content !== '') {?>
           <h3>NER Notes</h3>
-          <?php the_field('ner_notes');?>
+          <?php the_content();?>
         <?php } ?>
 
         <?php
-        // hiding the main body content field for this Custom Post Type
-        // the_content();
-
         if( is_single() ) {
           $tag_list = get_the_tag_list( '', __( ', ', 'travelify' ) );
           if( !empty( $tag_list ) ) {
@@ -76,28 +73,23 @@
           }
         }
 
-             wp_link_pages( array(
+        wp_link_pages( array(
           'before'            => '<div style="clear: both;"></div><div class="pagination clearfix">'.__( 'Pages:', 'travelify' ),
           'after'             => '</div>',
           'link_before'       => '<span>',
           'link_after'        => '</span>',
           'pagelink'          => '%',
           'echo'              => 1
-             ) );
-             ?>
+        ) );
+      ?>
       </div>
 
       <?php
-
       do_action( 'travelify_after_post_content' );
-
       do_action( 'travelify_before_comments_template' );
-
-       comments_template();
-
-       do_action ( 'travelify_after_comments_template' );
-
-       ?>
+      comments_template();
+      do_action ( 'travelify_after_comments_template' );
+      ?>
 
   </article>
 </section>

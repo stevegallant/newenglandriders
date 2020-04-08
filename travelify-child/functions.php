@@ -12,7 +12,20 @@ function theme_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
-// Customize theme header by replacing original function
+// Custom JavaScript for NER site
+add_action('wp_enqueue_scripts', 'ner_js_scripts', 100);
+function ner_js_scripts() {
+	// replace default script from parent theme to modify tinynav mobile menu
+	wp_dequeue_script('theme_functions');
+	wp_deregister_script('theme_functions');
+	wp_enqueue_script('theme_functions_ner', get_stylesheet_directory_uri().'/library/js/functions.min.js', array('jquery'));
+
+	// load script for collapible div sections in Trip template - (ed.) moved just to trip template
+	// wp_enqueue_script('collapsingsection', get_stylesheet_directory_uri() . '/library/js/collapsingsection.js');
+
+}
+
+// Customize header by replacing original function from parent theme
 function customize_travelify_header(){
 	remove_action( 'travelify_header', 'travelify_headerdetails' );
 	add_action( 'travelify_header', 'custom_travelify_headerdetails', 99 );
@@ -66,7 +79,10 @@ function custom_travelify_headerdetails() {
 					$currUser = wp_get_current_user(); ?>
 					<a href="<?php echo wp_logout_url();?>" class="btn-login" title="Log out <?php echo $currUser->user_login; ?>">Log Out</a>
 				<?php } else { ?>
-					<a href="<?php echo wp_login_url();?>" class="btn-login" title="NERd Login">Log In</a>
+					<span class="login-group">
+						<a href="<?php echo wp_login_url();?>" class="btn-login" title="NERd Login">Log In</a>
+						<a href="<?php echo esc_url(home_url('/reviews-and-ratings')); ?>" class="login-explain" target="_blank"><em>Why?</em></a>
+					</span>
 				<?php } ?>
 
 			</section><!-- .hgroup-right -->
@@ -135,15 +151,7 @@ function custom_travelify_headerdetails() {
 		}
 	?>
 		<?php
-		if( is_home() || is_front_page() ) {
-			if( "0" == $options[ 'disable_slider' ] ) {
-				if( function_exists( 'travelify_pass_cycle_parameters' ) )
-   				travelify_pass_cycle_parameters();
-   			if( function_exists( 'travelify_featured_post_slider' ) )
-   				travelify_featured_post_slider();
-   		}
-   		}
-		else {
+		if( !is_home() || !is_front_page() ) {
 			if( ( '' != travelify_header_title() ) || function_exists( 'bcn_display_list' ) ) {
 		?>
 			<div class="page-title-wrap">
@@ -152,13 +160,13 @@ function custom_travelify_headerdetails() {
 		    		if( function_exists( 'travelify_breadcrumb' ) )
 						travelify_breadcrumb();
 					?>
-				   <h3 class="page-title"><?php echo travelify_header_title(); ?></h3><!-- .page-title -->
+				   <h2 class="page-title"><?php echo travelify_header_title(); ?></h2><!-- .page-title -->
 				</div>
 	    	</div>
 	   <?php
 	   	}
 		}
-}
+} // end custom_travelify_headerdetails
 
 /********* Add additional Post Formats *******/
 add_action('after_setup_theme', 'ner_theme_features');
@@ -178,6 +186,78 @@ function get_my_url() {
 	return esc_url_raw( $matches[1] );
 }
 
+
+// Replace parent theme function for assembling slider
+function travelify_featured_post_slider() {
+	global $post;
+	global $travelify_theme_options_settings;
+  $options = $travelify_theme_options_settings;
+  $travelify_featured_post_slider = '';
+	// new variable to hold URL for hyperlink based on slide title
+	$slide_link = '';
+
+	if (!empty( $options[ 'featured_post_slider' ] ) ) {
+		$travelify_featured_post_slider .= '
+		<section class="featured-slider"><div class="slider-cycle">';
+			$get_featured_posts = new WP_Query( array(
+				'posts_per_page' 		    => $options[ 'slider_quantity' ],
+				'post_type'					    => array( 'post', 'page' ),
+				'post__in'		 			    => $options[ 'featured_post_slider' ],
+				'orderby' 		 			    => 'post__in',
+				'suppress_filters' 	    => false,
+				'ignore_sticky_posts' 	=> 1 						// ignore sticky posts
+			));
+			$i=0; while ( $get_featured_posts->have_posts()) : $get_featured_posts->the_post(); $i++;
+				$title_attribute = apply_filters( 'the_title', get_the_title( $post->ID ) );
+				$excerpt = get_the_excerpt();
+
+				switch ($title_attribute) {
+					case 'Ride':
+						$slide_link = site_url('/b-o-n-e');
+						break;
+					case 'Learn':
+						$slide_link = site_url('/category/technique-safety');
+						break;
+					case 'Meet':
+						$slide_link = site_url('/ner-online-groups');
+						break;
+					case 'Represent':
+						$slide_link = site_url('/ner-oval-stickers');
+						break;
+					default:
+						$slide_link = '#';
+				}
+
+				if ( 1 == $i ) { $classes = "slides displayblock"; } else { $classes = "slides displaynone"; }
+				$travelify_featured_post_slider .= '
+				<div class="'.$classes.'">';
+						if( has_post_thumbnail() ) {
+							$travelify_featured_post_slider .= '<figure><a href="' . $slide_link . '" title="'.the_title('','',false).'">';
+							$travelify_featured_post_slider .= get_the_post_thumbnail( $post->ID, 'slider', array( 'title' => esc_attr( $title_attribute ), 'alt' => esc_attr( $title_attribute ), 'class'	=> 'pngfix' ) ).'</a></figure>';
+						}
+						if( $title_attribute != '' || $excerpt !='' ) {
+						$travelify_featured_post_slider .= '
+							<article class="featured-text">';
+							if( $title_attribute !='' ) {
+									$travelify_featured_post_slider .= '<div class="featured-title"><a href="' . $slide_link . '" title="'.the_title('','',false).'">'. get_the_title() . '</a></div><!-- .featured-title -->';
+							}
+							if( $excerpt !='' ) {
+								$travelify_featured_post_slider .= '<div class="featured-content">'.$excerpt.'</div><!-- .featured-content -->';
+							}
+						$travelify_featured_post_slider .= '
+							</article><!-- .featured-text -->';
+						}
+				$travelify_featured_post_slider .= '
+				</div><!-- .slides -->';
+			endwhile; wp_reset_query();
+		$travelify_featured_post_slider .= '</div>
+		<nav id="controllers" class="clearfix">
+		</nav><!-- #controllers --></section><!-- .featured-slider -->';
+	}
+	echo $travelify_featured_post_slider;
+}
+
+
 /***** REPLACE ARCHIVE LOOP FROM TRAVELIFY THEME *****/
 function travelify_theloop_for_archive() {
 	global $post;
@@ -185,7 +265,7 @@ function travelify_theloop_for_archive() {
 	if (is_post_type_archive('trip')) {
 		echo '<h2>NER Multi-Day Trips</h2>';
 		echo '<p>Our trips cover many of the best motorcycling regions in the East. The rides are the result of months of planning and represent the best day rides from each area we have seen posted anywhere.</p>';
-		echo '<p><a href="https://www.newenglandriders.org/wp/attending-ner-trips/">How NER Trips Work</a></p>';
+		echo '<p><a href="' . esc_url(site_url('/attending-ner-trips')) . '" target="_blank">How NER Trips Work</a></p>';
 	}
 
 	if( have_posts() ) {
@@ -218,6 +298,7 @@ function travelify_theloop_for_archive() {
 					get_template_part('content','archive-trip');
 					break;
 				default:
+
 					get_template_part('content','archive');
 			}
 
@@ -230,6 +311,7 @@ function travelify_theloop_for_archive() {
       <?php
   }
 }
+
 
 /****** REPLACE SINGLE POST LOOP FROM TRAVELIFY THEME ******/
 function travelify_theloop_for_single() {
@@ -299,6 +381,9 @@ function travelify_theloop_for_page() {
 					get_template_part('content', 'page-beyond-the-east');
 			} else {
 				get_template_part('content', 'page');
+				// load script for collapible div sections in Trip template
+				wp_enqueue_script('collapsingsection', get_stylesheet_directory_uri() . '/library/js/collapsingsection.js');
+
 			}
 
 			do_action( 'travelify_after_post' );
@@ -367,15 +452,41 @@ function travelify_theloop_for_search() {
 }
 
 
-/**** CHANGE SORTING OF ARCHIVE LISTS TO ASC BY TITLE */
-add_action('pre_get_posts', 'sort_order_title');
-function sort_order_title($query) {
-	if(is_archive()):
-		//If you wanted it for the archive of a custom post type use: is_post_type_archive( $post_type )
-		$query->set('order', 'ASC');
-		$query->set('orderby', 'title');
-	endif;
-};
+/**** CHANGE SORTING OF ARCHIVE LISTS TO ASC BY custom_sort_order, then TITLE */
+add_action('pre_get_posts', 'apply_custom_sort');
+function apply_custom_sort($query) {
+	if(! is_admin() && $query->is_archive() && $query->is_main_query()) {
+		$query->set('meta_query', array(
+			'relation' => 'OR',
+			array(
+				'key' => 'custom_sort_order',
+				'type' => 'NUMERIC',
+				'compare' => 'EXISTS',
+			),
+			array(
+				'key' => 'custom_sort_order',
+				'type' => 'NUMERIC',
+				'compare' => 'NOT EXISTS',
+				'value' => 'null',
+			),
+		));
+		$query->set('orderby', array(
+			'meta_value_num' => 'ASC',
+			'title' => 'ASC',
+		));
+	}
+	return $query;
+}
+// OLD VERSION of above
+// add_action('pre_get_posts', 'sort_order_title');
+// function sort_order_title($query) {
+// 	if(is_archive()):
+// 		//If you wanted it for the archive of a custom post type use: is_post_type_archive( $post_type )
+// 		$query->set('order', 'ASC');
+// 		$query->set('orderby', 'title');
+// 	endif;
+// };
+
 
 /***** ADD FILTER TO PROCESS SHORTCODES IN ACF RATINGS-RELATED FIELDS *****/
 add_filter('acf/format_value/name=gpx_file','do_shortcode');
@@ -425,6 +536,68 @@ function ourLoginCSS() {
 add_filter('login_headertext', 'ourLoginTitle');
 function ourLoginTitle() {
   return get_bloginfo('name');
+}
+
+
+// Shortcode to use for copying text from a custom field to main content field
+add_shortcode('update-posts-from-custom-fields', 'upfc_fields321');
+function upfc_fields321() {
+	$cpt = 'route'; // slug of custom post type to process
+	$cpt_field = 'description'; // field name to copy from
+
+  $args = array(
+    'post_type' => $cpt,
+		// 'p' => '8386',
+    'meta_query' => array(
+        array(
+            'key'     => $cpt_field,
+            'value'   => '',
+            'compare' => '!=',
+        ),
+    ),
+    'post_count' => '-1'
+  );
+    $the_query = new WP_Query( $args );
+    if ( $the_query->have_posts() ) {
+      $post_counter = $save_counter = $delete_counter = 0;
+      while ( $the_query->have_posts() ) {
+          $the_query->the_post();
+          global $post; // not sure if this is needed, but it can't hurt
+          ?>
+          <div>
+              <h3><?php the_title(); ?></h3>
+							<div>
+								<p><b>"<?php echo $cpt_field; ?>" Field Content</b></p>
+								<?php the_field($cpt_field); ?>
+              </div>
+              <div>
+								<p><b>Original Content Field</b></p>
+								<?php the_content(); ?>
+              </div>
+          <?php $post_counter++;
+          $post->post_content = get_post_meta($post->ID, $cpt_field, true);
+          $post->post_content_filtered = '';
+          $post->post_excerpt = '';
+          // uncomment next line when you are ready to commit changes
+          // wp_update_post($post); $save_counter++;
+          // uncomment next line if you want to delete the meta key (useful if you have too many posts and want to do them in batchces)
+          // delete_post_meta($post->ID, $cpt_field); $delete_counter++;
+					?>
+					<div>
+						<p><b>Modified Content Field</b></p>
+						<?php the_content(); ?>
+					</div>
+				</div>
+				<?php
+      }
+    } else {
+        // no posts found
+    };
+    echo
+        '<hr>Processed posts: ' . $post_counter .
+        '<hr>Saved posts:' . $save_counter .
+        '<hr>Deleted meta from: ' . $delete_counter . ' posts';
+    wp_reset_postdata() ;
 }
 
 ?>

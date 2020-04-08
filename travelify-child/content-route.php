@@ -119,9 +119,10 @@
           <p>Info on <a href="<?php echo esc_url(site_url('ner-gpx-files-content'));?>" target="_blank">NER GPX Files Content</a></p>
         <?php }?>
 
-        <?php if(get_field("description")) {?>
-          <h3>Description</h3>
-          <?php the_field('description');?>
+        <?php if($post->post_content !== '') {?>
+          <h3>NER Notes</h3>
+          <?php // the_field('description');?>
+          <?php the_content();?>
         <?php } ?>
 
         <?php

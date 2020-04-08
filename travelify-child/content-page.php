@@ -1,5 +1,15 @@
-<?php ?>
+
 <section id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+  <?php
+  if( is_home() || is_front_page() ) {
+    // if( "0" == $options[ 'disable_slider' ] ) {
+      if( function_exists( 'travelify_pass_cycle_parameters' ) )
+        travelify_pass_cycle_parameters();
+      if( function_exists( 'travelify_featured_post_slider' ) )
+        travelify_featured_post_slider();
+    // }
+    }
+  ?>
   <article>
 
     <?php do_action( 'travelify_before_post_header' ); ?>

@@ -29,6 +29,7 @@ add_post_type_support('page', 'excerpt');
 /****** Array of Google Map IDs for embedded maps *******/
 global $map_ids;
 $map_ids = array(
+  'ca' => '1O95s7b8wnolPNU5yrwdLU9bzvrxL5pc1',
   'ct' => '1wgQsXozc5yu_AKGVjZ6c4lhAP30H3ruQ',
   'ma' => '1jfAXOageah5elJTzBFwx9vxe07wWXqHg',
   'me' => '1uXL6HdJ5fw-yIhzz4_q7QK_t4m1I0dKR',
@@ -55,6 +56,9 @@ $map_ids = array(
   'ga' => '13ur1yR6T-HeNlvUahJumCaRecrOQi05p',
   'al' => '11bTri2-OuuVd73sAJIEQ2y8HgkG6F_4O',
 )
+
+
+
 
 
 ?>
