@@ -539,65 +539,6 @@ function ourLoginTitle() {
 }
 
 
-// Shortcode to use for copying text from a custom field to main content field
-// add_shortcode('update-posts-from-custom-fields', 'upfc_fields321');
-function upfc_fields321() {
-	$cpt = 'scenicview'; // slug of custom post type to process
-	$cpt_field = 'ner_notes'; // field name to copy from
 
-  $args = array(
-    'post_type' => $cpt,
-		// 'p' => '8386',
-    'meta_query' => array(
-        array(
-            'key'     => $cpt_field,
-            'value'   => '',
-            'compare' => '!=',
-        ),
-    ),
-    'post_count' => '-1'
-  );
-    $the_query = new WP_Query( $args );
-    if ( $the_query->have_posts() ) {
-      $post_counter = $save_counter = $delete_counter = 0;
-      while ( $the_query->have_posts() ) {
-          $the_query->the_post();
-          global $post; // not sure if this is needed, but it can't hurt
-          ?>
-          <div>
-              <h3><?php the_title(); ?></h3>
-							<div>
-								<p><b>"<?php echo $cpt_field; ?>" Field Content</b></p>
-								<?php the_field($cpt_field); ?>
-              </div>
-              <div>
-								<p><b>Original Content Field</b></p>
-								<?php the_content(); ?>
-              </div>
-          <?php $post_counter++;
-          $post->post_content = get_post_meta($post->ID, $cpt_field, true);
-          $post->post_content_filtered = '';
-          $post->post_excerpt = '';
-          // uncomment next line when you are ready to commit changes
-          // wp_update_post($post); $save_counter++;
-          // uncomment next line if you want to delete the meta key (useful if you have too many posts and want to do them in batchces)
-          // delete_post_meta($post->ID, $cpt_field); $delete_counter++;
-					?>
-					<div>
-						<p><b>Modified Content Field</b></p>
-						<?php echo $post->post_content; ?>
-					</div>
-				</div>
-				<?php
-      }
-    } else {
-        // no posts found
-    };
-    echo
-        '<hr>Processed posts: ' . $post_counter .
-        '<hr>Saved posts:' . $save_counter .
-        '<hr>Deleted meta from: ' . $delete_counter . ' posts';
-    wp_reset_postdata() ;
-}
 
 ?>

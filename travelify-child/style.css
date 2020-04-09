@@ -12,7 +12,6 @@
  Text Domain:  travelify-child
 */
 
-/* @import url('https://fonts.googleapis.com/css?family=Lobster'); */
 /* @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:700i,900i|Cantarell:400i,700i|Carter+One|Fugaz+One|Lato:700i,900i|Montserrat:900i|Playball|Racing+Sans+One|Sriracha|Timmana|Trade+Winds&display=swap'); */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:900i');
 
@@ -72,24 +71,11 @@ h1#site-title,
 #site-title a {
 	color: #f8f8f8 !important;
   text-shadow: 2px 2px black, 1px 1px black;
-  /* font-family: 'Lobster', cursive; */
-  /* font-family: 'Cantarell', sans-serif; */
   font-weight: 700;
   font-style: italic;
-  /* letter-spacing: 1px; */
-  /* font-family: 'Carter One', cursive; */
-  /* font-family: 'Lato', sans-serif; */
-  /* font-family: 'Playball', cursive; */
-  /* font-family: 'Alegreya Sans', sans-serif; */
-  /* font-family: 'Trade Winds', cursive; */
-  /* font-family: 'Fugaz One', cursive; */
-  /* font-family: 'Sriracha', cursive; */
-  /* font-family: 'Timmana', sans-serif; */
-  /* font-family: 'Racing Sans One', cursive; */
   font-family: 'Montserrat', sans-serif;
   font-size: 50px;
   line-height: 105%;
-	/* text-shadow: -1px 0 silver, 0 1px silver, 1px 0 silver, 0 -1px silver; */
 	margin-left: 25px;
 }
 
@@ -97,41 +83,6 @@ h1#site-title,
 #site-description {
   color: silver;
   text-shadow: -2px 0 2px black, 0 2px 2px black, 2px 0 2px black, 0 -2px 2px black;
-}
-
-/* hide indiv page titles */
-body.page h2.entry-title {
-    display: none;
-}
-/* override hidden h2 for locale-details template part */
-div.locale-header h2.entry-title {
-    display: inline-block;
-}
-
-/* override default theme heading sizes */
-h3 {
-  font-size: 22px;
-}
-
-/* remove extra white space */
-.hgroup-wrap {
-    padding-top: 0;
-}
-
-#search-4 {
-	background-color: #186ebf;
-	border-radius: 5px;
-}
-/* style divs */
-#primary,
-#secondary {
-	border-radius: 5px;
-}
-
-/* style Kickstands-up CTA */
-#custom_html-3 {
-	border-radius: 5px;
-	overflow: hidden;
 }
 
 /* Style span containing login button and explainer link */
@@ -193,6 +144,47 @@ li#menu-item-447 {
 		display: none;
 }
 
+/**********************************/
+/* *****Customize Content ****/
+/**********************************/
+
+/* hide indiv page titles */
+body.page h2.entry-title {
+    display: none;
+}
+/* override hidden h2 for locale-details template part */
+div.locale-header h2.entry-title {
+    display: inline-block;
+}
+
+/* override default theme heading sizes */
+h3 {
+  font-size: 22px;
+}
+
+/* remove extra white space */
+.hgroup-wrap {
+    padding-top: 0;
+}
+
+/* style search widget */
+#search-4 {
+	background-color: #186ebf;
+	border-radius: 5px;
+}
+/* style main content divs */
+#primary,
+#secondary {
+	border-radius: 5px;
+}
+
+/* style Kickstands-up CTA */
+#custom_html-3 {
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+/* Style content hyperlinks */
 .entry-content a {
   text-decoration: none;
 }
@@ -207,7 +199,7 @@ li#menu-item-447 {
 	display: none;
 }
 
-/* Style online links */
+/* Style NER online services icon links on home page */
 #ner-online-links {
   display: flex;
   justify-content: space-between;
@@ -318,7 +310,6 @@ a .btn-route-file-dl:hover {
 }
 
 .route-element-btn-container {
-	/* text-align: center; */
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -332,7 +323,6 @@ a .btn-route-file-dl:hover {
 	text-align: center;
 	text-decoration: none;
   background-color: #f1f1f1;
-	/* background-color: #f9f9f9; */
 	border-radius: 8px;
 }
 
@@ -358,23 +348,18 @@ a.btn-route-element-gpx {
 	text-align: center;
 	text-decoration: none;
 	color: white;
-	/* background-color: #186ebf; */
   background-color: #07a0da;
 	border-radius: 0px 8px 8px 0px;
 }
 
 a.btn-download {
   display: block;
-	/* float: right; */
 	box-sizing: border-box;
 	width: 120px;
-	/* height: 100%; */
 	padding: 4px;
-  /* margin: 4px auto 0px; */
 	text-align: center;
 	text-decoration: none;
 	color: white;
-	/* background-color: #186ebf; */
   background-color: #07a0da;
 	border-radius: 8px;
 }
@@ -505,7 +490,6 @@ span.ital {
   color: inherit;
   cursor: pointer;
   padding: 18px;
-  /* width: 100%; */
   border: none;
   text-align: left;
   outline: none;
@@ -635,6 +619,7 @@ div.css-events-list table.events-table tr td {
 
 } /* --- end media query */
 
+
 /****** SMALL SCREENS ******/
 @media only screen and (max-width: 479px) {
 	/* Re-order sidebar and main content for mobile screen */
@@ -723,7 +708,6 @@ div.css-events-list table.events-table tr td {
 	img.alignleft {
 		display: block;
 		margin: auto;
-		/* float: none; */
 		width: 100%;
 		height: auto;
 	}
@@ -733,7 +717,6 @@ div.css-events-list table.events-table tr td {
 		display: inline;
 		width: initial;
 		margin: 0px 30px 0px auto;
-		/* float: inherit; */
 	}
 
 	/* Arrange NER online links to column format in mobile */
