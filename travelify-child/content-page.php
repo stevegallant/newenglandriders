@@ -1,6 +1,7 @@
 
 <section id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <?php
+  // global $options;
   if( is_home() || is_front_page() ) {
     // if( "0" == $options[ 'disable_slider' ] ) {
       if( function_exists( 'travelify_pass_cycle_parameters' ) )
@@ -16,7 +17,10 @@
 
     <header class="entry-header">
         <h2 class="entry-title">
-          <?php the_title(); ?>
+          <?php
+          if( ! is_home() && ! is_front_page() ) {
+            the_title();
+          }; ?>
         </h2><!-- .entry-title -->
       </header>
 

@@ -6,22 +6,23 @@ Version: 1.0
 Author: S. Gallant
 */
 
-// Custom functions to allow Pages and Attachments to use the default Categories and Tags taxonomies
+// Custom function to allow Pages and Attachments to use the default Categories and Tags taxonomies
+add_action( 'init', 'ner_default_taxonomy_mod' );
 function ner_default_taxonomy_mod() {
   // Add category support to pages
   register_taxonomy_for_object_type('category', 'page');
-
   // Add tag support to pages
   register_taxonomy_for_object_type('post_tag', 'page');
+  register_taxonomy_for_object_type('post_tag', 'route');
+  register_taxonomy_for_object_type('post_tag', 'attraction');
+  register_taxonomy_for_object_type('post_tag', 'scenicview');
 }
-// hook into init action for above functions
-add_action( 'init', 'ner_default_taxonomy_mod' );
 
 //ensure all Tags and Categories from all post types are included in queries
+add_action('pre_get_posts', 'tags_categories_support_query');
 function tags_categories_support_query($wp_query) {
   if ($wp_query->get('tag') || ($wp_query->get('category_name'))) $wp_query->set('post_type', 'any');
 }
-add_action('pre_get_posts', 'tags_categories_support_query');
 
 /********* Add Excerpts to default 'Page' post type ****/
 add_post_type_support('page', 'excerpt');

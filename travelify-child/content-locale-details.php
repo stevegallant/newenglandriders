@@ -63,7 +63,7 @@
           <iframe src="<?php echo $map_url;?>" width="100%" height="320px" frameborder="0" style="border:0"></iframe>
         </div>
 
-        <p><a href="<?php echo get_bloginfo('url') . '/filtering-ner-google-custom-maps-view'; ?>" target="_blank">Tips for Filtering Map View</a></p>
+        <p><a href="<?php echo get_bloginfo('url') . '/filter-ner-google-maps-view'; ?>" target="_blank">Tips for Filtering Map View</a></p>
         <?php
         // Store partial path for GPX download links
         $dl_path = get_bloginfo('url') . '/download/' . $locale_slug . '-';

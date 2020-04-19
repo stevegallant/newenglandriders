@@ -1,6 +1,7 @@
 <?php
 
 // Enqueue styles from parent and child themes
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 function theme_enqueue_styles() {
 	$parent_style = 'travelify-style';
   wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
@@ -10,7 +11,6 @@ function theme_enqueue_styles() {
         wp_get_theme()->get('Version')
 	);
 }
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
 // Custom JavaScript for NER site
 add_action('wp_enqueue_scripts', 'ner_js_scripts', 100);
@@ -19,19 +19,16 @@ function ner_js_scripts() {
 	wp_dequeue_script('theme_functions');
 	wp_deregister_script('theme_functions');
 	wp_enqueue_script('theme_functions_ner', get_stylesheet_directory_uri().'/library/js/functions.min.js', array('jquery'));
-
 	// load script for collapible div sections in Trip template - (ed.) moved just to trip template
 	// wp_enqueue_script('collapsingsection', get_stylesheet_directory_uri() . '/library/js/collapsingsection.js');
-
 }
 
 // Customize header by replacing original function from parent theme
+add_action('init', 'customize_travelify_header');
 function customize_travelify_header(){
 	remove_action( 'travelify_header', 'travelify_headerdetails' );
 	add_action( 'travelify_header', 'custom_travelify_headerdetails', 99 );
 }
-add_action('init', 'customize_travelify_header');
-
 /**
  * Custom NER function shows Header Template Part Content
  * Shows the site logo, title, description, searchbar, social icons etc.
@@ -75,6 +72,7 @@ function custom_travelify_headerdetails() {
 		<div class="hgroup-wrap clearfix">
 			<section class="hgroup-right">
 				<?php travelify_socialnetworks( $flag ); ?>
+				<!-- Login/Logout button and Why link -->
 				<?php if (is_user_logged_in()) {
 					$currUser = wp_get_current_user(); ?>
 					<a href="<?php echo wp_logout_url();?>" class="btn-login" title="Log out <?php echo $currUser->user_login; ?>">Log Out</a>
@@ -383,7 +381,6 @@ function travelify_theloop_for_page() {
 				get_template_part('content', 'page');
 				// load script for collapible div sections in Trip template
 				wp_enqueue_script('collapsingsection', get_stylesheet_directory_uri() . '/library/js/collapsingsection.js');
-
 			}
 
 			do_action( 'travelify_after_post' );
@@ -455,7 +452,9 @@ function travelify_theloop_for_search() {
 /**** CHANGE SORTING OF ARCHIVE LISTS TO ASC BY custom_sort_order, then TITLE */
 add_action('pre_get_posts', 'apply_custom_sort');
 function apply_custom_sort($query) {
-	if(! is_admin() && $query->is_archive() && $query->is_main_query()) {
+	if(is_admin() || ! $query->is_main_query()) return;
+
+	if($query->is_archive()) {
 		$query->set('meta_query', array(
 			'relation' => 'OR',
 			array(
@@ -475,6 +474,7 @@ function apply_custom_sort($query) {
 			'title' => 'ASC',
 		));
 	}
+
 	return $query;
 }
 // OLD VERSION of above
@@ -487,11 +487,28 @@ function apply_custom_sort($query) {
 // 	endif;
 // };
 
+// Ensure listings of Easy Ed's Faves are filtered by the post_type URL query_var
+add_action('pre_get_posts', 'filter_easy_ed_faves');
+function filter_easy_ed_faves($query) {
+	if (is_tag('easy-ed-faves')) {
+		$posttype = $_GET["post_type"];
+		if($posttype) {
+			$query->set('post_type', $posttype);
+		}
+	}
+}
 
-/***** ADD FILTER TO PROCESS SHORTCODES IN ACF RATINGS-RELATED FIELDS *****/
+
+/****************************************************
+** PROCESS SHORTCODES IN ACF RATINGS-RELATED FIELDS *
+****************************************************/
 add_filter('acf/format_value/name=gpx_file','do_shortcode');
 
-/*** FILTER TO ALLOW GPX FILE UPLOADS ****/
+
+/****************************************************
+********** ALLOW GPX FILE UPLOADS  ******************
+****************************************************/
+add_filter('upload_mimes', 'add_custom_mime_types',1,1);
 function add_custom_mime_types($mimes = array()) {
   // $mimes['gpx'] = 'application/gpx+xml';
   $mimes['gpx'] = 'application/gpx+xml';
@@ -499,9 +516,11 @@ function add_custom_mime_types($mimes = array()) {
 	$mimes['bmp'] = 'image/bmp';
   return $mimes;
 }
-add_filter('upload_mimes', 'add_custom_mime_types',1,1);
 
-/*** SUBSCRIBER LOCK-DOWN  ***/
+
+/****************************************************
+********** SUBSCRIBER LOCK-DOWN  ********************
+****************************************************/
 // Re-direct subscriber accounts out of admin and to homepage
 add_action('admin_init', 'redirectSubToFrontend');
 function redirectSubToFrontEnd() {
@@ -521,7 +540,9 @@ function noSubAdminBar() {
   }
 }
 
-// Customize login screen
+/****************************************************
+********** Customize login screen *******************
+****************************************************/
 add_filter('login_headerurl', 'ourHeaderUrl');
 function ourHeaderUrl() {
   return esc_url(site_url('/'));
