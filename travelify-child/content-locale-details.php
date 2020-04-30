@@ -95,7 +95,7 @@
             <a href="<?php echo get_bloginfo('url') . '/download/campgrounds';?>" class="btn-route-element-gpx">GPX</a>
           </div> <!-- route-element-btn-group -->
           <div class="route-element-btn-group">
-            <a href="<?php echo get_bloginfo('url') . '/route/?locale='. $locale_slug . '&surface=unpaved';?>" class="btn-route-element-list" target="_blank">Dirt Roads</a>
+            <a href="<?php echo get_bloginfo('url') . '/route/?locale='. $locale_slug . '&surface=unpaved';?>" class="btn-route-element-list" target="_blank">Dirt Routes</a>
             <a href="<?php echo $dl_path . 'unpaved/';?>" class="btn-route-element-gpx">GPX</a>
           </div> <!-- route-element-btn-group -->
           <div class="route-element-btn-group">

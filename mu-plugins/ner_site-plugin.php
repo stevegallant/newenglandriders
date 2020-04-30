@@ -40,6 +40,7 @@ $map_ids = array(
   'nl' => '1dXFZ718bvx10p0gPJiHn23Fbgy1bmDUg',
   'ns' => '1v6lF6K0jaOzDEiXosgE1u69FrqBqOA5s',
   'ny' => '1deFfpRZpA6Qd-vSQuJtMg7iyLy3B1zHN',
+  'nv' => '12DK5WVMPZ0HWiDYnr3yv5FkJWXRYJOgU',
   'on' => '1k73lbvdsNpnMtMP8_b_hYRF8KusWYWHp',
   'pa' => '1oEQYBi150Dp1n1DA7v0sRYzI_3XapoYn',
   'pei' => '1uyuTOKRqMDiDWN7Szu0e6b5r_cpvCcfA',
@@ -58,7 +59,16 @@ $map_ids = array(
   'al' => '11bTri2-OuuVd73sAJIEQ2y8HgkG6F_4O',
 )
 
+// Add filters to change user registration email templates
+// apply_filters('wp_new_user_notification_email_admin', array(
+//   'subject' => "New User Reg Request for $user"
+// ));
 
+// add_filter('wp_new_user_notification_email_admin', 'custom_new_user_admin_notification');
+// function custom_new_user_admin_notification($wp_new_user_notification_email_admin, $user, $blogname ) {
+//   $wp_new_user_notification_email_admin['subject'] = sprintf('[%s] New User %s has registered and requires approval', $blogname, $user->user_login);
+//   return $wp_new_user_notification_email_admin;
+// }
 
 
 

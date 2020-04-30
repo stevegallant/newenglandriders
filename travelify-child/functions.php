@@ -79,7 +79,7 @@ function custom_travelify_headerdetails() {
 				<?php } else { ?>
 					<span class="login-group">
 						<a href="<?php echo wp_login_url();?>" class="btn-login" title="NERd Login">Log In</a>
-						<a href="<?php echo esc_url(home_url('/reviews-and-ratings')); ?>" class="login-explain" target="_blank"><em>Why?</em></a>
+						<a href="<?php echo esc_url(home_url('/user-accounts')); ?>" class="login-explain" target="_blank"><em>Why?</em></a>
 					</span>
 				<?php } ?>
 
@@ -559,7 +559,24 @@ function ourLoginTitle() {
   return get_bloginfo('name');
 }
 
+/****************************************************
+********** Customize User Reg Emails ****************
+****************************************************/
+add_action( 'delete_user', 'my_delete_user' );
+function my_delete_user( $user_id ) {
+	global $wpdb;
+  $user_obj = get_userdata( $user_id );
+  $email = $user_obj->user_email;
+	// $headers[] = 'From: ' . get_bloginfo( "name" ) . ' <' . get_bloginfo( "admin_email" ) . '>' . "\r\n";
+	$headers[] = 'From: ' . get_bloginfo( "name" ) . ' <' . 'webmaster2@newenglandriders.org' . '>' . "\r\n";
+	$headers[] = 'Content-Type: text/html; charset=UTF-8';
+	$subject = get_bloginfo('name') . ' - User deleted: ' . $user_obj->user_login;
+	$body = '<p>User accounts on ' . site_Url() . ' are issued to members of the NER community who participate in our online forums and/or ride events, and who wish to leave reviews & ratings for roads, restaurants, and the like. All content is accessible on the website without an account.</p>';
+	$body .= '<p>Your website user (or user request) <strong>"'. $user_obj->user_login . '"</strong> has been deleted because we have not been able to find you associated with the NER community and/or you have not responded to our attempts to do so.<p>';
+	$body .= 'We hope you check out the NER community and that we\'ll see you out on the road, on <a href="https://www.facebook.com/groups/NewEnglandRiders">our Facebook group</a>, or at an RTE soon. Ride safe!';
 
+	wp_mail( $email, $subject, $body, $headers );
+}
 
 
 ?>

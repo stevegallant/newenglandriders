@@ -622,6 +622,20 @@ div.css-events-list table.events-table tr td {
     margin: 1em auto 0px;
   }
 
+  /* Style slider for mobile */
+    div.featured-title a {
+      font-size: 18px;
+    }
+
+    .featured-text,
+    .featured-title {
+      display: block;
+    }
+
+    .featured-text {
+      width: auto;
+    }
+
 } /* --- end media query */
 
 
@@ -693,20 +707,6 @@ div.css-events-list table.events-table tr td {
 	.entry-title, .entry-title a {
 		font-size: 24px;
 	}
-
-/* Style slider for mobile */
-  div.featured-title a {
-    font-size: 18px;
-  }
-
-  .featured-text,
-  .featured-title {
-    display: block;
-  }
-
-  .featured-text {
-    width: auto;
-  }
 
 	/* Center images in mobile view */
 	img.alignright,

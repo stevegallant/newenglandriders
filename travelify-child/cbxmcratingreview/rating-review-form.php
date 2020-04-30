@@ -164,8 +164,9 @@ $form_question_formats = CBXMCRatingReviewHelper::form_question_formats();
 			<input type="hidden" id="cbxmcratingreview-post-id" name="cbxmcratingreview_ratingForm[post_id]"
                    value="<?php echo intval( $post_id ); ?>"/>
 
+			<!-- SJG: edited language in following paragraph -->
 			<p class="label-cbxmcratingreview-submit-processing"
-               style="display: none;"><?php esc_html_e( 'Please wait, we are taking account of your review. Do not close this window.', 'cbxmcratingreview' ) ?></p>
+               style="display: none;"><?php esc_html_e( 'Please wait while your review is being submitted. Do not close this window.', 'cbxmcratingreview' ) ?></p>
             <button type="submit"
                     class="btn btn-primary btn-cbxmcratingreview-submit"><?php esc_html_e( 'Submit your review', 'cbxmcratingreview' ); ?></button>
 
