@@ -73,9 +73,7 @@ $form_question_formats = CBXMCRatingReviewHelper::form_question_formats();
 						echo '</li>';
 					}
 					echo '</ul>';
-
 				}
-
 				?>
 
             </div>

@@ -61,8 +61,13 @@
         <?php } ?>
         <hr />
         <h3>Rated by Riders</h3>
-        <p>One per rider. You can edit your previous reviews via your <a href="<?php echo esc_url(site_url('/my-reviews')); ?>" target="_blank">My Reviews</a> dashboard page.</p>
-        <p>Information on <a href="<?php echo esc_url(site_url('/reviews-and-ratings'));?>" target="_blank">Reviews and Ratings</a></p>
+        <p>One review per rider. Learn more about <a href="<?php echo esc_url(site_url('/reviews-and-ratings'));?>" target="_blank">Rider Reviews and Ratings</a></p>
+          <?php if (is_user_logged_in()) { ?>
+            <p>You can view/edit all your previous reviews via your <a href="<?php echo esc_url(site_url('/my-reviews')); ?>" target="_blank">My Reviews</a> dashboard page.</p>
+          <?php } else { ?>
+            <p>You must <a href="<?php echo esc_url(wp_login_url(get_permalink()));?>">Log In</a> to leave a review. Read about <a href="<?php echo esc_url(site_url('/user-accounts'));?>" target="_blank">NER User Accounts</a> before attempting to register.</p>
+          <?php } ?>
+
         <div>
           <strong>Average Rider Rating</strong>
           <?php echo do_shortcode('[cbxmcratingreview_postavgrating form_id="4" details="1"]'); ?>

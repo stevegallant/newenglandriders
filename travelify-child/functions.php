@@ -75,12 +75,12 @@ function custom_travelify_headerdetails() {
 				<!-- Login/Logout button and Why link -->
 				<?php if (is_user_logged_in()) {
 					$currUser = wp_get_current_user(); ?>
-					<a href="<?php echo wp_logout_url();?>" class="btn-login" title="Log out <?php echo $currUser->user_login; ?>">Log Out</a>
+					<a href="<?php echo wp_logout_url(get_permalink());?>" class="btn-login" title="Log out <?php echo $currUser->user_login; ?>">Log Out</a>
 				<?php } else { ?>
-					<span class="login-group">
-						<a href="<?php echo wp_login_url();?>" class="btn-login" title="NERd Login">Log In</a>
-						<a href="<?php echo esc_url(home_url('/user-accounts')); ?>" class="login-explain" target="_blank"><em>Why?</em></a>
-					</span>
+					<!-- <span class="login-group">
+						<a href="<?php //echo wp_login_url();?>" class="btn-login" title="NERd Login">Log In</a>
+						<a href="<?php //echo esc_url(home_url('/user-accounts')); ?>" class="login-explain" target="_blank"><em>Why?</em></a>
+					</span> -->
 				<?php } ?>
 
 			</section><!-- .hgroup-right -->
