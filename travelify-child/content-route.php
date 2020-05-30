@@ -33,8 +33,16 @@
 
         <!-- Embedded map centered on route element -->
         <?php
-        // Get locale taxonomy slug to retrieve correct map ID from global array
-        $locale_slug = get_the_terms($post->ID, 'locale')[0]->slug;
+        // Get locale taxonomy slug of Road Segment to retrieve correct map ID from global array
+        $locale_arr = get_the_terms($post->ID, 'locale');
+        // if the Segment is also in Appalachia locale, ignores it in favor of the state
+        if ($locale_arr[0]->slug == 'appalachia') {
+          $locale_slug = $locale_arr[1]->slug;
+        } else {
+          $locale_slug = $locale_arr[0]->slug;
+        }
+
+        // $locale_slug = get_the_terms($post->ID, 'locale')[0]->slug;
         global $map_ids; // defined in site plugin
         if (get_field('map_id')) {
           $map_id = get_field('map_id');
