@@ -46,10 +46,10 @@
               <td><?php the_field('restaurant_address');?></td>
             </tr>
             <tr>
-              <td><a href="<?php the_field('restaurant_website');?>">Restaurant's Website</a></td>
+              <td><a href="<?php the_field('restaurant_website');?>" target="_blank">Restaurant's Website</a></td>
             </tr>
             <tr>
-              <td><a href="<?php the_field('restaurant_reviews');?>">Customer Reviews</a></td>
+              <td><a href="<?php the_field('restaurant_reviews');?>" target="_blank">Customer Reviews</a></td>
             </tr>
           </table>
         </div> <!-- end element-data-wrapper -->
