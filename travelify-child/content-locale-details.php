@@ -99,7 +99,7 @@
             <a href="<?php echo $dl_path . 'unpaved/';?>" class="btn-route-element-gpx">GPX</a>
           </div> <!-- route-element-btn-group -->
           <div class="route-element-btn-group">
-            <a href="<?php echo get_bloginfo('url') . '/route/?locale='. $locale_slug . '&routescale=day-ride'; ?>" class="btn-route-element-list" target="_blank">Complete Day-Rides</a>
+            <a href="<?php echo get_bloginfo('url') . '/route/?locale='. $locale_slug . '&routescale=day-ride&surface=paved'; ?>" class="btn-route-element-list" target="_blank">Complete Day-Rides</a>
             <!-- <a href="#" class="btn-route-element-gpx" disabled>N/A</a> -->
           </div> <!-- route-element-btn-group -->
 
