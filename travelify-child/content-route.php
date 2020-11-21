@@ -63,7 +63,11 @@
 
 
         <div class="element-data-wrapper">
-            <table>
+          <table>
+            <colgroup>
+              <col class="element-data_title" />
+              <col class="element-data_content" />
+            </colgroup>
             <tr>
               <td><b>Miles</b> </td>
               <td><?php the_field('mileage');?></td>

@@ -604,6 +604,14 @@ div.css-events-list table.events-table tr td {
 		margin-left: initial;
 	}
 
+  .element-data_title {
+    width: 35%;
+  }
+
+  .element-data_content {
+    
+  }
+
   /* Events Manager Google Map div adjust */
   .events-gm-div {
     float: none;
