@@ -82,6 +82,12 @@
               <td><b>Surface</b> </td>
               <td><?php echo strip_tags(get_the_term_list($post->ID, 'surface','',', ')); ?></td>
             </tr>
+            <?php if (get_field('submitted_by')) { ?>
+            <tr>
+              <td><b>Submitted By</b> </td>
+              <td><?php the_field('submitted_by'); ?></td>
+            </tr>
+            <?php } ?>
             <?php if (!has_term('paved', 'surface')) { ?>
             <tr>
               <td colspan="2">
